@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forhad Hossain — Graphic Designer & Frontend Developer</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS for scroll animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Feather icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <style>
+    :root{
+      --brand:#0d6efd;
+      --dark:#0b1220;
+      --muted:#6b7280;
+      --soft:#f7f9fc;
+      --glass: rgba(255,255,255,0.6);
+      --radius:12px;
+      --shadow-lg: 0 10px 30px rgba(10,20,50,0.08);
+    }
+
+    /* preserve original font stack but prefer Poppins */
+    body{font-family:Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:var(--dark);background:var(--soft); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; scroll-behavior:smooth}
+    .navbar-brand img{height:40px}
+    .hero{background:linear-gradient(180deg,#f8fbff 0%,#ffffff 100%);padding:84px 0}
+    .hero .lead{font-size:1.05rem;color:var(--muted)}
+    .feature-card,.service-card,.case-card{border-radius:var(--radius);padding:28px;background:#fff;box-shadow:0 6px 20px rgba(13,31,80,0.06)}
+    .cta-band{background:linear-gradient(90deg,var(--brand),#0056d6);color:#fff;padding:28px;border-radius:var(--radius)}
+    .pricing .card{border:none;border-radius:14px;box-shadow:0 6px 30px rgba(10,20,50,0.06)}
+    .testimonial-card{border-radius:var(--radius);padding:28px;background:#fff;box-shadow:0 4px 16px rgba(13,31,80,0.05)}
+    .logos img{max-height:40px;opacity:.7;transition:opacity .3s}
+    .logos img:hover{opacity:1}
+    .progress-wrap{background:#f1f5f9;border-radius:10px;padding:6px}
+    .progress-inner{height:10px;border-radius:8px;background:linear-gradient(90deg,var(--brand),#0056d6)}
+    footer{background:#0b1220;color:#d6d8dd;padding:48px 0}
+    .badge-skill{background:#eef2ff;color:#0b1220;padding:.35rem .6rem;border-radius:999px;font-weight:600}
+    .case-gallery img{width:100%;height:auto;border-radius:8px}
+    .back-to-top{position:fixed;right:18px;bottom:18px;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(13,31,80,.12);cursor:pointer;z-index:999}
+    @media(min-width:1200px){.container-wide{max-width:1180px}}
+
+    /* New: subtle card hover lift + transitions */
+    .feature-card, .service-card, .case-card, .testimonial-card, .card{
+      transition:transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s;
+      will-change:transform;
+    }
+    .feature-card:hover, .service-card:hover, .case-card:hover, .testimonial-card:hover, .card:hover{
+      transform:translateY(-8px) rotateZ(.001deg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* New: refined hero image style */
+    .hero img{transition:transform .8s ease, filter .6s; border-radius:16px}
+    .hero:hover img{transform:scale(1.02) translateY(-6px); filter:brightness(.98) saturate(1.02)}
+
+    /* New: micro-animations for buttons */
+    .btn-primary{
+      transition:transform .18s ease, box-shadow .18s;
+    }
+    .btn-primary:active{transform:translateY(1px) scale(.997)}
+    .btn-outline-primary{transition:box-shadow .18s}
+    .btn-outline-primary:hover{box-shadow:0 6px 18px rgba(13,31,80,.08)}
+
+    /* New: sticky navbar glass + shadow */
+    nav.navbar{backdrop-filter:blur(6px); background:rgba(255,255,255,0.8); transition:background .3s, box-shadow .3s}
+    nav.navbar.sticky-scrolled{background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.75)); box-shadow:0 10px 30px rgba(10,20,50,0.06)}
+
+    /* New: responsive tweaks */
+    @media(max-width:991px){
+      .hero{padding:40px 0}
+      .hero h1{font-size:1.85rem}
+      .feature-card, .service-card, .case-card{padding:18px}
+    }
+
+    /* New: animated numbers */
+    .stat { font-variation-settings: "wght" 700; font-weight:700; font-size:2rem; color:var(--brand); }
+    .stat small{display:block; font-size:.7rem; color:var(--muted); font-weight:600}
+
+    /* New: subtle section divider */
+    .section-divider{height:1px;background:linear-gradient(90deg, transparent, rgba(10,20,50,0.06), transparent); margin:28px 0;border-radius:4px}
+
+    /* Accessibility: respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* Form focus */
+    .form-control:focus, .form-select:focus { box-shadow: 0 6px 18px rgba(13,31,80,0.06); border-color: var(--brand); outline: none; }
+
+    /* Mobile nav: make toggler more visible */
+    .navbar-toggler{border-radius:8px}
+    .navbar-toggler-icon{background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(10,20,50,0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");}
+
+    /* Small utility for image ratio */
+    .img-ratio-4-3 { aspect-ratio: 4/3; object-fit:cover; width:100%; border-radius:12px; }
+
+    /* Make back-to-top keyboard accessible */
+    .back-to-top:focus{outline:3px solid rgba(13,110,253,.18); outline-offset:3px}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" id="mainNav" role="navigation" aria-label="Main navigation">
+  <div class="container container-wide">
+    <a class="navbar-brand fw-bold" href="#">Forhad Hossain</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#cases">Case Studies</a></li>
+        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home" aria-label="Hero" data-aos="fade-up" data-aos-delay="50">
+  <div class="container container-wide">
+    <div class="row align-items-center">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h1 class="display-5 fw-bold">Hi, I’m Forhad Hossain</h1>
+        <p class="lead">A <strong>Professional Graphic Designer</strong> and <strong>Frontend Developer</strong>. I design modern, creative, and user-friendly digital experiences that help brands stand out.</p>
+        <p class="text-muted">Services: Branding • UI/UX Design • Web Development • Illustrations • Motion Graphics</p>
+        <div class="d-flex gap-2 mt-4">
+          <a class="btn btn-primary btn-lg" href="#portfolio">View Portfolio</a>
+          <a class="btn btn-outline-secondary btn-lg" href="#contact">Hire Me</a>
+          <a class="btn btn-outline-primary btn-lg" href="#cases">Case Studies</a>
+        </div>
+        <div class="mt-4 small text-muted">Available for freelance & full-time roles. Based in Dhaka, Bangladesh.</div>
+      </div>
+      <div class="col-lg-6 text-center" data-aos="zoom-in" data-aos-delay="150">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1000&q=60" alt="Forhad Hossain" class="img-fluid rounded shadow img-ratio-4-3" style="max-height:420px; object-fit:cover" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK STATS -->
+<section class="py-4 bg-light">
+  <div class="container container-wide">
+    <div class="row text-center g-4">
+      <div class="col-sm-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <div class="stat" data-target="5">0</div>
+          <p class="mb-0 text-muted">Years Experience</p>
+        </div>
+      </div>
+      <div class="col-sm-4" data-aos="fade-up" data-aos-delay="120">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <div class="stat" data-target="120">0</div>
+          <p class="mb-0 text-muted">Projects Completed</p>
+        </div>
+      </div>
+      <div class="col-sm-4" data-aos="fade-up" data-aos-delay="190">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <div class="stat" data-target="35">0</div>
+          <p class="mb-0 text-muted">Happy Clients</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-5" data-aos="fade-up">
+  <div class="container container-wide">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=60" class="img-fluid rounded shadow" alt="About Forhad" loading="lazy">
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <h2 class="fw-bold">About Me</h2>
+        <p class="text-muted">I’m a passionate designer and developer with a focus on creating modern, pixel-perfect designs and responsive web applications. I help startups and businesses create unique brands and digital products that perform.</p>
+        <p class="text-muted">My workflow combines strategic thinking, user-centered design, and meticulous front-end development to deliver fast, accessible, and beautiful interfaces.</p>
+        <div class="row g-3 mt-3">
+          <div class="col-md-6"><strong>Location:</strong> Dhaka, Bangladesh</div>
+          <div class="col-md-6"><strong>Availability:</strong> Freelance / Full-time</div>
+          <div class="col-md-6"><strong>Email:</strong> <a href="mailto:forhad@example.com">forhad@example.com</a></div>
+          <div class="col-md-6"><strong>Phone:</strong> +880 1234-567890</div>
+        </div>
+        <div class="mt-4">
+          <a class="btn btn-outline-primary me-2" href="#contact">Contact Me</a>
+          <a class="btn btn-primary" href="#portfolio">See Work</a>
+          <a class="btn btn-light" href="#cv" onclick="alert('Download CV placeholder')">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-5 bg-light" data-aos="fade-up">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Skills & Expertise</h2>
+      <p class="text-muted">A balanced set of design and front-end development skills.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6" data-aos="fade-right">
+        <div class="feature-card h-100">
+          <h5>Design</h5>
+          <p class="text-muted">Branding, visual identity, layout design, illustration, iconography, motion concepts.</p>
+          <div class="mt-3">
+            <div class="d-flex justify-content-between mb-2"><small>Brand Identity</small><small>95%</small></div>
+            <div class="progress-wrap"><div style="width:95%" class="progress-inner" aria-hidden="true"></div></div>
+            <div class="d-flex justify-content-between mt-3 mb-2"><small>UI/UX</small><small>90%</small></div>
+            <div class="progress-wrap"><div style="width:90%" class="progress-inner" aria-hidden="true"></div></div>
+            <div class="d-flex justify-content-between mt-3 mb-2"><small>Illustration</small><small>85%</small></div>
+            <div class="progress-wrap"><div style="width:85%" class="progress-inner" aria-hidden="true"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" data-aos="fade-left">
+        <div class="feature-card h-100">
+          <h5>Development</h5>
+          <p class="text-muted">Frontend development, performance optimization, responsive layouts, accessibility.</p>
+          <div class="mt-3">
+            <div class="d-flex justify-content-between mb-2"><small>HTML/CSS</small><small>95%</small></div>
+            <div class="progress-wrap"><div style="width:95%" class="progress-inner" aria-hidden="true"></div></div>
+            <div class="d-flex justify-content-between mt-3 mb-2"><small>JavaScript</small><small>88%</small></div>
+            <div class="progress-wrap"><div style="width:88%" class="progress-inner" aria-hidden="true"></div></div>
+            <div class="d-flex justify-content-between mt-3 mb-2"><small>React</small><small>82%</small></div>
+            <div class="progress-wrap"><div style="width:82%" class="progress-inner" aria-hidden="true"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="60">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <div class="mb-2"><span class="badge-skill">Figma</span></div>
+        </div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="120">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <div class="mb-2"><span class="badge-skill">Adobe PS</span></div>
+        </div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="180">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <div class="mb-2"><span class="badge-skill">React</span></div>
+        </div>
+      </div>
+      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="240">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <div class="mb-2"><span class="badge-skill">HTML/CSS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-5">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Services I Offer</h2>
+      <p class="text-muted">Comprehensive design & development services tailored to your needs.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="flip-left"><div class="service-card h-100"><h5>Branding & Identity</h5><p class="text-muted">Logo systems, color palettes, brand guidelines.</p></div></div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="80"><div class="service-card h-100"><h5>UI/UX Design</h5><p class="text-muted">User flows, wireframes, high-fidelity prototypes.</p></div></div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="160"><div class="service-card h-100"><h5>Frontend Development</h5><p class="text-muted">Pixel-perfect HTML/CSS, React apps, performance optimisation.</p></div></div>
+    </div>
+
+    <div class="row mt-4 g-4">
+      <div class="col-md-4" data-aos="fade-up"><div class="service-card h-100"><h5>Illustrations</h5><p class="text-muted">Custom assets, icons, and character design.</p></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="80"><div class="service-card h-100"><h5>Motion & Interaction</h5><p class="text-muted">Micro-interactions, Lottie animations, transitions.</p></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="160"><div class="service-card h-100"><h5>Design Systems</h5><p class="text-muted">Reusable components, tokens, and documentation.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE LIST -->
+<section class="py-5 bg-light">
+  <div class="container container-wide">
+    <div class="row">
+      <div class="col-lg-4" data-aos="fade-right">
+        <h3 class="fw-bold">Why work with me?</h3>
+        <p class="text-muted">I combine a designer's eye with a developer's discipline. From initial sketches to production-ready code, I handle the full product design cycle.</p>
+      </div>
+      <div class="col-lg-8" data-aos="fade-left">
+        <div class="row g-3">
+          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Fast turnaround</h6><p class="mb-0 text-muted">Reliable delivery without compromising quality.</p></div></div>
+          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Clear communication</h6><p class="mb-0 text-muted">Regular updates and collaborative process.</p></div></div>
+          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Scalable solutions</h6><p class="mb-0 text-muted">Design systems and maintainable code.</p></div></div>
+          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Attention to detail</h6><p class="mb-0 text-muted">Pixel-perfect designs and accessible implementation.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO GRID -->
+<section id="portfolio" class="py-5">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Portfolio</h2>
+      <p class="text-muted">A selection of projects showcasing design and front-end work.</p>
+    </div>
+    <div class="row g-4">
+      <!-- 9 portfolio items (kept your originals) -->
+      <div class="col-md-4" data-aos="zoom-in"><div class="case-card"><img src="https://picsum.photos/600/400?random=11" alt="Project 1" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Branding for Coffee Co.</h5><p class="text-muted small">Logo, stationery & packaging.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="60"><div class="case-card"><img src="https://picsum.photos/600/400?random=12" alt="Project 2" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Dashboard UI</h5><p class="text-muted small">Analytics dashboard with data visualisation.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="120"><div class="case-card"><img src="https://picsum.photos/600/400?random=13" alt="Project 3" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>E-commerce UI</h5><p class="text-muted small">Responsive store design and interactions.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="180"><div class="case-card"><img src="https://picsum.photos/600/400?random=14" alt="Project 4" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Mobile App Concept</h5><p class="text-muted small">Prototype and onboarding flows.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="240"><div class="case-card"><img src="https://picsum.photos/600/400?random=15" alt="Project 5" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Marketing Site</h5><p class="text-muted small">Landing page and lead gen forms.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300"><div class="case-card"><img src="https://picsum.photos/600/400?random=16" alt="Project 6" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Illustration Set</h5><p class="text-muted small">Custom illustrations and icons.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="360"><div class="case-card"><img src="https://picsum.photos/600/400?random=17" alt="Project 7" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Product Landing</h5><p class="text-muted small">Conversion-focused design with A/B testing.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="420"><div class="case-card"><img src="https://picsum.photos/600/400?random=18" alt="Project 8" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Company Rebrand</h5><p class="text-muted small">New visual identity & guidelines.</p></div></div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="480"><div class="case-card"><img src="https://picsum.photos/600/400?random=19" alt="Project 9" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Interactive Prototype</h5><p class="text-muted small">Clickable prototype with animations.</p></div></div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a class="btn btn-outline-primary" href="#cases">View Case Studies</a>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases" class="py-5 bg-light">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Case Studies</h2>
+      <p class="text-muted">In-depth walkthroughs of selected projects.</p>
+    </div>
+
+    <!-- Case 1 -->
+    <div class="row g-4 align-items-center mb-5" data-aos="fade-up">
+      <div class="col-md-6"><img src="https://picsum.photos/900/600?random=21" class="img-fluid rounded shadow img-ratio-4-3" alt="Case 1" loading="lazy"></div>
+      <div class="col-md-6">
+        <h3>Branding for Coffee Co.</h3>
+        <p class="text-muted">A full brand identity project where we defined the visual language, packaging system, and digital presence. The challenge was to create a warm, premium feel while keeping costs low for early-stage production.</p>
+        <h6>My role</h6>
+        <ul class="lh-lg">
+          <li>Research & competitive analysis</li>
+          <li>Logo & visual identity</li>
+          <li>Packaging mockups and dielines</li>
+          <li>Front-end landing page implementation</li>
+        </ul>
+        <a class="btn btn-primary mt-2" href="#">Read full case study</a>
+      </div>
+    </div>
+
+    <!-- Case 2 -->
+    <div class="row g-4 align-items-center mb-5" data-aos="fade-up" data-aos-delay="60">
+      <div class="col-md-6 order-md-2"><img src="https://picsum.photos/900/600?random=22" class="img-fluid rounded shadow img-ratio-4-3" alt="Case 2" loading="lazy"></div>
+      <div class="col-md-6 order-md-1">
+        <h3>Analytics Dashboard</h3>
+        <p class="text-muted">Designed a complex dashboard to visualise user behaviour and key metrics in a clear, actionable way. Focus was on clarity, responsive layout, and data-dense components.</p>
+        <h6>Highlights</h6>
+        <ul class="lh-lg">
+          <li>Custom charts and micro-interactions</li>
+          <li>Responsive table and filters</li>
+          <li>Performance tuned React implementation</li>
+        </ul>
+        <a class="btn btn-outline-primary mt-2" href="#">Read full case study</a>
+      </div>
+    </div>
+
+    <!-- Case 3 -->
+    <div class="row g-4 align-items-center" data-aos="fade-up" data-aos-delay="120">
+      <div class="col-md-6"><img src="https://picsum.photos/900/600?random=23" class="img-fluid rounded shadow img-ratio-4-3" alt="Case 3" loading="lazy"></div>
+      <div class="col-md-6">
+        <h3>E-commerce Re-design</h3>
+        <p class="text-muted">Revamped product pages and checkout flows to reduce friction and increase conversions. The redesign improved clarity and visual hierarchy across devices.</p>
+        <h6>Outcome</h6>
+        <ul class="lh-lg">
+          <li>Improved conversion rate by 18%</li>
+          <li>Reduced page load time by 30%</li>
+          <li>Accessible and responsive implementation</li>
+        </ul>
+        <a class="btn btn-primary mt-2" href="#">Read full case study</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="py-5">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Blog & Articles</h2>
+      <p class="text-muted">Thoughts on design, frontend development, and process.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="flip-left">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <img src="https://picsum.photos/600/400?random=31" class="img-fluid rounded mb-3 img-ratio-4-3" alt="Blog 1" loading="lazy">
+          <h5>Design Systems: Building for Scale</h5>
+          <p class="text-muted small">How to plan and design systems that grow with your product.</p>
+          <a href="#" class="small">Read article →</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="60">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <img src="https://picsum.photos/600/400?random=32" class="img-fluid rounded mb-3 img-ratio-4-3" alt="Blog 2" loading="lazy">
+          <h5>Performance Tips for React</h5>
+          <p class="text-muted small">Simple optimizations that make React apps feel faster.</p>
+          <a href="#" class="small">Read article →</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="120">
+        <div class="p-3 bg-white rounded shadow-sm">
+          <img src="https://picsum.photos/600/400?random=33" class="img-fluid rounded mb-3 img-ratio-4-3" alt="Blog 3" loading="lazy">
+          <h5>Branding on a Budget</h5>
+          <p class="text-muted small">Practical tips to launch a memorable brand without large budgets.</p>
+          <a href="#" class="small">Read article →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a class="btn btn-outline-primary" href="#">View all posts</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="py-5 bg-light">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Testimonials</h2>
+      <p class="text-muted">What clients say about working together.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up"><div class="testimonial-card h-100"><p>“Forhad transformed our brand identity and delivered a stunning website.”</p><div class="mt-3 small text-muted">— Sarah L., Startup Founder</div></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="80"><div class="testimonial-card h-100"><p>“Creative, reliable, and highly skilled. He’s my go-to designer.”</p><div class="mt-3 small text-muted">— Mark T., Marketing Manager</div></div></div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="160"><div class="testimonial-card h-100"><p>“The frontend he built for us is fast, responsive, and beautiful.”</p><div class="mt-3 small text-muted">— Emily R., Tech Lead</div></div></div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-6" data-aos="fade-right">
+        <div class="p-4 bg-white rounded shadow-sm">
+          <h6>Client Spotlight</h6>
+          <p class="text-muted small">Working with a small team, we launched an MVP in 6 weeks and iterated based on user feedback to reach product-market-fit.</p>
+        </div>
+      </div>
+      <div class="col-md-6" data-aos="fade-left">
+        <div class="p-4 bg-white rounded shadow-sm">
+          <h6>Long-term partnerships</h6>
+          <p class="text-muted small">Many clients continue to work with me for ongoing product improvements and design maintenance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / PACKAGES -->
+<section id="pricing" class="py-5">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Packages & Pricing</h2>
+      <p class="text-muted">Transparent pricing for common requests — custom quotes available.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="flip-left">
+        <div class="card p-4 text-center">
+          <h5 class="fw-semibold">Starter</h5>
+          <div class="h1 my-3">$499</div>
+          <p class="text-muted">Logo + basic brand kit.</p>
+          <ul class="list-unstyled lh-lg text-start mt-3 small">
+            <li>✔ Logo concepts</li>
+            <li>✔ Color palette</li>
+            <li>✔ Basic brand guide</li>
+          </ul>
+          <a class="btn btn-outline-primary mt-3" href="#contact">Request</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="80">
+        <div class="card p-4 text-center border-primary" style="transform:translateY(-8px)">
+          <h5 class="fw-semibold">Growth</h5>
+          <div class="h1 my-3">$1499</div>
+          <p class="text-muted">Brand + website (5 pages).</p>
+          <ul class="list-unstyled lh-lg text-start mt-3 small">
+            <li>✔ Branding & logo</li>
+            <li>✔ 5-page website</li>
+            <li>✔ Responsive & basic SEO</li>
+          </ul>
+          <a class="btn btn-primary mt-3" href="#contact">Request</a>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="160">
+        <div class="card p-4 text-center">
+          <h5 class="fw-semibold">Enterprise</h5>
+          <div class="h1 my-3">Custom</div>
+          <p class="text-muted">Full product design & development.</p>
+          <ul class="list-unstyled lh-lg text-start mt-3 small">
+            <li>✔ Design system</li>
+            <li>✔ Product UX & UI</li>
+            <li>✔ Front-end implementation</li>
+          </ul>
+          <a class="btn btn-outline-primary mt-3" href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-5 bg-light">
+  <div class="container container-wide">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Frequently Asked Questions</h2>
+      <p class="text-muted">Common questions about working together.</p>
+    </div>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faqHeadingOne"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">How long does a typical project take?</button></h2>
+        <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Timeline depends on scope. A branding project typically takes 2-4 weeks; a small website 3-6 weeks.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faqHeadingTwo"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">Do you provide post-launch support?</button></h2>
+        <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Yes — I offer monthly maintenance and retainer options for ongoing updates.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faqHeadingThree"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">Can you work with our existing team?</button></h2>
+        <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body text-muted">Absolutely. I can integrate with product managers, engineers, and marketing teams to deliver cohesive outcomes.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5">
+  <div class="container container-wide">
+    <div class="row g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h2 class="fw-bold">Get in touch</h2>
+        <p class="text-muted">Let’s collaborate on your next project. Reach out and I’ll respond quickly.</p>
+        <ul class="list-unstyled lh-lg">
+          <li><strong>Email:</strong> <a href="mailto:forhad@example.com">forhad@example.com</a></li>
+          <li><strong>Phone:</strong> +880 1234-567890</li>
+          <li><strong>Location:</strong> Dhaka, Bangladesh</li>
+          <li><strong>Hours:</strong> Mon — Fri, 9am — 6pm</li>
+        </ul>
+        <div class="mt-3">
+          <a href="#" class="btn btn-outline-primary me-2"><i data-feather="linkedin"></i> LinkedIn</a>
+          <a href="#" class="btn btn-outline-secondary"><i data-feather="external-link"></i> Behance</a>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <form class="p-4 bg-white rounded shadow-sm" id="contactForm">
+          <div class="mb-3"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Your name" required></div>
+          <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="you@email.com" required></div>
+          <div class="mb-3"><label class="form-label">Project budget</label><select class="form-select" aria-label="Project budget"><option>$500–$1,000</option><option>$1,000–$5,000</option><option>$5,000+</option></select></div>
+          <div class="mb-3"><label class="form-label">Message</label><textarea class="form-control" rows="5" placeholder="Tell me about your project" required></textarea></div>
+          <button type="submit" class="btn btn-primary">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="py-5 bg-light">
+  <div class="container container-wide text-center">
+    <h4 class="fw-bold">Join my newsletter</h4>
+    <p class="text-muted">Design tips, case studies and occasional job availability — delivered monthly.</p>
+    <form class="row g-2 justify-content-center" id="newsletterForm">
+      <div class="col-md-6 col-lg-4"><input type="email" class="form-control" placeholder="Your email" required></div>
+      <div class="col-auto"><button class="btn btn-primary">Subscribe</button></div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container container-wide">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="text-white">Forhad Hossain</h5>
+        <p class="small text-muted">Professional Graphic Designer & Frontend Developer. Available for freelance and full-time roles.</p>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-white">Work</h6>
+        <ul class="list-unstyled small text-muted">
+          <li>Portfolio</li>
+          <li>Case Studies</li>
+          <li>Services</li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h6 class="text-white">Company</h6>
+        <ul class="list-unstyled small text-muted">
+          <li>About</li>
+          <li>Blog</li>
+          <li>Contact</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-white">Contact</h6>
+        <ul class="list-unstyled small text-muted">
+          <li>Email: forhad@example.com</li>
+          <li>Phone: +880 1234-567890</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center mt-4 small text-muted">© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">↑</button>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const backToTop = document.getElementById('backToTop');
+  backToTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+  // Simple form handler for demo
+  document.querySelectorAll('form').forEach(form=>{
+    form.addEventListener('submit', e=>{
+      e.preventDefault();
+      alert('Thanks — this is a demo form. Replace with your own backend.')
+    })
+  })
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+  // Initialize AOS (Animate On Scroll)
+  AOS.init({
+    duration: 700,
+    easing: 'ease-out-cubic',
+    once: true,
+    offset: 60,
+  });
+
+  // Feather icons
+  feather.replace();
+
+  // Animate stats when visible
+  const stats = document.querySelectorAll('.stat');
+  const statObserver = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !entry.target.dataset.animated){
+        const el = entry.target;
+        const target = +el.getAttribute('data-target') || 0;
+        let current = 0;
+        const duration = 900;
+        const stepTime = Math.max(10, Math.floor(duration / target || 20));
+        const timer = setInterval(()=>{
+          current += 1;
+          el.textContent = current + (target > 50 ? '+' : '');
+          if(current >= target){
+            clearInterval(timer);
+            el.dataset.animated = "true";
+          }
+        }, stepTime);
+      }
+    });
+  }, {threshold: 0.6});
+  stats.forEach(s => statObserver.observe(s));
+
+  // Make navbar change on scroll
+  const mainNav = document.getElementById('mainNav');
+  const handleNav = () => {
+    if(window.scrollY > 20) mainNav.classList.add('sticky-scrolled');
+    else mainNav.classList.remove('sticky-scrolled');
+  };
+  handleNav();
+  window.addEventListener('scroll', handleNav, {passive:true});
+
+  // Enable keyboard access for back-to-top
+  backToTop.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+  });
+
+  // Smooth anchor links (native scroll-behavior covers most, but ensure offset for sticky nav)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    anchor.addEventListener('click', function(e){
+      const targetId = this.getAttribute('href').slice(1);
+      if(!targetId) return;
+      const targetEl = document.getElementById(targetId);
+      if(!targetEl) return; // keep default if no element
+      e.preventDefault();
+      const navHeight = mainNav.offsetHeight || 72;
+      const rect = targetEl.getBoundingClientRect();
+      const offsetTop = window.scrollY + rect.top - navHeight - 12;
+      window.scrollTo({top: offsetTop, behavior: 'smooth'});
+      // close mobile nav if open
+      const bsCollapse = document.querySelector('#navMenu.collapse.show');
+      if(bsCollapse){
+        const collapseInstance = bootstrap.Collapse.getInstance(bsCollapse);
+        if(collapseInstance) collapseInstance.hide();
+      }
+    });
+  });
+
+  // Lazy loading improvement: set loading="lazy" already in images, add IntersectionObserver to prefetch images for next section
+  const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
+  if('IntersectionObserver' in window){
+    const imgObserver = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const img = entry.target;
+          // add subtle fade-in when image loaded
+          img.onload = () => img.style.opacity = 1;
+          img.style.opacity = 0;
+          // no src swap needed because images already have src (picsum/etc), so we just mark observed
+          imgObserver.unobserve(img);
+        }
+      });
+    }, {rootMargin: '200px 0px'});
+    lazyImgs.forEach(i=> imgObserver.observe(i));
+  }
+
+  // small accessibility: focus visible on keyboard nav
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Tab') document.body.classList.add('user-is-tabbing');
+  });
+
+  // optionally: preconnect to Google fonts (already added), prefetch images for hero for speed
+  const linkPrefetch = document.createElement('link');
+  linkPrefetch.rel = 'preload';
+  linkPrefetch.as = 'image';
+  linkPrefetch.href = 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1000&q=60';
+  document.head.appendChild(linkPrefetch);
+
+  // Small: support reduced motion by disabling AOS if preference set
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    AOS.init({disable: true});
+  }
+</script>
+
+</body>
+</html>
