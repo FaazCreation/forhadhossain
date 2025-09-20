@@ -351,29 +351,90 @@
       </div>
     </div>
 
-    <div class="row mt-4">
-      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="60">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <div class="mb-2"><span class="badge-skill"><i class="fa-brands fa-figma"></i> Figma</span></div>
+  <div class="container" style="padding-top: 60px;">
+    <div class="row gx-0 gy-1 justify-content-center">
+  
+      <!-- 1. HTML/CSS -->
+      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="60">
+        <div class="skill-box">
+          <i class="fa-brands fa-html5 fa-2x mb-1"></i>
+          <span class="badge-skill">HTML/CSS</span>
         </div>
       </div>
-      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="120">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <div class="mb-2"><span class="badge-skill">Adobe PS</span></div>
+  
+      <!-- 2. JavaScript -->
+      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="90">
+        <div class="skill-box">
+          <i class="fa-brands fa-js fa-2x mb-1"></i>
+          <span class="badge-skill">JavaScript</span>
         </div>
       </div>
-      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="180">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <div class="mb-2"><span class="badge-skill"><i class="fa-brands fa-react"></i> React</span></div>
+  
+      <!-- 3. Bootstrap -->
+      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="120">
+        <div class="skill-box">
+          <i class="fa-brands fa-bootstrap fa-2x mb-1"></i>
+          <span class="badge-skill">Bootstrap</span>
         </div>
       </div>
-      <div class="col-md-3 text-center" data-aos="zoom-in" data-aos-delay="240">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <div class="mb-2"><span class="badge-skill"><i class="fa-brands fa-html5"></i> HTML/CSS</span></div>
+  
+      <!-- 4. React -->
+      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="150">
+        <div class="skill-box">
+          <i class="fa-brands fa-react fa-2x mb-1"></i>
+          <span class="badge-skill">React</span>
         </div>
       </div>
+  
+      <!-- 5. WordPress -->
+      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="180">
+        <div class="skill-box">
+          <i class="fa-brands fa-wordpress fa-2x mb-1"></i>
+          <span class="badge-skill">WordPress</span>
+        </div>
+      </div>
+  
+      <!-- 6. Figma -->
+      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="210">
+        <div class="skill-box">
+          <i class="fa-brands fa-figma fa-2x mb-1"></i>
+          <span class="badge-skill">Figma</span>
+        </div>
+      </div>
+  
     </div>
   </div>
+
+
+    <style>
+      .skill-box {
+        background: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        padding: 0.3rem 0.2rem;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+        margin: auto;
+        box-sizing: border-box;
+        user-select: none;
+        transition: box-shadow 0.3s ease;
+      }
+    
+      .skill-box:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+      }
+    
+      .badge-skill {
+        font-weight: 600;
+        font-size: 0.85rem;
+        display: block;
+        margin-top: 0.2rem;
+      }
+    </style>
 </section>
 
 <!-- SERVICES -->
@@ -555,7 +616,18 @@
       flex: 0 0 auto;
     }
   }
+
+  /* Reduce card width on mobile for better looks */
+  @media (max-width: 767px) {
+    #pricing .four-col-grid > .col-xl-custom {
+      width: 90% !important;
+      margin-left: auto;
+      margin-right: auto;
+      flex: 0 0 auto;
+    }
+  }
 </style>
+
 
 <section id="pricing" class="py-5">
   <div class="container">
