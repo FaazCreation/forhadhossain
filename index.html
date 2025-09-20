@@ -422,6 +422,8 @@
         box-sizing: border-box;
         user-select: none;
         transition: box-shadow 0.3s ease;
+        overflow: hidden;
+        /* Prevents content overflow */
       }
     
       .skill-box:hover {
@@ -433,6 +435,22 @@
         font-size: 0.85rem;
         display: block;
         margin-top: 0.2rem;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* Truncate long text */
+      }
+    
+      /* Responsive icon and text size for smaller screens */
+      @media (max-width: 576px) {
+        .skill-box i {
+          font-size: 1.5rem !important;
+        }
+    
+        .badge-skill {
+          font-size: 0.75rem;
+        }
       }
     </style>
 </section>
