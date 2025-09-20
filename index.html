@@ -107,33 +107,14 @@
 
     /* Mobile font & button adjustments */
     @media (max-width: 575.98px) {
-      body {
-        font-size: 0.95rem; /* slightly smaller base text */
-      }
-      .hero h1 {
-        font-size: 1.6rem; /* smaller hero headline */
-        line-height: 1.3;
-      }
-      .hero .lead {
-        font-size: 0.95rem;
-      }
-      .btn-lg {
-        font-size: 0.95rem;   /* reduce button text size */
-        padding: 0.55rem 1rem; /* adjust button padding */
-        border-radius: 8px;
-      }
-      .stat {
-        font-size: 1.5rem; /* shrink numbers */
-      }
-      h2, h3 {
-        font-size: 1.4rem; /* scale down section headings */
-      }
-      h5 {
-        font-size: 1rem;
-      }
-      p, .text-muted {
-        font-size: 0.9rem;
-      }
+      body {font-size: 0.95rem;}
+      .hero h1 {font-size: 1.6rem; line-height: 1.3;}
+      .hero .lead {font-size: 0.95rem;}
+      .btn-lg {font-size: 0.95rem; padding: 0.55rem 1rem; border-radius: 8px;}
+      .stat {font-size: 1.5rem;}
+      h2, h3 {font-size: 1.4rem;}
+      h5 {font-size: 1rem;}
+      p, .text-muted {font-size: 0.9rem;}
     }
 
     /* Splash animation */
@@ -176,7 +157,6 @@
       transform: rotate(0deg) !important;
     }
     
-    /* Only FAQ section spacing */
     #faq {
       padding: 60px 0;
     }
@@ -213,6 +193,16 @@
     #pricing {
       font-family: "Hind Siliguri", sans-serif;
     }
+
+   @media (max-width: 576px){
+  .hero h1{font-size:1.5rem!important}
+  .hero .lead{font-size:0.9rem!important}
+  .hero p.text-muted{font-size:0.8rem!important}
+  .hero .btn-lg{font-size:0.8rem!important;padding:0.4rem 0.8rem!important}
+  .hero .small{font-size:0.7rem!important}
+}
+
+
   </style>
 </head>
 <body>
@@ -294,7 +284,7 @@
         <img src="./assets/FB_IMG_1758352198550.jpg?auto=format&fit=crop&w=1000&q=60" class="img-fluid rounded shadow" alt="About Forhad" loading="lazy">
       </div>
       <div class="col-lg-7" data-aos="fade-left">
-        <h2 class="fw-bold">About Me</h2>
+        <h2 class="fw-bold about-typing">About Me</h2>
         <p class="text-muted">I’m a passionate designer and developer with a focus on creating modern, pixel-perfect designs and responsive web applications. I help startups and businesses create unique brands and digital products that perform.</p>
         <p class="text-muted">My workflow combines strategic thinking, user-centered design and meticulous front-end development to deliver fast, accessible and beautiful interfaces.</p>
         <div class="row g-3 mt-3">
@@ -312,6 +302,26 @@
     </div>
   </div>
 </section>
+
+<style>.about-typing { display:inline-block; overflow:hidden; white-space:nowrap; border-right:2px solid #000; font-size:32px; font-weight:700; width:0; max-width:9ch; color:black; } .about-typing.active { animation: typing 2s steps(9) forwards, blink 0.7s step-end infinite; } @keyframes typing { from { width:0; } to { width:9ch; } } @keyframes blink { 50% { border-color:transparent; } }</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const aboutText = document.querySelector(".about-typing");
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        aboutText.classList.add("active");
+        observer.unobserve(aboutText); // Animate once
+      }
+    },
+    { threshold: 0.5 } // 50% visible triggers animation
+  );
+
+  observer.observe(aboutText);
+});
+
+</script>
 
 <!-- SKILLS -->
 <section id="skills" class="py-5 bg-light" data-aos="fade-up">
@@ -357,7 +367,7 @@
       <!-- 1. HTML/CSS -->
       <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="60">
         <div class="skill-box">
-          <i class="fa-brands fa-html5 fa-2x mb-1"></i>
+          <i class="fa-brands fa-html5 fa-2x mb-3"></i>
           <span class="badge-skill">HTML/CSS</span>
         </div>
       </div>
@@ -365,7 +375,7 @@
       <!-- 2. JavaScript -->
       <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="90">
         <div class="skill-box">
-          <i class="fa-brands fa-js fa-2x mb-1"></i>
+          <i class="fa-brands fa-js fa-2x mb-3"></i>
           <span class="badge-skill">JavaScript</span>
         </div>
       </div>
@@ -373,7 +383,7 @@
       <!-- 3. Bootstrap -->
       <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="120">
         <div class="skill-box">
-          <i class="fa-brands fa-bootstrap fa-2x mb-1"></i>
+          <i class="fa-brands fa-bootstrap fa-2x mb-3"></i>
           <span class="badge-skill">Bootstrap</span>
         </div>
       </div>
@@ -381,7 +391,7 @@
       <!-- 4. React -->
       <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="150">
         <div class="skill-box">
-          <i class="fa-brands fa-react fa-2x mb-1"></i>
+          <i class="fa-brands fa-react fa-2x mb-3"></i>
           <span class="badge-skill">React</span>
         </div>
       </div>
@@ -389,7 +399,7 @@
       <!-- 5. WordPress -->
       <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="180">
         <div class="skill-box">
-          <i class="fa-brands fa-wordpress fa-2x mb-1"></i>
+          <i class="fa-brands fa-wordpress fa-2x mb-3"></i>
           <span class="badge-skill">WordPress</span>
         </div>
       </div>
@@ -397,7 +407,7 @@
       <!-- 6. Figma -->
       <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="210">
         <div class="skill-box">
-          <i class="fa-brands fa-figma fa-2x mb-1"></i>
+          <i class="fa-brands fa-figma fa-2x mb-3"></i>
           <span class="badge-skill">Figma</span>
         </div>
       </div>
@@ -407,51 +417,107 @@
 
 
     <style>
-      .skill-box {
-        background: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-        padding: 0.3rem 0.2rem;
-        aspect-ratio: 1 / 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 70%;
-        margin: auto;
-        box-sizing: border-box;
-        user-select: none;
-        transition: box-shadow 0.3s ease;
-        overflow: hidden;
-        /* Prevents content overflow */
-      }
-    
-      .skill-box:hover {
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
-      }
-    
-      .badge-skill {
-        font-weight: 600;
-        font-size: 0.85rem;
-        display: block;
-        margin-top: 0.2rem;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        /* Truncate long text */
-      }
-    
-      /* Responsive icon and text size for smaller screens */
-      @media (max-width: 576px) {
-        .skill-box i {
-          font-size: 1.5rem !important;
-        }
-    
-        .badge-skill {
-          font-size: 0.75rem;
-        }
-      }
+    .skill-box {
+  position: relative; /* added */
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 0.3rem 0.2rem;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  box-sizing: border-box;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.skill-box:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
+.badge-skill {
+  position: absolute;   /* added */
+  bottom: 0.3rem;       /* position from bottom */
+  left: 50%;            /* center horizontally */
+  transform: translateX(-50%); /* center exactly */
+  
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive icon and text size for smaller screens */
+@media (max-width: 576px) {
+  .skill-box i {
+    font-size: 1.5rem !important;
+  }
+
+  .badge-skill {
+    font-size: 0.75rem;
+  }
+}
+.skill-box {
+  position: relative; /* added */
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 0.3rem 3rem;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  box-sizing: border-box;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.skill-box:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
+.badge-skill {
+  position: absolute;
+  bottom: 0rem;
+  left: 50%;
+  transform: translateX(-50%); /* center exactly */
+  
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: .35rem 3.5rem !important;
+  border-radius: 0px !important;
+}
+
+@media (min-width: 768px) {
+    .col-md-2{
+        width: 10% !important;
+    }
+}
+
+/* Responsive icon and text size for smaller screens */
+@media (max-width: 576px) {
+  .skill-box i {
+    font-size: 1.5rem !important;
+  }
+
+  .badge-skill {
+    font-size: 0.75rem;
+  }
+}
+
     </style>
 </section>
 
