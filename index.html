@@ -151,6 +151,12 @@
      #faq {
       font-family: "Hind Siliguri", sans-serif;
      }
+    .accordion-body {
+      color: #575A5F;
+    }
+    .accordion-button {
+      font-weight: 500;
+    }
     .accordion-button:focus {
       box-shadow: none !important;
       outline: none !important;
@@ -170,15 +176,17 @@
       transform: rotate(0deg) !important;
     }
     
-     /* General spacing improvements */
-    section {
+    /* Only FAQ section spacing */
+    #faq {
       padding: 60px 0;
     }
+
     @media (max-width: 767px) {
-      section {
+      #faq {
         padding: 40px 0;
       }
     }
+
     /* Prevent horizontal scroll on mobile */
     html, body {
       max-width: 100%;
@@ -186,7 +194,7 @@
     }
 
     /* Ensure container-wide never exceeds screen width */
-    .container-wide {
+    /* .container-wide {
       width: 100%;
       max-width: 100%;
       padding-left: 15px;
@@ -194,7 +202,7 @@
       margin-left: auto;
       margin-right: auto;
       box-sizing: border-box;
-    }
+    } */
 
     /* Fix image overflow */
     img, .img-fluid {
@@ -557,7 +565,7 @@
 <!-- FAQ -->
 <section id="faq" class="bg-white">
   <div class="container">
-    <h2 class="text-center mb-4">গ্রাফিক ডিজাইন এবং ওয়েব ডেভেলপমেন্ট সংক্রান্ত প্রশ্ন ও উত্তর</h2>
+    <h2 class="text-center mb-4" style="font-weight: 600;">গ্রাফিক ডিজাইন এবং ওয়েব ডেভেলপমেন্ট সংক্রান্ত প্রশ্ন ও উত্তর</h2>
     <div class="accordion" id="faqAccordion">
 
       <!-- FAQ 1 -->
