@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <!-- AOS for scroll animations -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -102,6 +103,49 @@
 
     /* Make back-to-top keyboard accessible */
     .back-to-top:focus{outline:3px solid rgba(13,110,253,.18); outline-offset:3px}
+
+    /* Mobile font & button adjustments */
+    @media (max-width: 575.98px) {
+      body {
+        font-size: 0.95rem; /* slightly smaller base text */
+      }
+      .hero h1 {
+        font-size: 1.6rem; /* smaller hero headline */
+        line-height: 1.3;
+      }
+      .hero .lead {
+        font-size: 0.95rem;
+      }
+      .btn-lg {
+        font-size: 0.95rem;   /* reduce button text size */
+        padding: 0.55rem 1rem; /* adjust button padding */
+        border-radius: 8px;
+      }
+      .stat {
+        font-size: 1.5rem; /* shrink numbers */
+      }
+      h2, h3 {
+        font-size: 1.4rem; /* scale down section headings */
+      }
+      h5 {
+        font-size: 1rem;
+      }
+      p, .text-muted {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Splash animation */
+    @keyframes splash {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      80% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+    .splash-text {
+      display: inline-block;
+      animation: splash 1s ease-out forwards;
+    }
   </style>
 </head>
 <body>
@@ -132,18 +176,18 @@
   <div class="container container-wide">
     <div class="row align-items-center">
       <div class="col-lg-6" data-aos="fade-right">
-        <h1 class="display-5 fw-bold">I’m Forhad Hossain</h1>
-        <p class="lead">A <strong>Professional Graphic Designer</strong> and <strong>Frontend Developer</strong>. I design modern, creative, and user-friendly digital experiences that help brands stand out.</p>
-        <p class="text-muted">Services: Branding • Web Development • Graphic Design • Basic SEO</p>
+        <h1 class="display-5 fw-bold"><i class="fas fa-paint-brush me-2"></i>Forhad Hossain</h1>
+        <p class="lead"><i class="fas fa-code me-2"></i><strong>Graphic Designer</strong> and <strong>Frontend Developer</strong>. <br> I design modern, creative and user-friendly digital experiences that help brands stand out.</p>
+        <p class="text-muted">Services: Web Development • Graphic Design • Basic SEO</p>
         <div class="d-flex gap-2 mt-4">
           <a class="btn btn-primary btn-lg" href="#portfolio">View Portfolio</a>
           <a class="btn btn-outline-secondary btn-lg" href="#contact">Hire Me</a>
           <!-- <a class="btn btn-outline-primary btn-lg" href="#cases">Case Studies</a> -->
         </div>
-        <div class="mt-4 small text-muted">Available for freelance & full-time roles. Based in Dhaka, Bangladesh.</div>
+        <div class="mt-4 small text-muted">Available for freelance & part-time roles.</div>
       </div>
       <div class="col-lg-6 text-center" data-aos="zoom-in" data-aos-delay="150">
-        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1000&q=60" alt="Forhad Hossain" class="img-fluid rounded shadow img-ratio-4-3" style="max-height:420px; object-fit:cover" loading="lazy">
+        <img src="./assets/FB_IMG_1758352198550.jpg?auto=format&fit=crop&w=1000&q=60" alt="Forhad Hossain" class="img-fluid rounded shadow img-ratio-4-3" style="max-height:420px; object-fit:cover" loading="lazy">
       </div>
     </div>
   </div>
@@ -180,16 +224,16 @@
   <div class="container container-wide">
     <div class="row g-5 align-items-center">
       <div class="col-lg-5" data-aos="fade-right">
-        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1000&q=60" class="img-fluid rounded shadow" alt="About Forhad" loading="lazy">
+        <img src="./assets/FB_IMG_1758352198550.jpg?auto=format&fit=crop&w=1000&q=60" class="img-fluid rounded shadow" alt="About Forhad" loading="lazy">
       </div>
       <div class="col-lg-7" data-aos="fade-left">
         <h2 class="fw-bold">About Me</h2>
         <p class="text-muted">I’m a passionate designer and developer with a focus on creating modern, pixel-perfect designs and responsive web applications. I help startups and businesses create unique brands and digital products that perform.</p>
-        <p class="text-muted">My workflow combines strategic thinking, user-centered design, and meticulous front-end development to deliver fast, accessible, and beautiful interfaces.</p>
+        <p class="text-muted">My workflow combines strategic thinking, user-centered design and meticulous front-end development to deliver fast, accessible and beautiful interfaces.</p>
         <div class="row g-3 mt-3">
           <div class="col-md-6"><strong>Location:</strong> Dhaka, Bangladesh</div>
           <div class="col-md-6"><strong>Availability:</strong> Freelance / Part-time</div>
-          <div class="col-md-6"><strong>Email:</strong> <a href="mailto:fh7614@gmail.com">web.forhadhossain@gmail.com</a></div>
+          <div class="col-md-6"><strong>Email:</strong> <a href="mailto:fh7614@gmail.com">fh7614@gmail.com</a></div>
           <div class="col-md-6"><strong>Phone:</strong> +880 1933-393656</div>
         </div>
         <div class="mt-4">
@@ -607,8 +651,8 @@
       <div class="col-md-4">
         <h6 class="text-white">Contact</h6>
         <ul class="list-unstyled small text-white">
-          <li>Email: forhad@example.com</li>
-          <li>Phone: +880 1234-567890</li>
+          <li>Email: fh7614@gmail.com</li>
+          <li>Phone: +880 1933-393656</li>
         </ul>
       </div>
     </div>
