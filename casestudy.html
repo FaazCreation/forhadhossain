@@ -1,69 +1,414 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Studies — Forhad Hossain</title>
+  <meta name="description" content="In-depth branding, analytics UI, and e-commerce UX case studies by Forhad Hossain.">
+  <meta property="og:title" content="Case Studies — Forhad Hossain">
+  <meta property="og:description" content="In-depth walkthroughs of selected design and frontend development projects.">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    :root {
+      --canvas: #f8fafc;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --ink: #0f172a;
+      --ink-secondary: #475569;
+      --ink-muted: #64748b;
+      --border-hairline: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --dark-surface: #0f172a;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background-color: var(--canvas);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    .container-wide { max-width: 1200px; margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      background: rgba(248, 250, 252, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      min-height: 64px;
+    }
+
+    .brand-wordmark {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-links-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link-clean {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-link-clean:hover { color: var(--ink); }
+
+    .btn-editorial-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--accent);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      min-height: 42px;
+      transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+
+    .btn-editorial-primary:hover {
+      background-color: var(--accent-hover);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-editorial-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--surface);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      min-height: 42px;
+    }
+
+    .btn-editorial-secondary:hover {
+      background-color: var(--surface-subtle);
+      color: var(--ink);
+    }
+
+    .case-row {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .case-media-pane {
+      height: 100%;
+      min-height: 280px;
+      background: var(--surface-subtle);
+    }
+
+    .case-media-pane img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .case-content-pane {
+      padding: 2.25rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .site-footer {
+      background-color: var(--dark-surface);
+      color: #cbd5e1;
+      padding: 3rem 0 2rem;
+    }
+
+    .site-footer a { color: #cbd5e1; text-decoration: none; }
+    .site-footer a:hover { color: #ffffff; text-decoration: underline; }
+  </style>
 </head>
 <body>
-    <!-- CASE STUDIES -->
-<section id="cases" class="py-5 bg-light">
-  <div class="container container-wide">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Case Studies</h2>
-      <p class="text-muted">In-depth walkthroughs of selected projects.</p>
-    </div>
 
-    <!-- Case 1 -->
-    <div class="row g-4 align-items-center mb-5" data-aos="fade-up">
-      <div class="col-md-6"><img src="https://picsum.photos/900/600?random=21" class="img-fluid rounded shadow img-ratio-4-3" alt="Case 1" loading="lazy"></div>
-      <div class="col-md-6">
-        <h3>Branding for Coffee Co.</h3>
-        <p class="text-muted">A full brand identity project where we defined the visual language, packaging system, and digital presence. The challenge was to create a warm, premium feel while keeping costs low for early-stage production.</p>
-        <h6>My role</h6>
-        <ul class="lh-lg">
-          <li>Research & competitive analysis</li>
-          <li>Logo & visual identity</li>
-          <li>Packaging mockups and dielines</li>
-          <li>Front-end landing page implementation</li>
-        </ul>
-        <a class="btn btn-primary mt-2" href="#">Read full case study</a>
+  <header class="site-header">
+    <div class="container container-wide">
+      <div class="navbar-inner">
+        <a class="brand-wordmark" href="index.html">Forhad Hossain</a>
+
+        <nav class="d-none d-lg-block" aria-label="Main navigation">
+          <ul class="nav-links-desktop">
+            <li><a class="nav-link-clean" href="index.html#about">About</a></li>
+            <li><a class="nav-link-clean" href="index.html#portfolio">Portfolio</a></li>
+            <li><a class="nav-link-clean text-dark fw-semibold" href="casestudy.html">Case Studies</a></li>
+            <li><a class="nav-link-clean" href="index.html#pricing">Pricing</a></li>
+            <li><a class="nav-link-clean" href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <a class="btn-editorial-primary" href="index.html#contact">Start a Project</a>
       </div>
     </div>
+  </header>
 
-    <!-- Case 2 -->
-    <div class="row g-4 align-items-center mb-5" data-aos="fade-up" data-aos-delay="60">
-      <div class="col-md-6 order-md-2"><img src="https://picsum.photos/900/600?random=22" class="img-fluid rounded shadow img-ratio-4-3" alt="Case 2" loading="lazy"></div>
-      <div class="col-md-6 order-md-1">
-        <h3>Analytics Dashboard</h3>
-        <p class="text-muted">Designed a complex dashboard to visualise user behaviour and key metrics in a clear, actionable way. Focus was on clarity, responsive layout, and data-dense components.</p>
-        <h6>Highlights</h6>
-        <ul class="lh-lg">
-          <li>Custom charts and micro-interactions</li>
-          <li>Responsive table and filters</li>
-          <li>Performance tuned React implementation</li>
-        </ul>
-        <a class="btn btn-outline-primary mt-2" href="#">Read full case study</a>
+  <main class="py-5">
+    <div class="container container-wide">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+        <div>
+          <p class="small fw-semibold text-primary mb-2">Case Studies</p>
+          <h1 class="display-6 fw-bold mb-2" style="letter-spacing: -0.03em;">In-depth project walkthroughs</h1>
+          <p class="text-secondary mb-0">Selected branding, product UI, and conversion-focused frontend engagements.</p>
+        </div>
+        <a href="index.html" class="btn-editorial-secondary">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          <span>Back to Portfolio</span>
+        </a>
+      </div>
+
+      <!-- Case 1 -->
+      <article class="case-row">
+        <div class="row g-0 align-items-stretch">
+          <div class="col-lg-6">
+            <div class="case-media-pane">
+              <img src="/src/assets/images/casestudy_coffee_branding_1795380986021.jpg" alt="Aurora Roasters coffee packaging and website" referrerpolicy="no-referrer">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="case-content-pane">
+              <div class="meta-line">
+                <span>01. Case Study</span><span aria-hidden="true">·</span><span>Brand Identity &amp; Web</span><span aria-hidden="true">·</span><span>4 Weeks</span>
+              </div>
+              <h2 class="h3 fw-bold mb-3">Branding for Coffee Co.</h2>
+              <p class="text-secondary">A full brand identity project defining the visual language, packaging system, and digital presence—balancing warm craft appeal with lean early-stage print production.</p>
+              <h3 class="h6 fw-bold mt-2">My Role</h3>
+              <ul class="small text-secondary lh-lg mb-4">
+                <li>Research &amp; competitive analysis</li>
+                <li>Logo &amp; visual identity system</li>
+                <li>Packaging mockups and print dielines</li>
+                <li>Front-end landing page implementation</li>
+              </ul>
+              <div>
+                <button type="button" class="btn-editorial-primary" data-case-id="coffee">Read Full Case Study</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 2 -->
+      <article class="case-row">
+        <div class="row g-0 align-items-stretch">
+          <div class="col-lg-6 order-lg-2">
+            <div class="case-media-pane">
+              <img src="/src/assets/images/casestudy_analytics_dashboard_1795380985931.jpg" alt="Enterprise analytics web dashboard interface" referrerpolicy="no-referrer">
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="case-content-pane">
+              <div class="meta-line">
+                <span>02. Case Study</span><span aria-hidden="true">·</span><span>Product UI &amp; React</span><span aria-hidden="true">·</span><span>6 Weeks</span>
+              </div>
+              <h2 class="h3 fw-bold mb-3">Analytics Dashboard</h2>
+              <p class="text-secondary">Designed a complex analytics dashboard to visualize user behavior and revenue metrics with clear hierarchy, responsive layout, and high-density tables.</p>
+              <h3 class="h6 fw-bold mt-2">Highlights</h3>
+              <ul class="small text-secondary lh-lg mb-4">
+                <li>Custom charts and low-latency interactions</li>
+                <li>Responsive data tables and multi-criteria filters</li>
+                <li>Performance-tuned React implementation</li>
+              </ul>
+              <div>
+                <button type="button" class="btn-editorial-primary" data-case-id="analytics">Read Full Case Study</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 3 -->
+      <article class="case-row">
+        <div class="row g-0 align-items-stretch">
+          <div class="col-lg-6">
+            <div class="case-media-pane">
+              <img src="/src/assets/images/casestudy_ecommerce_redesign_1795380986069.jpg" alt="Minimalist e-commerce storefront and mobile checkout redesign" referrerpolicy="no-referrer">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="case-content-pane">
+              <div class="meta-line tabular-nums">
+                <span>03. Case Study</span><span aria-hidden="true">·</span><span>E-commerce UX</span><span aria-hidden="true">·</span><span>+18% Conversion</span>
+              </div>
+              <h2 class="h3 fw-bold mb-3">E-commerce Re-design</h2>
+              <p class="text-secondary">Revamped product pages and mobile checkout flows to reduce friction and increase conversions, improving visual clarity across devices.</p>
+              <h3 class="h6 fw-bold mt-2">Outcome</h3>
+              <ul class="small text-secondary lh-lg mb-4 tabular-nums">
+                <li>Improved conversion rate by 18%</li>
+                <li>Reduced page load time by 30%</li>
+                <li>Accessible and responsive implementation</li>
+              </ul>
+              <div>
+                <button type="button" class="btn-editorial-primary" data-case-id="ecommerce">Read Full Case Study</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container container-wide d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 small">
+      <div>© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
+      <div class="d-flex gap-4">
+        <a href="index.html">Home</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#contact">Contact</a>
       </div>
     </div>
+  </footer>
 
-    <!-- Case 3 -->
-    <div class="row g-4 align-items-center" data-aos="fade-up" data-aos-delay="120">
-      <div class="col-md-6"><img src="https://picsum.photos/900/600?random=23" class="img-fluid rounded shadow img-ratio-4-3" alt="Case 3" loading="lazy"></div>
-      <div class="col-md-6">
-        <h3>E-commerce Re-design</h3>
-        <p class="text-muted">Revamped product pages and checkout flows to reduce friction and increase conversions. The redesign improved clarity and visual hierarchy across devices.</p>
-        <h6>Outcome</h6>
-        <ul class="lh-lg">
-          <li>Improved conversion rate by 18%</li>
-          <li>Reduced page load time by 30%</li>
-          <li>Accessible and responsive implementation</li>
-        </ul>
-        <a class="btn btn-primary mt-2" href="#">Read full case study</a>
+  <!-- Case Study Reader Modal -->
+  <div class="modal fade" id="caseReaderModal" tabindex="-1" aria-labelledby="caseReaderTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-bottom px-4 py-3">
+          <div>
+            <div class="meta-line mb-0" id="caseReaderMeta"></div>
+            <h2 class="h5 fw-bold mb-0" id="caseReaderTitle">Case Study</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <img id="caseReaderImg" src="" alt="" class="w-100 rounded mb-4" style="max-height: 320px; object-fit: cover;" referrerpolicy="no-referrer">
+          <div id="caseReaderBody" class="text-secondary" style="line-height: 1.75;"></div>
+        </div>
+        <div class="modal-footer border-top px-4 py-3">
+          <button type="button" class="btn-editorial-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="index.html#contact" class="btn-editorial-primary">Start a Similar Project</a>
+        </div>
       </div>
     </div>
-
   </div>
-</section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const CASES = {
+      coffee: {
+        title: 'Branding for Coffee Co.',
+        meta: '01. Case Study · Brand Identity & Web · 4 Weeks',
+        img: '/src/assets/images/casestudy_coffee_branding_1795380986021.jpg',
+        html: `
+          <h3 class="h6 fw-bold text-dark">The Challenge</h3>
+          <p>A specialty roaster needed an unmistakable shelf presence and digital storefront without costly multi-plate printing runs.</p>
+          <h3 class="h6 fw-bold text-dark mt-3">Solution</h3>
+          <p>We developed a modular monogram and two-color label system paired with kraft pouches, keeping unit packaging costs lean while elevating perceived craft. On the web, we launched a crisp editorial landing page for origin storytelling and subscriptions.</p>
+        `
+      },
+      analytics: {
+        title: 'Analytics Dashboard',
+        meta: '02. Case Study · Product UI & React · 6 Weeks',
+        img: '/src/assets/images/casestudy_analytics_dashboard_1795380985931.jpg',
+        html: `
+          <h3 class="h6 fw-bold text-dark">The Challenge</h3>
+          <p>Product teams struggled to scan dense retention cohorts and daily revenue shifts inside a legacy spreadsheet-style interface.</p>
+          <h3 class="h6 fw-bold text-dark mt-3">Solution</h3>
+          <p>Introduced strict typographic hierarchy with tabular numerals, neutral surfaces, and cobalt data highlights, paired with reusable filterable tables in React.</p>
+        `
+      },
+      ecommerce: {
+        title: 'E-commerce Re-design',
+        meta: '03. Case Study · E-commerce UX · +18% Conversion',
+        img: '/src/assets/images/casestudy_ecommerce_redesign_1795380986069.jpg',
+        html: `
+          <h3 class="h6 fw-bold text-dark">The Challenge</h3>
+          <p>Mobile shoppers abandoned carts during a multi-page checkout burdened by heavy images and unclear form steps.</p>
+          <h3 class="h6 fw-bold text-dark mt-3">Measured Outcomes</h3>
+          <ul class="mb-0">
+            <li><strong>+18%</strong> conversion rate lift</li>
+            <li><strong>-30%</strong> reduction in page load time</li>
+          </ul>
+        `
+      }
+    };
+
+    const modalEl = document.getElementById('caseReaderModal');
+    const modal = new bootstrap.Modal(modalEl);
+
+    document.querySelectorAll('[data-case-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const entry = CASES[btn.getAttribute('data-case-id')];
+        if (!entry) return;
+        document.getElementById('caseReaderTitle').textContent = entry.title;
+        document.getElementById('caseReaderMeta').textContent = entry.meta;
+        const img = document.getElementById('caseReaderImg');
+        img.src = entry.img;
+        img.alt = entry.title;
+        document.getElementById('caseReaderBody').innerHTML = entry.html;
+        modal.show();
+      });
+    });
+  </script>
 </body>
 </html>

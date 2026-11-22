@@ -3,1187 +3,2449 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forhad Hossain — Graphic Designer & Frontend Developer</title>
+  <title>Forhad Hossain — Graphic Designer &amp; Frontend Developer</title>
+  <meta name="description" content="Portfolio of Forhad Hossain — Graphic Designer and Frontend Developer crafting brand identities, UI/UX systems, and fast responsive web experiences.">
+  <meta property="og:title" content="Forhad Hossain — Graphic Designer &amp; Frontend Developer">
+  <meta property="og:description" content="Brand identity, UI/UX design, and frontend engineering from Dhaka, Bangladesh. Explore selected works, case studies, and packages.">
+
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Curated Typography: Plus Jakarta Sans + Fraunces + Hind Siliguri (for Bengali sections) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,400&family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <!-- AOS for scroll animations -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-  <!-- Feather icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-
   <style>
-    :root{
-      --brand:#0d6efd;
-      --dark:#0b1220;
-      --muted:#6b7280;
-      --soft:#f7f9fc;
-      --glass: rgba(255,255,255,0.6);
-      --radius:12px;
-      --shadow-lg: 0 10px 30px rgba(10,20,50,0.08);
+    :root {
+      --canvas: #f8fafc;
+      --surface: #ffffff;
+      --surface-subtle: #f1f5f9;
+      --ink: #0f172a;
+      --ink-secondary: #475569;
+      --ink-muted: #64748b;
+      --border-hairline: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-soft: #eff6ff;
+      --dark-surface: #0f172a;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.05);
+      --shadow-lift: 0 12px 32px rgba(15, 23, 42, 0.09);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* preserve original font stack but prefer Poppins */
-    body{font-family:Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:var(--dark);background:var(--soft); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; scroll-behavior:smooth}
-    .navbar-brand img{height:40px}
-    .hero{background:linear-gradient(180deg,#f8fbff 0%,#ffffff 100%);padding:84px 0}
-    .hero .lead{font-size:1.05rem;color:var(--muted)}
-    .feature-card,.service-card,.case-card{border-radius:var(--radius);padding:28px;background:#fff;box-shadow:0 6px 20px rgba(13,31,80,0.06)}
-    .cta-band{background:linear-gradient(90deg,var(--brand),#0056d6);color:#fff;padding:28px;border-radius:var(--radius)}
-    .pricing .card{border:none;border-radius:14px;box-shadow:0 6px 30px rgba(10,20,50,0.06)}
-    .testimonial-card{border-radius:var(--radius);padding:28px;background:#fff;box-shadow:0 4px 16px rgba(13,31,80,0.05)}
-    .logos img{max-height:40px;opacity:.7;transition:opacity .3s}
-    .logos img:hover{opacity:1}
-    .progress-wrap{background:#f1f5f9;border-radius:10px;padding:6px}
-    .progress-inner{height:10px;border-radius:8px;background:linear-gradient(90deg,var(--brand),#0056d6)}
-    footer{background:#0b1220;color:#d6d8dd;padding:48px 0}
-    .badge-skill{background:#eef2ff;color:#0b1220;padding:.35rem .6rem;border-radius:999px;font-weight:600}
-    .case-gallery img{width:100%;height:auto;border-radius:8px}
-    .back-to-top{position:fixed;right:18px;bottom:18px;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--brand);color:#fff;box-shadow:0 6px 18px rgba(13,31,80,.12);cursor:pointer;z-index:999}
-    @media(min-width:1200px){.container-wide{max-width:1180px}}
-
-    /* New: subtle card hover lift + transitions */
-    .feature-card, .service-card, .case-card, .testimonial-card, .card{
-      transition:transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s;
-      will-change:transform;
-    }
-    .feature-card:hover, .service-card:hover, .case-card:hover, .testimonial-card:hover, .card:hover{
-      transform:translateY(-8px) rotateZ(.001deg);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* New: refined hero image style */
-    .hero img{transition:transform .8s ease, filter .6s; border-radius:16px}
-    .hero:hover img{transform:scale(1.02) translateY(-6px); filter:brightness(.98) saturate(1.02)}
-
-    /* New: micro-animations for buttons */
-    .btn-primary{
-      transition:transform .18s ease, box-shadow .18s;
-    }
-    .btn-primary:active{transform:translateY(1px) scale(.997)}
-    .btn-outline-primary{transition:box-shadow .18s}
-    .btn-outline-primary:hover{box-shadow:0 6px 18px rgba(13,31,80,.08)}
-
-    /* New: sticky navbar glass + shadow */
-    nav.navbar{backdrop-filter:blur(6px); background:rgba(255,255,255,0.8); transition:background .3s, box-shadow .3s}
-    nav.navbar.sticky-scrolled{background:linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.75)); box-shadow:0 10px 30px rgba(10,20,50,0.06)}
-
-    /* New: responsive tweaks */
-    @media(max-width:991px){
-      .hero{padding:40px 0}
-      .hero h1{font-size:1.85rem}
-      .feature-card, .service-card, .case-card{padding:18px}
-    }
-
-    /* New: animated numbers */
-    .stat { font-variation-settings: "wght" 700; font-weight:700; font-size:2rem; color:var(--brand); }
-    .stat small{display:block; font-size:.7rem; color:var(--muted); font-weight:600}
-
-    /* New: subtle section divider */
-    .section-divider{height:1px;background:linear-gradient(90deg, transparent, rgba(10,20,50,0.06), transparent); margin:28px 0;border-radius:4px}
-
-    /* Accessibility: respect prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
-    }
-
-    /* Form focus */
-    .form-control:focus, .form-select:focus { box-shadow: 0 6px 18px rgba(13,31,80,0.06); border-color: var(--brand); outline: none; }
-
-    /* Mobile nav: make toggler more visible */
-    .navbar-toggler{border-radius:8px}
-    .navbar-toggler-icon{background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(10,20,50,0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");}
-    .navbar-toggler-icon{width: 0.9em !important; height: 1.6em !important;}
-    /* Small utility for image ratio */
-    .img-ratio-4-3 { aspect-ratio: 4/3; object-fit:cover; width:100%; border-radius:12px; }
-
-    /* Make back-to-top keyboard accessible */
-    .back-to-top:focus{outline:3px solid rgba(13,110,253,.18); outline-offset:3px}
-
-    /* Mobile font & button adjustments */
-    @media (max-width: 575.98px) {
-      body {font-size: 0.95rem;}
-      .hero h1 {font-size: 1.6rem; line-height: 1.3;}
-      .hero .lead {font-size: 0.95rem;}
-      .btn-lg {font-size: 0.95rem; padding: 0.55rem 1rem; border-radius: 8px;}
-      .stat {font-size: 1.5rem;}
-      h2, h3 {font-size: 1.4rem;}
-      h5 {font-size: 1rem;}
-      p, .text-muted {font-size: 0.9rem;}
-    }
-
-    /* Splash animation */
-    @keyframes splash {
-      0% { transform: scale(0); opacity: 0; }
-      60% { transform: scale(1.2); opacity: 1; }
-      80% { transform: scale(0.95); }
-      100% { transform: scale(1); }
-    }
-    .splash-text {
-      display: inline-block;
-      animation: splash 1s ease-out forwards;
-    }
-     /* FAQ Accordion */
-     #faq {
-      font-family: "Hind Siliguri", sans-serif;
-     }
-    .accordion-body {
-      color: #575A5F;
-    }
-    .accordion-button {
-      font-weight: 500;
-    }
-    .accordion-button:focus {
-      box-shadow: none !important;
-      outline: none !important;
-    }
-    .accordion-button::after {
-      flex-shrink: 0;
-      width: 1.25rem;
-      height: 1.25rem;
-      content: "+";
-      font-size: 1.4rem;
-      font-weight: 700;
-      background-image: none !important;
-      transform: rotate(0deg) !important;
-    }
-    .accordion-button:not(.collapsed)::after {
-      content: "–";
-      transform: rotate(0deg) !important;
-    }
-    
-    #faq {
-      padding: 60px 0;
-    }
-
-    @media (max-width: 767px) {
-      #faq {
-        padding: 40px 0;
-      }
-    }
-
-    /* Prevent horizontal scroll on mobile */
-    html, body {
+    html {
+      scroll-behavior: smooth;
       max-width: 100%;
       overflow-x: hidden;
     }
 
-    /* Ensure container-wide never exceeds screen width */
-    /* .container-wide {
-      width: 100%;
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background-color: var(--canvas);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       max-width: 100%;
-      padding-left: 15px;
-      padding-right: 15px;
+      overflow-x: hidden;
+    }
+
+    .font-serif-accent {
+      font-family: 'Fraunces', Georgia, serif;
+    }
+
+    .font-bn {
+      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+
+    h1, h2, h3, h4, h5 {
+      color: var(--ink);
+      letter-spacing: -0.025em;
+      text-wrap: balance;
+    }
+
+    .container-wide {
+      max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
-      box-sizing: border-box;
-    } */
+    }
 
-    /* Fix image overflow */
-    img, .img-fluid {
-      max-width: 100%;
-      height: auto;
+    /* Top Bar Contract: 3-zone sticky header <= 68px */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      background: rgba(248, 250, 252, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      min-height: 64px;
+      padding-top: 0.65rem;
+      padding-bottom: 0.65rem;
+    }
+
+    .brand-wordmark {
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-wordmark:hover {
+      color: var(--accent);
+    }
+
+    .nav-links-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link-clean {
+      position: relative;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 0.35rem 0;
+      transition: color 160ms var(--ease-out);
+    }
+
+    .nav-link-clean::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms var(--ease-out);
+    }
+
+    .nav-link-clean:hover,
+    .nav-link-clean:focus-visible {
+      color: var(--ink);
+    }
+
+    .nav-link-clean:hover::after,
+    .nav-link-clean:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    /* Buttons */
+    .btn-editorial-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--accent);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      min-height: 42px;
+      transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+
+    .btn-editorial-primary:hover,
+    .btn-editorial-primary:focus-visible {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.22);
+    }
+
+    .btn-editorial-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-editorial-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: var(--surface);
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      min-height: 42px;
+      transition: border-color 160ms var(--ease-out), background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+
+    .btn-editorial-secondary:hover,
+    .btn-editorial-secondary:focus-visible {
+      background-color: var(--surface-subtle);
+      border-color: var(--ink);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    /* Accessible Focus Ring */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 4.5rem 0 3.5rem;
+      background: linear-gradient(180deg, #ffffff 0%, var(--canvas) 100%);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .hero-kicker {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.35rem, 4.4vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.25rem;
+      max-width: 16ch;
+    }
+
+    .hero-lead {
+      font-size: 1.125rem;
+      line-height: 1.65;
+      color: var(--ink-secondary);
+      max-width: 52ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-portrait-frame {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      border: 1px solid var(--border-hairline);
+      aspect-ratio: 4 / 3;
+      height: 100%;
+      min-height: 340px;
+      max-height: 460px;
+      width: 100%;
+    }
+
+    .hero-portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
       display: block;
     }
-    #pricing {
-      font-family: "Hind Siliguri", sans-serif;
+
+    /* Key Metrics Row below Hero Split */
+    .metrics-strip {
+      margin-top: 3.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
     }
 
-   @media (max-width: 576px){
-  .hero h1{font-size:1.5rem!important}
-  .hero .lead{font-size:0.9rem!important}
-  .hero p.text-muted{font-size:0.8rem!important}
-  .hero .btn-lg{font-size:0.8rem!important;padding:0.4rem 0.8rem!important}
-  .hero .small{font-size:0.7rem!important}
-}
+    .metric-cell {
+      padding: 1.5rem 1.75rem;
+      border-right: 1px solid var(--border-hairline);
+    }
 
+    .metric-cell:last-child {
+      border-right: none;
+    }
 
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+
+    .metric-label {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      margin-top: 0.35rem;
+    }
+
+    @media (max-width: 991.98px) {
+      .metrics-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .metric-cell:nth-child(2) {
+        border-right: none;
+      }
+      .metric-cell:nth-child(1),
+      .metric-cell:nth-child(2) {
+        border-bottom: 1px solid var(--border-hairline);
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .hero-section {
+        padding: 2.5rem 0 2rem;
+      }
+      .metric-cell {
+        padding: 1.15rem 1rem;
+      }
+      .metric-value {
+        font-size: 1.55rem;
+      }
+    }
+
+    /* Sections */
+    .section-pad {
+      padding: 5rem 0;
+    }
+
+    .section-surface {
+      background-color: var(--surface);
+      border-top: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .section-header {
+      max-width: 640px;
+      margin-bottom: 3rem;
+    }
+
+    .section-kicker {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+      font-weight: 700;
+      line-height: 1.18;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--ink-secondary);
+      margin-bottom: 0;
+    }
+
+    /* Editorial Cards — single-elevation with hairline border */
+    .editorial-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      height: 100%;
+      transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 180ms var(--ease-out);
+    }
+
+    .editorial-card-interactive:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+      border-color: var(--border-strong);
+    }
+
+    /* Skills progress bars */
+    .skill-meter-track {
+      height: 6px;
+      width: 100%;
+      background-color: var(--surface-subtle);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .skill-meter-fill {
+      height: 100%;
+      background-color: var(--accent);
+      border-radius: 999px;
+    }
+
+    .tool-tile {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      text-align: center;
+      height: 100%;
+      transition: border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+
+    .tool-tile:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .tool-tile i {
+      font-size: 1.65rem;
+      color: var(--ink);
+    }
+
+    .tool-tile span {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink-secondary);
+      white-space: nowrap;
+    }
+
+    /* Service Cards */
+    .service-index {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card-btn {
+      text-align: left;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .service-card-action {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Principles Strip */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--border-hairline);
+      margin-top: 3rem;
+      padding-top: 2.25rem;
+      gap: 2rem;
+    }
+
+    @media (max-width: 991.98px) {
+      .principles-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+    }
+
+    /* Segmented Filter Controls (Interactive buttons allowed) */
+    .filter-segmented {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      padding: 0.3rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+    }
+
+    .filter-tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--ink-secondary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      cursor: pointer;
+      min-height: 38px;
+      transition: background-color 150ms var(--ease-out), color 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
+    }
+
+    .filter-tab-btn:hover {
+      color: var(--ink);
+    }
+
+    .filter-tab-btn.is-active {
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Portfolio Cards */
+    .portfolio-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out), border-color 180ms var(--ease-out);
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+      border-color: var(--border-strong);
+    }
+
+    .media-frame-4-3 {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .media-frame-4-3 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 280ms var(--ease-out);
+    }
+
+    .portfolio-card:hover .media-frame-4-3 img,
+    .blog-card:hover .media-frame-4-3 img {
+      transform: scale(1.03);
+    }
+
+    .portfolio-card-body {
+      padding: 1.35rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Case Studies */
+    .case-row {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .case-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-media-pane {
+      height: 100%;
+      min-height: 280px;
+      background: var(--surface-subtle);
+    }
+
+    .case-media-pane img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .case-content-pane {
+      padding: 2.25rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    @media (max-width: 767.98px) {
+      .case-content-pane {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Pricing */
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.75rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .pricing-card.is-featured {
+      border: 1.5px solid var(--accent);
+      box-shadow: var(--shadow-card);
+    }
+
+    .pricing-price {
+      font-size: 2.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.15;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.9375rem;
+      color: var(--ink-secondary);
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+    }
+
+    .pricing-features li i {
+      margin-top: 0.28rem;
+      flex-shrink: 0;
+    }
+
+    /* Blog Cards */
+    .blog-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+    }
+
+    /* FAQ Accordion */
+    .faq-accordion .accordion-item {
+      background: var(--surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md) !important;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-accordion .accordion-button {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--ink);
+      background-color: var(--surface);
+      padding: 1.2rem 1.35rem;
+      box-shadow: none !important;
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed) {
+      color: var(--accent);
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .faq-accordion .accordion-button::after {
+      background-image: none !important;
+      content: "+";
+      font-size: 1.35rem;
+      font-weight: 500;
+      line-height: 1;
+      width: auto;
+      height: auto;
+      transform: none !important;
+    }
+
+    .faq-accordion .accordion-button:not(.collapsed)::after {
+      content: "–";
+    }
+
+    .faq-accordion .accordion-body {
+      padding: 1.15rem 1.35rem 1.35rem;
+      color: var(--ink-secondary);
+      line-height: 1.7;
+    }
+
+    /* Forms */
+    .form-control,
+    .form-select {
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background-color: var(--surface);
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--dark-surface);
+      color: #cbd5e1;
+      padding: 4rem 0 2.5rem;
+    }
+
+    .site-footer h5,
+    .site-footer h6 {
+      color: #f8fafc;
+      letter-spacing: 0.01em;
+    }
+
+    .site-footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    .site-footer a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--ink);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1010;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out), background-color 160ms var(--ease-out);
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent);
+    }
+
+    /* Modal styling */
+    .modal-content {
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+    }
+
+    /* Media fallback */
+    .img-fallback-active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--ink-secondary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media print {
+      .site-header, .back-to-top, .no-print {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" id="mainNav" role="navigation" aria-label="Main navigation">
-  <div class="container container-wide">
-    <a class="navbar-brand fw-bold" href="#">Forhad Hossain</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#cases">Case Studies</a></li>
-        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <!-- TOP BAR CONTRACT: 1 Brand wordmark — 5 concise links — 1 Primary Action -->
+  <header class="site-header" id="mainNav">
+    <div class="container container-wide">
+      <div class="navbar-inner">
+        <a class="brand-wordmark" href="#home">Forhad Hossain</a>
 
-<!-- HERO -->
-<section class="hero" id="home" aria-label="Hero" data-aos="fade-up" data-aos-delay="50">
-  <div class="container container-wide">
-    <div class="row align-items-center">
-      <div class="col-lg-6" data-aos="fade-right" style="padding-bottom: 30px;">
-        <h1 class="display-5 fw-bold">Forhad Hossain</h1>
-        <p class="lead"><i class="fas fa-code me-2"></i><strong>Graphic Designer</strong> &amp; <strong>Frontend Developer</strong>. <br> I design modern, creative and user-friendly <br> digital experiences that help brands stand out.</p>
-        <p class="text-muted">Services: Web Development • Graphic Design • Basic SEO</p>
-        <div class="d-flex gap-2 mt-4">
-          <a class="btn btn-primary btn-lg" href="#portfolio">View Portfolio</a>
-          <a class="btn btn-outline-secondary btn-lg" href="#contact">Hire Me</a>
-          <!-- <a class="btn btn-outline-primary btn-lg" href="#cases">Case Studies</a> -->
-        </div>
-        <!-- <div class="mt-4 small text-muted">Available for freelance & part-time roles.</div> -->
-      </div>
-      <div class="col-lg-6 text-center" data-aos="zoom-in" data-aos-delay="150">
-        <img src="./assets/forhadhossain.jpg" alt="Forhad Hossain" class="img-fluid rounded shadow img-ratio-4-3" style="max-height:420px; object-fit:cover" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
+        <nav class="d-none d-lg-block" aria-label="Main navigation">
+          <ul class="nav-links-desktop">
+            <li><a class="nav-link-clean" href="#about">About</a></li>
+            <li><a class="nav-link-clean" href="#portfolio">Portfolio</a></li>
+            <li><a class="nav-link-clean" href="#cases">Case Studies</a></li>
+            <li><a class="nav-link-clean" href="#pricing">Pricing</a></li>
+            <li><a class="nav-link-clean" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
 
-<!-- QUICK STATS -->
-<section class="py-4 bg-light">
-  <div class="container container-wide">
-    <div class="row text-center g-4">
-      <div class="col-sm-4" data-aos="fade-up" data-aos-delay="50">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <div class="stat" data-target="5">0</div>
-          <p class="mb-0 text-muted">Years Experience</p>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn-editorial-primary d-none d-sm-inline-flex" href="#contact">Start a Project</a>
+          <button
+            class="btn-editorial-secondary d-lg-none px-3"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mobileNavDrawer"
+            aria-controls="mobileNavDrawer"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
-      <div class="col-sm-4" data-aos="fade-up" data-aos-delay="120">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <div class="stat" data-target="120">0</div>
-          <p class="mb-0 text-muted">Projects Completed</p>
-        </div>
-      </div>
-      <div class="col-sm-4" data-aos="fade-up" data-aos-delay="190">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <div class="stat" data-target="35">0</div>
-          <p class="mb-0 text-muted">Happy Clients</p>
-        </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div class="collapse d-lg-none pb-3" id="mobileNavDrawer">
+        <nav aria-label="Mobile navigation" class="pt-2 border-top">
+          <ul class="list-unstyled d-flex flex-column gap-2 mb-3">
+            <li><a class="nav-link-clean d-block py-2" href="#about">About</a></li>
+            <li><a class="nav-link-clean d-block py-2" href="#portfolio">Portfolio</a></li>
+            <li><a class="nav-link-clean d-block py-2" href="#cases">Case Studies</a></li>
+            <li><a class="nav-link-clean d-block py-2" href="#pricing">Pricing</a></li>
+            <li><a class="nav-link-clean d-block py-2" href="#contact">Contact</a></li>
+          </ul>
+          <a class="btn-editorial-primary w-100 d-sm-none" href="#contact">Start a Project</a>
+        </nav>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ABOUT -->
-<section id="about" class="py-5" data-aos="fade-up">
-  <div class="container container-wide">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-5" data-aos="fade-right">
-        <img src="./assets/forhadhossain.jpg" class="img-fluid rounded shadow" alt="Forhad Hossain" loading="lazy">
-      </div>
-      <div class="col-lg-7" data-aos="fade-left">
-        <h2 class="fw-bold about-typing">About Me</h2>
-        <p class="text-muted">I’m a passionate designer and developer with a focus on creating modern, pixel-perfect designs and responsive web applications. I help startups and businesses create unique brands and digital products that perform.</p>
-        <p class="text-muted">My workflow combines strategic thinking, user-centered design and meticulous front-end development to deliver fast, accessible and beautiful interfaces.</p>
-        <div class="row g-2 mt-3">
-          <div class="col-md-6"><strong>Location:</strong> Dhaka, Bangladesh</div>
-          <div class="col-md-6"><strong>Availability:</strong> Freelance / Part-time</div>
-          <div class="col-md-12"><strong>Email:</strong> <a href="mailto:fh7614@gmail.com">Send an email</a></div>
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home" aria-label="Introduction">
+      <div class="container container-wide">
+        <div class="row g-4 g-lg-5 align-items-stretch">
+          <div class="col-lg-7 d-flex flex-column justify-content-center">
+            <p class="hero-kicker">Graphic Designer · Frontend Developer · Dhaka</p>
+            <h1 class="hero-headline">
+              Crafting crisp brands and <span class="font-serif-accent fst-italic fw-medium">human-friendly</span> web interfaces.
+            </h1>
+            <p class="hero-lead">
+              I help startups and growing businesses stand out with cohesive brand identities, high-clarity UI/UX systems, and fast, accessible frontend engineering.
+            </p>
+            <div class="d-flex flex-wrap gap-3 align-items-center">
+              <a class="btn-editorial-primary" href="#portfolio">View Selected Work</a>
+              <button type="button" class="btn-editorial-secondary" data-bs-toggle="modal" data-bs-target="#cvModal">
+                <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
+                <span>Preview CV</span>
+              </button>
+            </div>
+            <p class="mt-4 mb-0 text-muted small">
+              Web Development · Brand Identity · UI/UX Design · Basic SEO
+            </p>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="hero-portrait-frame">
+              <img
+                src="./assets/forhadhossain.jpg"
+                alt="Portrait of Forhad Hossain, Graphic Designer and Frontend Developer"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Forhad Hossain — Portfolio Portrait';">
+            </div>
+          </div>
         </div>
-        <div class="mt-4">
-          <a class="btn btn-outline-primary me-2" href="#contact">Contact Me</a>
-          <a class="btn btn-primary" href="#portfolio">See Work</a>
-          <a class="btn btn-light" href="#cv" onclick="alert('Download CV placeholder')">Download CV</a>
+
+        <!-- Full-Width Metrics Row Below Hero Split -->
+        <div class="metrics-strip tabular-nums" aria-label="Key career metrics">
+          <div class="metric-cell">
+            <div class="metric-value">5+</div>
+            <div class="metric-label">Years of Design &amp; Code</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-value">120+</div>
+            <div class="metric-label">Projects Completed</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-value">35+</div>
+            <div class="metric-label">Returning Clients</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-value">7–15 Days</div>
+            <div class="metric-label">Standard Web Delivery</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & SKILLS SECTION -->
+    <section id="about" class="section-pad">
+      <div class="container container-wide">
+        <div class="row g-5 align-items-start">
+          <div class="col-lg-5">
+            <p class="section-kicker">About Me</p>
+            <h2 class="section-title">Design taste paired with frontend discipline.</h2>
+            <p class="text-secondary mt-3">
+              I’m Forhad Hossain — a designer and frontend developer focused on building modern, pixel-accurate interfaces and memorable brand identities. I partner with founders, agencies, and local businesses to ship digital products that look sharp and load fast.
+            </p>
+            <p class="text-secondary">
+              My workflow bridges strategic brand thinking, user-centered wireframes, and clean production code.
+            </p>
+
+            <div class="border-top pt-3 mt-4 d-flex flex-column gap-2 small">
+              <div class="d-flex justify-content-between py-1 border-bottom">
+                <span class="text-muted">Location</span>
+                <span class="fw-semibold">Dhaka Cantonment, Bangladesh</span>
+              </div>
+              <div class="d-flex justify-content-between py-1 border-bottom">
+                <span class="text-muted">Availability</span>
+                <span class="fw-semibold">Freelance &amp; Part-time</span>
+              </div>
+              <div class="d-flex justify-content-between py-1 border-bottom">
+                <span class="text-muted">Direct Email</span>
+                <a class="fw-semibold text-decoration-none" href="mailto:fh7614@gmail.com">fh7614@gmail.com</a>
+              </div>
+              <div class="d-flex justify-content-between py-1">
+                <span class="text-muted">WhatsApp / Phone</span>
+                <a class="fw-semibold text-decoration-none tabular-nums" href="https://wa.me/8801933393656" target="_blank" rel="noopener">+880 1933-393656</a>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+              <a class="btn-editorial-primary" href="#contact">Contact Me</a>
+              <button type="button" class="btn-editorial-secondary" data-bs-toggle="modal" data-bs-target="#cvModal">View Full CV</button>
+            </div>
+          </div>
+
+          <div class="col-lg-7" id="skills">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="editorial-card">
+                  <h3 class="h5 fw-bold mb-2">Design Craft</h3>
+                  <p class="text-secondary small mb-4">Branding systems, visual identity, UI/UX flows, and WordPress layouts.</p>
+
+                  <div class="d-flex flex-column gap-3 tabular-nums">
+                    <div>
+                      <div class="d-flex justify-content-between small fw-semibold mb-1">
+                        <span>Brand Identity</span><span>95%</span>
+                      </div>
+                      <div class="skill-meter-track"><div class="skill-meter-fill" style="width:95%"></div></div>
+                    </div>
+                    <div>
+                      <div class="d-flex justify-content-between small fw-semibold mb-1">
+                        <span>UI/UX Design</span><span>90%</span>
+                      </div>
+                      <div class="skill-meter-track"><div class="skill-meter-fill" style="width:90%"></div></div>
+                    </div>
+                    <div>
+                      <div class="d-flex justify-content-between small fw-semibold mb-1">
+                        <span>WordPress</span><span>85%</span>
+                      </div>
+                      <div class="skill-meter-track"><div class="skill-meter-fill" style="width:85%"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="editorial-card">
+                  <h3 class="h5 fw-bold mb-2">Frontend Engineering</h3>
+                  <p class="text-secondary small mb-4">Responsive architecture, semantic markup, accessibility, and speed tuning.</p>
+
+                  <div class="d-flex flex-column gap-3 tabular-nums">
+                    <div>
+                      <div class="d-flex justify-content-between small fw-semibold mb-1">
+                        <span>HTML &amp; CSS</span><span>95%</span>
+                      </div>
+                      <div class="skill-meter-track"><div class="skill-meter-fill" style="width:95%"></div></div>
+                    </div>
+                    <div>
+                      <div class="d-flex justify-content-between small fw-semibold mb-1">
+                        <span>JavaScript</span><span>88%</span>
+                      </div>
+                      <div class="skill-meter-track"><div class="skill-meter-fill" style="width:88%"></div></div>
+                    </div>
+                    <div>
+                      <div class="d-flex justify-content-between small fw-semibold mb-1">
+                        <span>React</span><span>82%</span>
+                      </div>
+                      <div class="skill-meter-track"><div class="skill-meter-fill" style="width:82%"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clean 6-item Toolset Grid (Zero Pill Clutter) -->
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-6 g-3 mt-2">
+              <div class="col"><div class="tool-tile"><i class="fa-brands fa-html5" aria-hidden="true"></i><span>HTML / CSS</span></div></div>
+              <div class="col"><div class="tool-tile"><i class="fa-brands fa-js" aria-hidden="true"></i><span>JavaScript</span></div></div>
+              <div class="col"><div class="tool-tile"><i class="fa-brands fa-bootstrap" aria-hidden="true"></i><span>Bootstrap</span></div></div>
+              <div class="col"><div class="tool-tile"><i class="fa-brands fa-react" aria-hidden="true"></i><span>React</span></div></div>
+              <div class="col"><div class="tool-tile"><i class="fa-brands fa-wordpress" aria-hidden="true"></i><span>WordPress</span></div></div>
+              <div class="col"><div class="tool-tile"><i class="fa-brands fa-figma" aria-hidden="true"></i><span>Figma</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES & PRINCIPLES -->
+    <section id="services" class="section-pad section-surface">
+      <div class="container container-wide">
+        <div class="section-header">
+          <p class="section-kicker">Services</p>
+          <h2 class="section-title">End-to-end design and frontend delivery.</h2>
+          <p class="section-subtitle">Select any service below to pre-fill an inquiry with your project goals.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <button type="button" class="editorial-card editorial-card-interactive service-card-btn" data-select-service="Branding & Identity">
+              <div>
+                <div class="service-index tabular-nums">01.</div>
+                <h3 class="h5 fw-bold mb-2">Branding &amp; Identity</h3>
+                <p class="text-secondary small mb-0">Distinctive logo systems, curated color palettes, typography pairings, and practical brand guidelines.</p>
+              </div>
+              <span class="service-card-action">Inquire about Branding <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <button type="button" class="editorial-card editorial-card-interactive service-card-btn" data-select-service="UI/UX Design">
+              <div>
+                <div class="service-index tabular-nums">02.</div>
+                <h3 class="h5 fw-bold mb-2">UI/UX Design</h3>
+                <p class="text-secondary small mb-0">Clear user flows, wireframes, and interactive Figma prototypes structured for high conversion.</p>
+              </div>
+              <span class="service-card-action">Inquire about UI/UX <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <button type="button" class="editorial-card editorial-card-interactive service-card-btn" data-select-service="Frontend Development">
+              <div>
+                <div class="service-index tabular-nums">03.</div>
+                <h3 class="h5 fw-bold mb-2">Frontend Development</h3>
+                <p class="text-secondary small mb-0">Responsive HTML/CSS, React interfaces, and performance tuning built for desktop and mobile.</p>
+              </div>
+              <span class="service-card-action">Inquire about Frontend <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <button type="button" class="editorial-card editorial-card-interactive service-card-btn" data-select-service="Social Media Design">
+              <div>
+                <div class="service-index tabular-nums">04.</div>
+                <h3 class="h5 fw-bold mb-2">Social Media Design</h3>
+                <p class="text-secondary small mb-0">Cohesive campaign graphics tailored for Instagram, Facebook, and LinkedIn brand channels.</p>
+              </div>
+              <span class="service-card-action">Inquire about Social Media <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <button type="button" class="editorial-card editorial-card-interactive service-card-btn" data-select-service="Corporate Design">
+              <div>
+                <div class="service-index tabular-nums">05.</div>
+                <h3 class="h5 fw-bold mb-2">Corporate Design</h3>
+                <p class="text-secondary small mb-0">Print-ready business cards, pitch decks, flyers, brochures, and executive report layouts.</p>
+              </div>
+              <span class="service-card-action">Inquire about Corporate <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </button>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <button type="button" class="editorial-card editorial-card-interactive service-card-btn" data-select-service="Web Design">
+              <div>
+                <div class="service-index tabular-nums">06.</div>
+                <h3 class="h5 fw-bold mb-2">Web Design</h3>
+                <p class="text-secondary small mb-0">Custom portfolio, business, and e-commerce websites optimized for SEO and accessibility.</p>
+              </div>
+              <span class="service-card-action">Inquire about Web Design <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Working Principles Strip (Whitespace + Hairline Dividers) -->
+        <div class="principles-grid">
+          <div>
+            <h4 class="h6 fw-bold mb-1">Fast Turnaround</h4>
+            <p class="text-secondary small mb-0">Reliable milestone delivery without cutting corners on craft.</p>
+          </div>
+          <div>
+            <h4 class="h6 fw-bold mb-1">Clear Communication</h4>
+            <p class="text-secondary small mb-0">Transparent progress updates and collaborative feedback loops.</p>
+          </div>
+          <div>
+            <h4 class="h6 fw-bold mb-1">Scalable Systems</h4>
+            <p class="text-secondary small mb-0">Modular components and clean codebases ready to grow.</p>
+          </div>
+          <div>
+            <h4 class="h6 fw-bold mb-1">Attention to Detail</h4>
+            <p class="text-secondary small mb-0">Consistent spacing, accessible contrast, and crisp typography.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SHOWCASE WITH FILTER & LIGHTBOX -->
+    <section id="portfolio" class="section-pad">
+      <div class="container container-wide">
+        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4 pb-2">
+          <div>
+            <p class="section-kicker">Selected Works</p>
+            <h2 class="section-title mb-1">Portfolio Showcase</h2>
+            <p class="section-subtitle">Click any project to inspect details in full view.</p>
+          </div>
+
+          <div class="filter-segmented" role="group" aria-label="Filter portfolio projects">
+            <button type="button" class="filter-tab-btn is-active" data-filter="all">All Work</button>
+            <button type="button" class="filter-tab-btn" data-filter="web">Web Design</button>
+            <button type="button" class="filter-tab-btn" data-filter="app">UI/UX &amp; Apps</button>
+            <button type="button" class="filter-tab-btn" data-filter="branding">Branding</button>
+          </div>
+        </div>
+
+        <div class="row g-4" id="portfolioGrid">
+          <!-- Item 1 -->
+          <div class="col-md-6 col-lg-4 portfolio-item" data-category="web branding">
+            <article class="portfolio-card" tabindex="0" role="button" data-project-id="pharma" aria-label="Inspect Pharma WordPress Design project">
+              <div class="media-frame-4-3">
+                <img src="./assets/20250920_203553_0000.png" alt="Pharma WordPress Design mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Pharma WordPress Design';">
+              </div>
+              <div class="portfolio-card-body">
+                <div class="meta-line">
+                  <span>Web Design</span><span aria-hidden="true">·</span><span>WordPress</span><span aria-hidden="true">·</span><span>Healthcare</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Pharma WordPress Design</h3>
+                <p class="text-secondary small mb-0">Custom WordPress architecture for a pharmaceutical brand featuring product catalogs and editorial blog.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="col-md-6 col-lg-4 portfolio-item" data-category="web">
+            <article class="portfolio-card" tabindex="0" role="button" data-project-id="retouching" aria-label="Inspect Retouching Website project">
+              <div class="media-frame-4-3">
+                <img src="./assets/20250920_203554_0001.png" alt="Retouching Website mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Retouching Website';">
+              </div>
+              <div class="portfolio-card-body">
+                <div class="meta-line">
+                  <span>Web Design</span><span aria-hidden="true">·</span><span>Gallery UI</span><span aria-hidden="true">·</span><span>Studio</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Retouching Website</h3>
+                <p class="text-secondary small mb-0">Conversion-focused portfolio website for photo retouching services with interactive client gallery.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="col-md-6 col-lg-4 portfolio-item" data-category="web app">
+            <article class="portfolio-card" tabindex="0" role="button" data-project-id="travel" aria-label="Inspect Travel Website project">
+              <div class="media-frame-4-3">
+                <img src="./assets/20250920_203554_0002.png" alt="Travel Website mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Travel Website';">
+              </div>
+              <div class="portfolio-card-body">
+                <div class="meta-line">
+                  <span>UI/UX</span><span aria-hidden="true">·</span><span>Booking Flow</span><span aria-hidden="true">·</span><span>Travel</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Travel Website</h3>
+                <p class="text-secondary small mb-0">Interactive travel booking experience with visual itinerary builder and destination discovery.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="col-md-6 col-lg-4 portfolio-item" data-category="web branding">
+            <article class="portfolio-card" tabindex="0" role="button" data-project-id="nonprofit" aria-label="Inspect Non Profit Website project">
+              <div class="media-frame-4-3">
+                <img src="./assets/20250920_203554_0003.png" alt="Non Profit Website mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Non Profit Website';">
+              </div>
+              <div class="portfolio-card-body">
+                <div class="meta-line">
+                  <span>Branding</span><span aria-hidden="true">·</span><span>Web Design</span><span aria-hidden="true">·</span><span>Non-Profit</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Non Profit Website</h3>
+                <p class="text-secondary small mb-0">Donation-centered organization platform with volunteer onboarding and measurable impact stories.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="col-md-6 col-lg-4 portfolio-item" data-category="app">
+            <article class="portfolio-card" tabindex="0" role="button" data-project-id="naat" aria-label="Inspect Naat Web App project">
+              <div class="media-frame-4-3">
+                <img src="./assets/20250920_203554_0004.png" alt="Naat Web App mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Naat Web App';">
+              </div>
+              <div class="portfolio-card-body">
+                <div class="meta-line">
+                  <span>Web App</span><span aria-hidden="true">·</span><span>Frontend</span><span aria-hidden="true">·</span><span>Audio UI</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Naat Web App</h3>
+                <p class="text-secondary small mb-0">Responsive audio streaming web application featuring curated playlists, fast search, and player controls.</p>
+              </div>
+            </article>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="col-md-6 col-lg-4 portfolio-item" data-category="app branding">
+            <article class="portfolio-card" tabindex="0" role="button" data-project-id="clubmaster" aria-label="Inspect Club Master App project">
+              <div class="media-frame-4-3">
+                <img src="./assets/20250920_203554_0006.png" alt="Club Master App mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Club Master App';">
+              </div>
+              <div class="portfolio-card-body">
+                <div class="meta-line">
+                  <span>UI/UX &amp; Apps</span><span aria-hidden="true">·</span><span>Dashboard</span><span aria-hidden="true">·</span><span>SaaS</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Club Master App</h3>
+                <p class="text-secondary small mb-0">Event scheduling and membership management interface designed for community clubs and organizations.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES SECTION -->
+    <section id="cases" class="section-pad section-surface">
+      <div class="container container-wide">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
+          <div>
+            <p class="section-kicker">Deep Dives</p>
+            <h2 class="section-title mb-1">Featured Case Studies</h2>
+            <p class="section-subtitle">How strategy, visual craft, and frontend optimization come together in real engagements.</p>
+          </div>
+          <a href="casestudy.html" class="btn-editorial-secondary">Open Standalone Page</a>
+        </div>
+
+        <!-- Case 1 -->
+        <article class="case-row">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-lg-6">
+              <div class="case-media-pane">
+                <img src="/src/assets/images/casestudy_coffee_branding_1795380986021.jpg" alt="Aurora Roasters specialty coffee packaging and web landing showcase" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Branding for Coffee Co.';">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="case-content-pane">
+                <div class="meta-line">
+                  <span>01. Case Study</span><span aria-hidden="true">·</span><span>Brand Identity &amp; Web</span><span aria-hidden="true">·</span><span>4 Weeks</span>
+                </div>
+                <h3 class="h3 fw-bold mb-3">Branding for Coffee Co.</h3>
+                <p class="text-secondary">
+                  A full brand identity engagement defining the visual language, print packaging system, and digital flagship. Designed to evoke warm artisan craft while keeping early-stage production costs lean.
+                </p>
+                <div class="row g-2 small text-secondary mb-4">
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Logo &amp; visual system</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Packaging dielines</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Competitive research</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Responsive landing page</div>
+                </div>
+                <div>
+                  <button type="button" class="btn-editorial-primary" data-case-id="coffee">Read Full Case Study</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case 2 -->
+        <article class="case-row">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-lg-6 order-lg-2">
+              <div class="case-media-pane">
+                <img src="/src/assets/images/casestudy_analytics_dashboard_1795380985931.jpg" alt="Enterprise analytics web dashboard displayed on aluminum laptop and tablet" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Analytics Dashboard';">
+              </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+              <div class="case-content-pane">
+                <div class="meta-line">
+                  <span>02. Case Study</span><span aria-hidden="true">·</span><span>Product UI &amp; React</span><span aria-hidden="true">·</span><span>6 Weeks</span>
+                </div>
+                <h3 class="h3 fw-bold mb-3">Enterprise Analytics Dashboard</h3>
+                <p class="text-secondary">
+                  Architected a data-dense analytics dashboard to surface user behavior and revenue metrics without visual clutter. Built around high-contrast hierarchy and responsive multi-breakpoint tables.
+                </p>
+                <div class="row g-2 small text-secondary mb-4">
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Custom chart components</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Filterable data tables</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Performance-tuned React</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Keyboard-accessible UI</div>
+                </div>
+                <div>
+                  <button type="button" class="btn-editorial-primary" data-case-id="analytics">Read Full Case Study</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case 3 -->
+        <article class="case-row">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-lg-6">
+              <div class="case-media-pane">
+                <img src="/src/assets/images/casestudy_ecommerce_redesign_1795380986069.jpg" alt="Minimalist e-commerce storefront and mobile checkout redesign" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='E-commerce Re-design';">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="case-content-pane">
+                <div class="meta-line tabular-nums">
+                  <span>03. Case Study</span><span aria-hidden="true">·</span><span>E-commerce UX</span><span aria-hidden="true">·</span><span>+18% Conversion</span>
+                </div>
+                <h3 class="h3 fw-bold mb-3">E-commerce Re-design</h3>
+                <p class="text-secondary">
+                  Redesigned product discovery pages and streamlined mobile checkout to remove friction. Improved visual hierarchy and asset loading speed across desktop and mobile viewports.
+                </p>
+                <div class="row g-2 small text-secondary mb-4 tabular-nums">
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>+18% checkout conversion</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>-30% page load time</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>Mobile-first checkout</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check text-primary me-2" aria-hidden="true"></i>WCAG AA contrast</div>
+                </div>
+                <div>
+                  <button type="button" class="btn-editorial-primary" data-case-id="ecommerce">Read Full Case Study</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (Claim-to-Proof Adjacent to Case Studies) -->
+    <section id="testimonials" class="section-pad">
+      <div class="container container-wide">
+        <div class="section-header">
+          <p class="section-kicker">Client Proof</p>
+          <h2 class="section-title">Trusted by founders and product teams.</h2>
+          <p class="section-subtitle">Long-term partnerships built on reliable turnaround and thoughtful execution.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <blockquote class="editorial-card d-flex flex-column justify-content-between mb-0">
+              <p class="font-serif-accent fs-5 text-dark mb-4">
+                “Forhad transformed our brand identity and delivered a stunning website ahead of launch.”
+              </p>
+              <footer class="border-top pt-3 small">
+                <div class="fw-bold text-dark">Sarah L.</div>
+                <div class="text-muted">Startup Founder · Brand &amp; Web Launch</div>
+              </footer>
+            </blockquote>
+          </div>
+
+          <div class="col-md-4">
+            <blockquote class="editorial-card d-flex flex-column justify-content-between mb-0">
+              <p class="font-serif-accent fs-5 text-dark mb-4">
+                “Creative, reliable, and detail-oriented. He’s our go-to designer for every campaign.”
+              </p>
+              <footer class="border-top pt-3 small">
+                <div class="fw-bold text-dark">Mark T.</div>
+                <div class="text-muted">Marketing Manager · Campaign Collateral</div>
+              </footer>
+            </blockquote>
+          </div>
+
+          <div class="col-md-4">
+            <blockquote class="editorial-card d-flex flex-column justify-content-between mb-0">
+              <p class="font-serif-accent fs-5 text-dark mb-4">
+                “The frontend he built for us is fast, responsive, and effortless for our engineers to maintain.”
+              </p>
+              <footer class="border-top pt-3 small">
+                <div class="fw-bold text-dark">Emily R.</div>
+                <div class="text-muted">Tech Lead · React Frontend</div>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <div class="col-md-6">
+            <div class="editorial-card">
+              <h3 class="h6 fw-bold mb-2">Client Spotlight — 6-Week MVP Launch</h3>
+              <p class="text-secondary small mb-0">Working alongside a lean founding team, we shipped a complete MVP in 6 weeks and iterated rapidly from real user feedback to reach early product-market fit.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="editorial-card">
+              <h3 class="h6 fw-bold mb-2">Long-Term Design Partnerships</h3>
+              <p class="text-secondary small mb-0">Most clients continue working together for ongoing UI improvements, campaign visuals, and frontend feature releases after initial launch.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING / PACKAGES (Bangla Section Preserved & Refined) -->
+    <section id="pricing" class="section-pad section-surface font-bn">
+      <div class="container container-wide">
+        <div class="text-center mx-auto mb-5" style="max-width: 680px;">
+          <p class="section-kicker">Packages &amp; Pricing</p>
+          <h2 class="section-title">প্যাকেজ ও মূল্য তালিকা</h2>
+          <p class="section-subtitle">সহজ, বাজেট ফ্রেন্ডলি এবং কোনো গোপন চার্জ ছাড়াই পরিষেবা প্রদান করা হয়। প্রথম অর্ডারে সরাসরি WhatsApp-এ বিশেষ ডিসকাউন্টের সুবিধা নিন।</p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+          <!-- Basic Logo -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="pricing-card">
+              <div>
+                <div class="small text-muted mb-1">লোগো ও ব্র্যান্ড শুরু</div>
+                <h3 class="h5 fw-bold mb-2">বেসিক</h3>
+                <div class="pricing-price tabular-nums">৳১৯৯৯</div>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>২টি এক্সক্লুসিভ লোগো কনসেপ্ট</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>উচ্চমানের JPG ও PNG ফাইল</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>ভেক্টর ফাইল ফরম্যাট (AI, EPS)</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>সীমিত ১টি রিভিশন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>বেসিক ব্র্যান্ড কালার গাইডলাইন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>প্রিমিয়াম ফন্ট অপশন</span></li>
+                <li><i class="fa-regular fa-clock text-secondary" aria-hidden="true"></i><span>ডেলিভারি: ৩ কার্যদিবসের মধ্যে</span></li>
+              </ul>
+              <button type="button" class="btn-editorial-secondary w-100 mt-auto" data-order-package="বেসিক লোগো প্যাকেজ (৳১৯৯৯)" data-order-budget="1000–5,000 BDT">
+                <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                <span>অর্ডার করুন</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Premium Logo -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="pricing-card is-featured">
+              <div>
+                <div class="small fw-semibold text-primary mb-1">জনপ্রিয় · সম্পূর্ণ ব্র্যান্ড কিট</div>
+                <h3 class="h5 fw-bold mb-2">প্রিমিয়াম</h3>
+                <div class="pricing-price tabular-nums">৳৩৯৯৯</div>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>৩টি ইউনিক ও প্রিমিয়াম লোগো কনসেপ্ট</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>সকল ফরম্যাটে এক্সক্লুসিভ ফাইল (JPG, PNG, PDF, AI)</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>সীমিত ৩টি রিভিশন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>এক্সক্লুসিভ আইকন এবং ফন্ট কম্বিনেশন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>ব্র্যান্ডিং আইডেন্টিটি সাজেশন</span></li>
+                <li><i class="fa-regular fa-clock text-secondary" aria-hidden="true"></i><span>ডেলিভারি: ৪ কার্যদিবসের মধ্যে</span></li>
+              </ul>
+              <button type="button" class="btn-editorial-primary w-100 mt-auto" data-order-package="প্রিমিয়াম লোগো প্যাকেজ (৳৩৯৯৯)" data-order-budget="1000–5,000 BDT">
+                <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                <span>অর্ডার করুন</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Starter Graphic Design -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="pricing-card">
+              <div>
+                <div class="small text-muted mb-1">বিজনেস ও সোশ্যাল মিডিয়া</div>
+                <h3 class="h5 fw-bold mb-2">স্টার্টার ডিজাইন</h3>
+                <div class="pricing-price tabular-nums">৳৪৯৯৯</div>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>২টি প্রফেশনাল বিজনেস কার্ড ডিজাইন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>৫টি সোশ্যাল মিডিয়া পোস্ট ডিজাইন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>১টি কাস্টম ফ্লায়ার/ব্রোশার ডিজাইন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>সীমিত ২টি রিভিশন</span></li>
+                <li><i class="fa-regular fa-clock text-secondary" aria-hidden="true"></i><span>ডেলিভারি: ৩–৫ কার্যদিবস</span></li>
+              </ul>
+              <button type="button" class="btn-editorial-secondary w-100 mt-auto" data-order-package="স্টার্টার ডিজাইন প্যাকেজ (৳৪৯৯৯)" data-order-budget="5000–15,000 BDT">
+                <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                <span>অর্ডার করুন</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Standard Website -->
+          <div class="col-12 col-sm-6 col-xl-3">
+            <div class="pricing-card is-featured">
+              <div>
+                <div class="small fw-semibold text-primary mb-1">সেরা ভ্যালু · পূর্ণাঙ্গ ওয়েবসাইট</div>
+                <h3 class="h5 fw-bold mb-2">স্ট্যান্ডার্ড ওয়েবসাইট</h3>
+                <div class="pricing-price tabular-nums">৳১৪৯৯৯</div>
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>৫ পেইজ কাস্টম রেস্পন্সিভ ওয়েবসাইট</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>সম্পূর্ণ মোবাইল ফ্রেন্ডলি ডিজাইন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>বেসিক SEO ও কনট্যাক্ট ফর্ম ইন্টিগ্রেশন</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>Frontend ডেভেলপমেন্ট</span></li>
+                <li><i class="fa-solid fa-check text-primary" aria-hidden="true"></i><span>সীমিত ৩টি রিভিশন</span></li>
+                <li><i class="fa-regular fa-clock text-secondary" aria-hidden="true"></i><span>ডেলিভারি: ৭–১৫ কার্যদিবস</span></li>
+              </ul>
+              <button type="button" class="btn-editorial-primary w-100 mt-auto" data-order-package="স্ট্যান্ডার্ড ওয়েবসাইট প্যাকেজ (৳১৪৯৯৯)" data-order-budget="15,000+ BDT">
+                <i class="fa-regular fa-paper-plane" aria-hidden="true"></i>
+                <span>অর্ডার করুন</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG & ARTICLES -->
+    <section id="blog" class="section-pad">
+      <div class="container container-wide">
+        <div class="section-header">
+          <p class="section-kicker">Journal</p>
+          <h2 class="section-title">Blog &amp; Field Notes</h2>
+          <p class="section-subtitle">Practical notes on design systems, React speed, and lean branding.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="blog-card">
+              <div class="media-frame-4-3">
+                <img src="/src/assets/images/blog_design_systems_1795380985675.jpg" alt="Design system color swatches, grid sketches, and typography specimen sheets" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Design Systems';">
+              </div>
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="meta-line">
+                  <span>Design Systems</span><span aria-hidden="true">·</span><span>5 min read</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Design Systems: Building for Scale</h3>
+                <p class="text-secondary small mb-4">How to structure spacing tokens, type scales, and reusable UI components that grow cleanly with your product.</p>
+                <button type="button" class="btn btn-link p-0 text-start fw-semibold text-decoration-none mt-auto" data-article-id="systems">
+                  Read article <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article class="blog-card">
+              <div class="media-frame-4-3">
+                <img src="/src/assets/images/blog_frontend_performance_1795380985704.jpg" alt="Frontend developer workstation showing web wireframes and performance metrics" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Frontend Performance';">
+              </div>
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="meta-line">
+                  <span>Frontend</span><span aria-hidden="true">·</span><span>4 min read</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Performance Tips for React</h3>
+                <p class="text-secondary small mb-4">Practical rendering, asset-loading, and bundle-splitting habits that make React interfaces feel instantaneous.</p>
+                <button type="button" class="btn btn-link p-0 text-start fw-semibold text-decoration-none mt-auto" data-article-id="react-perf">
+                  Read article <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article class="blog-card">
+              <div class="media-frame-4-3">
+                <img src="/src/assets/images/blog_brand_identity_1795380987264.jpg" alt="Bespoke stationery cards and embossed brand guidelines book" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Branding on a Budget';">
+              </div>
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="meta-line">
+                  <span>Branding</span><span aria-hidden="true">·</span><span>4 min read</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2">Branding on a Budget</h3>
+                <p class="text-secondary small mb-4">How early-stage founders can launch a memorable, cohesive visual identity without enterprise agency retainers.</p>
+                <button type="button" class="btn btn-link p-0 text-start fw-semibold text-decoration-none mt-auto" data-article-id="budget-brand">
+                  Read article <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="section-pad section-surface font-bn">
+      <div class="container container-wide" style="max-width: 900px;">
+        <div class="text-center mb-5">
+          <p class="section-kicker">FAQ</p>
+          <h2 class="section-title">গ্রাফিক ডিজাইন এবং ওয়েব ডেভেলপমেন্ট সংক্রান্ত প্রশ্ন ও উত্তর</h2>
+        </div>
+
+        <div class="accordion faq-accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                একটি লোগো ডিজাইন করতে কতদিন সময় লাগে?
+              </button>
+            </h3>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                আপনার প্যাকেজের উপর নির্ভর করে একটি লোগো ডিজাইন হতে ২ থেকে ৫ দিন সময় লাগে। ফিডব্যাক ও রিভিশনের পর ফাইনাল ডিজাইন পেতে অতিরিক্ত ১-২ দিন লাগতে পারে। জরুরী প্রয়োজনে আলাদা চার্জে এক্সপ্রেস ডেলিভারি সম্ভব।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                যদি ডিজাইন পছন্দ না হয় তাহলে কি হবে?
+              </button>
+            </h3>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                আমরা সর্বদা ক্লায়েন্টের সন্তুষ্টি নিশ্চিত করতে কাজ করি। প্যাকেজ অনুযায়ী ২-৪টি কনসেপ্ট এবং ৩টি থেকে আনলিমিটেড রিভিশন দিয়ে থাকি। তবুও যদি ডিজাইন পছন্দ না হয়, আপনি অতিরিক্ত কিছু চার্জ দিয়ে নতুন কনসেপ্ট নিতে পারেন।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                আপনারা কি ধরনের সার্ভিস দিয়ে থাকেন?
+              </button>
+            </h3>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                আমরা গ্রাফিক ডিজাইন (লোগো, ব্র্যান্ডিং, সোশ্যাল মিডিয়া পোস্ট, ব্যানার, ফ্লায়ার) এবং ওয়েব ডেভেলপমেন্ট (স্ট্যাটিক ওয়েবসাইট, ই-কমার্স, পোর্টফোলিও, ব্লগ, ওয়েব অ্যাপ) সার্ভিস দিয়ে থাকি।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                কিভাবে আপনাদের সার্ভিস নিতে পারি?
+              </button>
+            </h3>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                আপনি আমাদের অফার করা প্যাকেজ থেকে যেটি আপনার জন্য উপযুক্ত তা সিলেক্ট করুন এবং মোট খরচের ৫০% অগ্রিম পরিশোধ করুন। এরপর আমরা কাজ শুরু করব এবং নির্দিষ্ট সময়ে ডেলিভারি দিবো।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="headingFive">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                একটি ওয়েবসাইট তৈরি করতে কতদিন সময় লাগে?
+              </button>
+            </h3>
+            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                ওয়েবসাইটের ধরণ ও ফিচারের উপর ভিত্তি করে সাধারণত ৫ থেকে ১৫ দিনের মধ্যে একটি ওয়েবসাইট সম্পূর্ণ করে ডেলিভারি দেয়া হয়। ই-কমার্স বা কাস্টম ফিচারসহ ওয়েবসাইটের ক্ষেত্রে সময় আরও বেশি লাগতে পারে।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="headingSix">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                গ্রাফিক ডিজাইন সার্ভিসের চার্জ কেমন?
+              </button>
+            </h3>
+            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                আমাদের গ্রাফিক ডিজাইন সার্ভিসের চার্জ নির্ভর করে কাজের ধরন ও জটিলতার উপর। লোগো ডিজাইন, সোশ্যাল মিডিয়া পোস্ট, ব্যানার বা ব্র্যান্ড কিট – প্রতিটির জন্য আলাদা প্যাকেজ এবং মূল্য নির্ধারিত আছে। বিস্তারিত জানার জন্য যোগাযোগ করুন।
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" id="headingSeven">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                কি ধরনের পেমেন্ট মেথড সাপোর্ট করেন?
+              </button>
+            </h3>
+            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                আমরা বিকাশ, নগদ, রকেট এবং ব্যাংক ট্রান্সফার এর মাধ্যমে পেমেন্ট গ্রহণ করি।
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section-pad">
+      <div class="container container-wide">
+        <div class="row g-5 align-items-start">
+          <div class="col-lg-5">
+            <p class="section-kicker">Contact</p>
+            <h2 class="section-title">Let’s build your next project.</h2>
+            <p class="text-secondary mt-3 mb-4">
+              Share your timeline, budget, and goals. I typically respond within a few business hours.
+            </p>
+
+            <div class="border-top pt-3 d-flex flex-column gap-3 small">
+              <div>
+                <div class="text-muted">Email</div>
+                <a href="mailto:fh7614@gmail.com" class="fw-semibold text-dark text-decoration-none">fh7614@gmail.com</a>
+              </div>
+              <div>
+                <div class="text-muted">Phone &amp; WhatsApp</div>
+                <a href="https://wa.me/8801933393656" target="_blank" rel="noopener" class="fw-semibold text-dark text-decoration-none tabular-nums">+880 1933-393656</a>
+              </div>
+              <div>
+                <div class="text-muted">Studio Location</div>
+                <div class="fw-semibold text-dark">Dhaka Cantonment, Dhaka, Bangladesh</div>
+              </div>
+              <div>
+                <div class="text-muted">Working Hours</div>
+                <div class="fw-semibold text-dark">Mon — Fri, 9:00 AM — 6:00 PM (BST)</div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+              <a href="https://wa.me/8801933393656" target="_blank" rel="noopener" class="btn-editorial-primary">
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                <span>Message on WhatsApp</span>
+              </a>
+              <a href="mailto:fh7614@gmail.com" class="btn-editorial-secondary">
+                <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                <span>Email Directly</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="editorial-card p-4 p-md-5">
+              <div id="selectedPlanNotice" class="alert alert-primary d-none align-items-center justify-content-between mb-4" role="status">
+                <span class="small fw-semibold" id="selectedPlanText"></span>
+                <button type="button" class="btn-close btn-sm" id="clearSelectedPlan" aria-label="Clear selected service"></button>
+              </div>
+
+              <form id="contactForm" novalidate>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="contactName" class="form-label fw-semibold small">Your Name</label>
+                    <input type="text" id="contactName" class="form-control" placeholder="e.g. Tariq Ahmed" required>
+                    <div class="invalid-feedback">Please enter your name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="contactEmail" class="form-label fw-semibold small">Email Address</label>
+                    <input type="email" id="contactEmail" class="form-control" placeholder="you@company.com" required>
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="contactService" class="form-label fw-semibold small">Service or Package</label>
+                    <select id="contactService" class="form-select">
+                      <option value="Web Design">Web Design</option>
+                      <option value="Branding & Identity">Branding &amp; Identity</option>
+                      <option value="UI/UX Design">UI/UX Design</option>
+                      <option value="Frontend Development">Frontend Development</option>
+                      <option value="Social Media Design">Social Media Design</option>
+                      <option value="Corporate Design">Corporate Design</option>
+                      <option value="বেসিক লোগো প্যাকেজ (৳১৯৯৯)">বেসিক লোগো প্যাকেজ (৳১৯৯৯)</option>
+                      <option value="প্রিমিয়াম লোগো প্যাকেজ (৳৩৯৯৯)">প্রিমিয়াম লোগো প্যাকেজ (৳৩৯৯৯)</option>
+                      <option value="স্টার্টার ডিজাইন প্যাকেজ (৳৪৯৯৯)">স্টার্টার ডিজাইন প্যাকেজ (৳৪৯৯৯)</option>
+                      <option value="স্ট্যান্ডার্ড ওয়েবসাইট প্যাকেজ (৳১৪৯৯৯)">স্ট্যান্ডার্ড ওয়েবসাইট প্যাকেজ (৳১৪৯৯৯)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="contactBudget" class="form-label fw-semibold small">Estimated Budget</label>
+                    <select id="contactBudget" class="form-select tabular-nums">
+                      <option value="1000–5,000 BDT">1,000–5,000 BDT</option>
+                      <option value="5000–15,000 BDT">5,000–15,000 BDT</option>
+                      <option value="15,000+ BDT">15,000+ BDT</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label for="contactMessage" class="form-label fw-semibold small">Project Details</label>
+                    <textarea id="contactMessage" class="form-control" rows="4" placeholder="Tell me about your goals, timeline, and reference links..." required></textarea>
+                    <div class="invalid-feedback">Please share a brief description of your project.</div>
+                  </div>
+                  <div class="col-12 pt-2">
+                    <button type="submit" class="btn-editorial-primary">Send Project Inquiry</button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Working Confirmation State -->
+              <div id="contactConfirmation" class="d-none mt-4 p-4 rounded bg-light border" role="status">
+                <div class="d-flex align-items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-success fs-4 mt-1" aria-hidden="true"></i>
+                  <div>
+                    <h3 class="h6 fw-bold mb-1">Inquiry Ready to Send</h3>
+                    <p class="small text-secondary mb-3" id="contactConfirmationSummary"></p>
+                    <div class="d-flex flex-wrap gap-2">
+                      <a id="whatsappPrefillLink" href="https://wa.me/8801933393656" target="_blank" rel="noopener" class="btn-editorial-primary">
+                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                        <span>Send via WhatsApp</span>
+                      </a>
+                      <a id="mailtoPrefillLink" href="mailto:fh7614@gmail.com" class="btn-editorial-secondary">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                        <span>Send via Email App</span>
+                      </a>
+                      <button type="button" class="btn btn-link text-secondary small text-decoration-none" id="resetContactFormBtn">
+                        Edit inquiry
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="py-5 section-surface">
+      <div class="container container-wide">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <h3 class="h4 fw-bold mb-1">Monthly Design &amp; Frontend Notes</h3>
+            <p class="text-secondary mb-0 small">Case studies, practical UI tips, and freelance availability updates — zero spam.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="d-flex flex-column flex-sm-row gap-2" id="newsletterForm" novalidate>
+              <label for="newsletterEmail" class="visually-hidden">Email address</label>
+              <input type="email" id="newsletterEmail" class="form-control" placeholder="Enter your email address" required>
+              <button type="submit" class="btn-editorial-primary">Subscribe</button>
+            </form>
+            <div id="newsletterFeedback" class="small mt-2 d-none" role="status"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container container-wide">
+      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+        <div class="col-lg-4">
+          <h5 class="fw-bold mb-2">Forhad Hossain</h5>
+          <p class="small mb-0" style="color: #94a3b8; max-width: 34ch;">
+            Graphic Designer &amp; Frontend Developer crafting brand systems and fast responsive websites from Dhaka.
+          </p>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="fw-semibold small mb-3">Work</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#cases">Case Studies</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="fw-semibold small mb-3">Explore</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="#about">About</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <h6 class="fw-semibold small mb-3">Contact</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li>Dhaka Cantonment, Bangladesh</li>
+            <li class="tabular-nums"><a href="https://wa.me/8801933393656" target="_blank" rel="noopener">+880 1933-393656</a></li>
+            <li><a href="mailto:support@forhadhossain.xyz">support@forhadhossain.xyz</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-4 small" style="color: #94a3b8;">
+        <div>© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
+        <div>Graphic Design · Frontend Development</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" type="button" title="Back to top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- PORTFOLIO LIGHTBOX MODAL -->
+  <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content overflow-hidden">
+        <div class="modal-header border-bottom px-4 py-3">
+          <div>
+            <div class="meta-line mb-0" id="projectModalMeta"></div>
+            <h2 class="h5 fw-bold mb-0" id="projectModalTitle">Project Title</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close project preview"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="bg-light border-bottom" style="max-height: 440px; overflow: hidden;">
+            <img id="projectModalImg" src="" alt="" class="w-100 h-100" style="object-fit: cover;" referrerpolicy="no-referrer">
+          </div>
+          <div class="p-4">
+            <p class="text-secondary mb-3" id="projectModalDesc"></p>
+            <div class="row g-3 small border-top pt-3">
+              <div class="col-sm-4">
+                <div class="text-muted">Role</div>
+                <div class="fw-semibold" id="projectModalRole"></div>
+              </div>
+              <div class="col-sm-4">
+                <div class="text-muted">Deliverables</div>
+                <div class="fw-semibold" id="projectModalDeliverables"></div>
+              </div>
+              <div class="col-sm-4">
+                <div class="text-muted">Tools</div>
+                <div class="fw-semibold" id="projectModalTools"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-top px-4 py-3">
+          <button type="button" class="btn-editorial-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn-editorial-primary" id="projectSimilarBtn">Request Similar Project</button>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<style>.about-typing { display:inline-block; overflow:hidden; white-space:nowrap; border-right:2px solid #000; font-size:32px; font-weight:700; width:0; max-width:9ch; color:black; } .about-typing.active { animation: typing 2s steps(9) forwards, blink 0.7s step-end infinite; } @keyframes typing { from { width:0; } to { width:9ch; } } @keyframes blink { 50% { border-color:transparent; } }</style>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-  const aboutText = document.querySelector(".about-typing");
+  <!-- CASE STUDY / ARTICLE READER MODAL -->
+  <div class="modal fade" id="readerModal" tabindex="-1" aria-labelledby="readerModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-bottom px-4 py-3">
+          <div>
+            <div class="meta-line mb-0" id="readerModalMeta"></div>
+            <h2 class="h5 fw-bold mb-0" id="readerModalTitle">Title</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close reader"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="media-frame-4-3 rounded mb-4" style="max-height: 320px;">
+            <img id="readerModalImg" src="" alt="" referrerpolicy="no-referrer">
+          </div>
+          <div id="readerModalBody" class="text-secondary" style="line-height: 1.75;"></div>
+        </div>
+        <div class="modal-footer border-top px-4 py-3">
+          <button type="button" class="btn-editorial-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="#contact" class="btn-editorial-primary" id="readerContactBtn">Discuss a Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        aboutText.classList.add("active");
-        observer.unobserve(aboutText); // Animate once
+  <!-- INTERACTIVE CV / RESUME MODAL -->
+  <div class="modal fade" id="cvModal" tabindex="-1" aria-labelledby="cvModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-bottom px-4 py-3">
+          <div>
+            <div class="small text-muted">Curriculum Vitae</div>
+            <h2 class="h5 fw-bold mb-0" id="cvModalTitle">Forhad Hossain — Graphic Designer &amp; Frontend Developer</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close CV preview"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 border-bottom pb-3 mb-4">
+            <div>
+              <h3 class="h4 fw-bold mb-1">Forhad Hossain</h3>
+              <p class="text-secondary mb-0">Graphic Designer &amp; Frontend Developer</p>
+            </div>
+            <div class="small text-secondary text-sm-end tabular-nums">
+              <div>Dhaka Cantonment, Bangladesh</div>
+              <div>fh7614@gmail.com</div>
+              <div>+880 1933-393656</div>
+            </div>
+          </div>
+
+          <h4 class="h6 fw-bold mb-2">Profile Summary</h4>
+          <p class="small text-secondary mb-4">
+            Multidisciplinary designer and frontend engineer with 5+ years of experience delivering brand identities, UI/UX prototypes, WordPress sites, and responsive React applications across 120+ client projects.
+          </p>
+
+          <h4 class="h6 fw-bold mb-2">Core Capabilities</h4>
+          <div class="row g-3 small text-secondary mb-4">
+            <div class="col-sm-6">
+              <strong class="text-dark d-block mb-1">Design</strong>
+              Brand Identity, Logo Systems, Packaging Dielines, UI/UX Wireframing, Social &amp; Print Collateral, Figma
+            </div>
+            <div class="col-sm-6">
+              <strong class="text-dark d-block mb-1">Development</strong>
+              HTML5, CSS3, Bootstrap 5, JavaScript (ES6+), React, WordPress Custom Themes, Responsive &amp; Basic SEO
+            </div>
+          </div>
+
+          <h4 class="h6 fw-bold mb-2">Selected Highlights</h4>
+          <ul class="small text-secondary mb-0 d-flex flex-column gap-2">
+            <li>Delivered 120+ design and web builds for startups, non-profits, pharmaceutical brands, and e-commerce stores.</li>
+            <li>Improved e-commerce checkout conversion by 18% and reduced page load latency by 30% through asset &amp; layout optimization.</li>
+            <li>Maintained long-term creative partnerships with 35+ returning clients across Bangladesh and international remote teams.</li>
+          </ul>
+        </div>
+        <div class="modal-footer border-top px-4 py-3">
+          <button type="button" class="btn-editorial-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn-editorial-primary" id="printCvBtn">
+            <i class="fa-solid fa-print" aria-hidden="true"></i>
+            <span>Print / Save PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Sticky header elevation + back to top visibility
+      const mainNav = document.getElementById('mainNav');
+      const backToTop = document.getElementById('backToTop');
+
+      const updateScrollUI = () => {
+        const y = window.scrollY;
+        if (mainNav) mainNav.classList.toggle('is-scrolled', y > 16);
+        if (backToTop) backToTop.classList.toggle('is-visible', y > 360);
+      };
+      updateScrollUI();
+      window.addEventListener('scroll', updateScrollUI, { passive: true });
+
+      if (backToTop) {
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
       }
-    },
-    { threshold: 0.5 } // 50% visible triggers animation
-  );
 
-  observer.observe(aboutText);
-});
-
-</script>
-
-<!-- SKILLS -->
-<section id="skills" class="py-5 bg-light" data-aos="fade-up">
-  <div class="container container-wide">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Skills & Expertise</h2>
-      <p class="text-muted">A balanced set of design and front-end development skills.</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-6" data-aos="fade-right">
-        <div class="feature-card h-100">
-          <h5>Design</h5>
-          <p class="text-muted">Branding, visual identity, layout design, illustration, iconography, motion concepts.</p>
-          <div class="mt-3">
-            <div class="d-flex justify-content-between mb-2"><small>Brand Identity</small><small>95%</small></div>
-            <div class="progress-wrap"><div style="width:95%" class="progress-inner" aria-hidden="true"></div></div>
-            <div class="d-flex justify-content-between mt-3 mb-2"><small>UI/UX</small><small>90%</small></div>
-            <div class="progress-wrap"><div style="width:90%" class="progress-inner" aria-hidden="true"></div></div>
-            <div class="d-flex justify-content-between mt-3 mb-2"><small>WordPress</small><small>85%</small></div>
-            <div class="progress-wrap"><div style="width:85%" class="progress-inner" aria-hidden="true"></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-left">
-        <div class="feature-card h-100">
-          <h5>Development</h5>
-          <p class="text-muted">Frontend development, performance optimization, responsive layouts, accessibility.</p>
-          <div class="mt-3">
-            <div class="d-flex justify-content-between mb-2"><small>HTML/CSS</small><small>95%</small></div>
-            <div class="progress-wrap"><div style="width:95%" class="progress-inner" aria-hidden="true"></div></div>
-            <div class="d-flex justify-content-between mt-3 mb-2"><small>JavaScript</small><small>88%</small></div>
-            <div class="progress-wrap"><div style="width:88%" class="progress-inner" aria-hidden="true"></div></div>
-            <div class="d-flex justify-content-between mt-3 mb-2"><small>React</small><small>82%</small></div>
-            <div class="progress-wrap"><div style="width:82%" class="progress-inner" aria-hidden="true"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <div class="container" style="padding-top: 60px;">
-    <div class="row gx-0 gy-3 justify-content-center">
-  
-      <!-- 1. HTML/CSS -->
-      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="60">
-        <div class="skill-box">
-          <i class="fa-brands fa-html5 fa-2x mb-3"></i>
-          <span class="badge-skill">HTML/CSS</span>
-        </div>
-      </div>
-  
-      <!-- 2. JavaScript -->
-      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="90">
-        <div class="skill-box">
-          <i class="fa-brands fa-js fa-2x mb-3"></i>
-          <span class="badge-skill">JavaScript</span>
-        </div>
-      </div>
-  
-      <!-- 3. Bootstrap -->
-      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="120">
-        <div class="skill-box">
-          <i class="fa-brands fa-bootstrap fa-2x mb-3"></i>
-          <span class="badge-skill">Bootstrap</span>
-        </div>
-      </div>
-  
-      <!-- 4. React -->
-      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="150">
-        <div class="skill-box">
-          <i class="fa-brands fa-react fa-2x mb-3"></i>
-          <span class="badge-skill">React</span>
-        </div>
-      </div>
-  
-      <!-- 5. WordPress -->
-      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="180">
-        <div class="skill-box">
-          <i class="fa-brands fa-wordpress fa-2x mb-3"></i>
-          <span class="badge-skill">WordPress</span>
-        </div>
-      </div>
-  
-      <!-- 6. Figma -->
-      <div class="col-4 col-md-2 text-center" data-aos="zoom-in" data-aos-delay="210">
-        <div class="skill-box">
-          <i class="fa-brands fa-figma fa-2x mb-3"></i>
-          <span class="badge-skill">Figma</span>
-        </div>
-      </div>
-  
-    </div>
-  </div>
-
-
-    <style>
-    .skill-box {
-  position: relative; /* added */
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  padding: 0.3rem 0.2rem;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  margin: auto;
-  box-sizing: border-box;
-  user-select: none;
-  transition: box-shadow 0.3s ease;
-  overflow: hidden;
-}
-
-.skill-box:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
-}
-
-.badge-skill {
-  position: absolute;   /* added */
-  bottom: 0.3rem;       /* position from bottom */
-  left: 50%;            /* center horizontally */
-  transform: translateX(-50%); /* center exactly */
-  
-  font-weight: 600;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Responsive icon and text size for smaller screens */
-@media (max-width: 576px) {
-  .skill-box i {
-    font-size: 1.9rem !important;
-  }
-
-  .badge-skill {
-    font-size: 0.75rem;
-  }
-}
-.skill-box {
-  position: relative; /* added */
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  padding: 0.3rem 3rem;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  margin: auto;
-  box-sizing: border-box;
-  user-select: none;
-  transition: box-shadow 0.3s ease;
-  overflow: hidden;
-}
-
-.skill-box:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
-}
-
-.badge-skill {
-  position: absolute;
-  bottom: 0rem;
-  left: 50%;
-  transform: translateX(-50%); /* center exactly */
-  
-  font-weight: 600;
-  font-size: 0.85rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: .35rem 3.5rem !important;
-  border-radius: 0px !important;
-}
-
-@media (min-width: 768px) {
-    .col-md-2{
-        width: 10% !important;
-    }
-}
-
-/* Responsive icon and text size for smaller screens */
-@media (max-width: 576px) {
-  .skill-box i {
-    font-size: 1.9rem !important;
-  }
-
-  .badge-skill {
-    font-size: 0.75rem;
-  }
-}
-
-    </style>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="py-5">
-  <div class="container container-wide">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Services I Offer</h2>
-      <p class="text-muted">Comprehensive design & development services tailored to your needs.</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="flip-left"><div class="service-card h-100"><h5>Branding & Identity</h5><p class="text-muted">Logo systems, color palettes, brand guidelines.</p></div></div>
-      <div class="col-md-4" data-aos="flip-left" data-aos-delay="80"><div class="service-card h-100"><h5>UI/UX Design</h5><p class="text-muted">User flows, wireframes, high-fidelity prototypes.</p></div></div>
-      <div class="col-md-4" data-aos="flip-left" data-aos-delay="160"><div class="service-card h-100"><h5>Frontend Development</h5><p class="text-muted">Pixel-perfect HTML/CSS, React apps, performance optimisation.</p></div></div>
-    </div>
-
-    <div class="row mt-4 g-4">
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0"><div class="service-card h-100"><h5>Social Media Design</h5><p class="text-muted">Visual content tailored for platforms like Instagram, Facebook and LinkedIn.</p></div></div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="80"><div class="service-card h-100"><h5>Corporate Design</h5><p class="text-muted">Brand-aligned materials including business cards, presentations and reports.</p></div></div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="160"><div class="service-card h-100"><h5>Web Design</h5><p class="text-muted">User-centric web interfaces optimized for performance and accessibility.</p></div></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- FEATURE LIST -->
-<section class="py-5 bg-light">
-  <div class="container container-wide">
-    <div class="row">
-      <div class="col-lg-4" data-aos="fade-right">
-        <h3 class="fw-bold">Why work with me?</h3>
-        <p class="text-muted">I combine a designer's eye with a developer's discipline. From initial sketches to production-ready code, I handle the full product design cycle.</p>
-      </div>
-      <div class="col-lg-8" data-aos="fade-left">
-        <div class="row g-3">
-          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Fast turnaround</h6><p class="mb-0 text-muted">Reliable delivery without compromising quality.</p></div></div>
-          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Clear communication</h6><p class="mb-0 text-muted">Regular updates and collaborative process.</p></div></div>
-          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Scalable solutions</h6><p class="mb-0 text-muted">Design systems and maintainable code.</p></div></div>
-          <div class="col-md-6"><div class="p-3 bg-white rounded shadow-sm"><h6>Attention to detail</h6><p class="mb-0 text-muted">Pixel-perfect designs and accessible implementation.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO GRID -->
-<section id="portfolio" class="py-5">
-  <div class="container container-wide">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Portfolio</h2>
-      <p class="text-muted">A selection of projects showcasing design and front-end work.</p>
-    </div>
-    <div class="row g-4">
-      <!-- 9 portfolio items (kept your originals) -->
-      <div class="col-md-4" data-aos="zoom-in"><div class="case-card"><img src="./assets/20250920_203553_0000.png" alt="Project 1" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Pharma WordPress Design</h5><p class="text-muted small">Custom WordPress site for a pharmaceutical brand with product pages and blog.</p></div></div>
-      <div class="col-md-4" data-aos="zoom-in"><div class="case-card"><img src="./assets/20250920_203554_0001.png" alt="Project 2" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Retouching Website</h5><p class="text-muted small">Portfolio website for photo retouching services with client gallery.</p></div></div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="120"><div class="case-card"><img src="./assets/20250920_203554_0002.png" alt="Project 3" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Travel Website</h5><p class="text-muted small">Interactive travel booking site with itinerary builder and map integration.</p></div></div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="180"><div class="case-card"><img src="./assets/20250920_203554_0003.png" alt="Project 4" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Non Profit Website</h5><p class="text-muted small">Donation-focused website with volunteer sign-up and impact stories.</p></div></div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="240"><div class="case-card"><img src="./assets/20250920_203554_0004.png" alt="Project 5" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Naat Web App</h5><p class="text-muted small">Web app for streaming and sharing Naat with playlists and search features.</p></div></div>
-      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300"><div class="case-card"><img src="./assets/20250920_203554_0006.png" alt="Project 6" class="img-fluid rounded mb-3 img-ratio-4-3" loading="lazy"><h5>Club Master App</h5><p class="text-muted small">Event and membership management app for clubs and organizations.</p></div></div>
-
-    </div>
-
-    <div class="text-center mt-4">
-      <a class="btn btn-outline-primary" href="#cases">View Case Studies</a>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section id="blog" class="py-5">
-  <div class="container container-wide">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Blog & Articles</h2>
-      <p class="text-muted">Thoughts on design, frontend development, and process.</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="flip-left">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <img src="https://picsum.photos/600/400?random=31" class="img-fluid rounded mb-3 img-ratio-4-3" alt="Blog 1" loading="lazy">
-          <h5>Design Systems: Building for Scale</h5>
-          <p class="text-muted small">How to plan and design systems that grow with your product.</p>
-          <a href="#" class="small">Read article →</a>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="flip-left" data-aos-delay="60">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <img src="https://picsum.photos/600/400?random=32" class="img-fluid rounded mb-3 img-ratio-4-3" alt="Blog 2" loading="lazy">
-          <h5>Performance Tips for React</h5>
-          <p class="text-muted small">Simple optimizations that make React apps feel faster.</p>
-          <a href="#" class="small">Read article →</a>
-        </div>
-      </div>
-      <div class="col-md-4" data-aos="flip-left" data-aos-delay="120">
-        <div class="p-3 bg-white rounded shadow-sm">
-          <img src="https://picsum.photos/600/400?random=33" class="img-fluid rounded mb-3 img-ratio-4-3" alt="Blog 3" loading="lazy">
-          <h5>Branding on a Budget</h5>
-          <p class="text-muted small">Practical tips to launch a memorable brand without large budgets.</p>
-          <a href="#" class="small">Read article →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center mt-4">
-      <a class="btn btn-outline-primary" href="#">View all posts</a>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="py-5 bg-light">
-  <div class="container container-wide">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Testimonials</h2>
-      <p class="text-muted">What clients say about working together.</p>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-4" data-aos="fade-up"><div class="testimonial-card h-100"><p>“Forhad transformed our brand identity and delivered a stunning website.”</p><div class="mt-3 small text-muted">— Sarah L., Startup Founder</div></div></div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="80"><div class="testimonial-card h-100"><p>“Creative, reliable, and highly skilled. He’s my go-to designer.”</p><div class="mt-3 small text-muted">— Mark T., Marketing Manager</div></div></div>
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="160"><div class="testimonial-card h-100"><p>“The frontend he built for us is fast, responsive, and beautiful.”</p><div class="mt-3 small text-muted">— Emily R., Tech Lead</div></div></div>
-    </div>
-
-    <div class="row mt-4">
-      <div class="col-md-6" data-aos="fade-right">
-        <div class="p-4 bg-white rounded shadow-sm">
-          <h6>Client Spotlight</h6>
-          <p class="text-muted small">Working with a small team, we launched an MVP in 6 weeks and iterated based on user feedback to reach product-market-fit.</p>
-        </div>
-      </div>
-      <div class="col-md-6" data-aos="fade-left">
-        <div class="p-4 bg-white rounded shadow-sm">
-          <h6>Long-term partnerships</h6>
-          <p class="text-muted small">Many clients continue to work with me for ongoing product improvements and design maintenance.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING / PACKAGES -->
-<style>
-  @media (min-width: 1200px) {
-    .four-col-grid > .col-xl-custom {
-      width: 25%;
-      flex: 0 0 auto;
-    }
-  }
-</style>
-
-<!-- PRICING / PACKAGES -->
-<style>
-  /* Pricing section specific styles */
-  #pricing h5.fw-semibold {
-    font-weight: 500; /* medium */
-    font-size: 1.1rem; /* package name size reduced */
-  }
-
-  #pricing .price {
-    font-weight: 600; /* semi-bold */
-    font-size: 2.5rem; /* price size increased */
-  }
-
-  /* Make cards flex containers for vertical alignment */
-  #pricing .card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  /* Push buttons to bottom inside cards */
-  #pricing .card .btn {
-    margin-top: auto;
-  }
-
-  /* Grid with 4 columns on desktop */
-  @media (min-width: 1200px) {
-    #pricing .four-col-grid > .col-xl-custom {
-      width: 25%;
-      flex: 0 0 auto;
-    }
-  }
-
-  /* Reduce card width on mobile for better looks */
-  @media (max-width: 767px) {
-    #pricing .four-col-grid > .col-xl-custom {
-      width: 90% !important;
-      margin-left: auto;
-      margin-right: auto;
-      flex: 0 0 auto;
-    }
-  }
-</style>
-
-
-<section id="pricing" class="py-5">
-  <div class="container">
-
-    <!-- Section Heading -->
-    <div class="text-center mb-5">
-      <h2 class="fw-bold">প্যাকেজ ও মূল্য তালিকা</h2>
-      <p class="text-muted">সহজ, বাজেট ফ্রেন্ডলি এবং কোনো গোপন চার্জ ছাড়াই পরিষেবা প্রদান করা হয়।</p>
-    </div>
-
-    <!-- All Packages (4 total) -->
-    <div class="row g-4 four-col-grid">
-
-      <!-- Basic Logo -->
-      <div class="col-12 col-sm-6 col-xl-custom">
-        <div class="card p-4 text-center h-100">
-          <h5 class="fw-semibold">বেসিক</h5>
-          <div class="price my-3">৳১৯৯৯</div>
-          <ul class="list-unstyled lh-lg text-start small">
-            <li><i class="fas fa-check-circle text-success me-2"></i>২টি এক্সক্লুসিভ লোগো কনসেপ্ট</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>উচ্চমানের JPG ও PNG ফাইল</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>ভেক্টর ফাইল ফরম্যাট (AI, EPS)</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>সীমিত ১টি রিভিশন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>বেসিক ব্র্যান্ড কালার গাইডলাইন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>প্রিমিয়াম ফন্ট অপশন</li>
-            <li><i class="fas fa-clock text-warning me-2"></i>দ্রুত ডেলিভারি: ৩ কার্যদিবসের মধ্যে</li>
-          </ul>
-          <a class="btn btn-outline-primary mt-3" href="#contact">
-            <i class="fas fa-paper-plane me-1"></i> অর্ডার করুন
-          </a>
-        </div>
-      </div>
-
-      <!-- Premium Logo -->
-      <div class="col-12 col-sm-6 col-xl-custom">
-        <div class="card p-4 text-center h-100 border-primary" style="transform:translateY(-8px)">
-          <h5 class="fw-semibold">প্রিমিয়াম</h5>
-          <div class="price my-3">৳৩৯৯৯</div>
-          <ul class="list-unstyled lh-lg text-start small">
-            <li><i class="fas fa-check-circle text-success me-2"></i>৩টি ইউনিক ও প্রিমিয়াম লোগো কনসেপ্ট</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>সকল ফরম্যাটে এক্সক্লুসিভ ফাইল (JPG, PNG, PDF, AI)</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>সীমিত ৩টি রিভিশন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>এক্সক্লুসিভ আইকন এবং ফন্ট কম্বিনেশন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>ব্র্যান্ডিং আইডেন্টিটি সাজেশন</li>
-            <li><i class="fas fa-clock text-warning me-2"></i>ডেলিভারি সময়: ৪ কার্যদিবসের মধ্যে</li>
-          </ul>
-          <a class="btn btn-primary mt-3" href="#contact">
-            <i class="fas fa-paper-plane me-1"></i> অর্ডার করুন
-          </a>
-        </div>
-      </div>
-
-      <!-- Starter Graphic Design -->
-      <div class="col-12 col-sm-6 col-xl-custom">
-        <div class="card p-4 text-center h-100">
-          <h5 class="fw-semibold">স্টার্টার ডিজাইন</h5>
-          <div class="price my-3">৳৪৯৯৯</div>
-          <ul class="list-unstyled lh-lg text-start small">
-            <li><i class="fas fa-check-circle text-success me-2"></i>২টি প্রফেশনাল বিজনেস কার্ড ডিজাইন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>৫টি সোশ্যাল মিডিয়া পোস্ট ডিজাইন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>১টি কাস্টম ফ্লায়ার/ব্রোশার ডিজাইন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>সীমিত ২টি রিভিশন</li>
-            <li><i class="fas fa-clock text-warning me-2"></i>ডেলিভারি সময়: ৩–৫ কার্যদিবস</li>
-          </ul>
-          <a class="btn btn-outline-primary mt-3" href="#contact">
-            <i class="fas fa-paper-plane me-1"></i> অর্ডার করুন
-          </a>
-        </div>
-      </div>
-
-      <!-- Standard Website -->
-      <div class="col-12 col-sm-6 col-xl-custom">
-        <div class="card p-4 text-center h-100 border-primary" style="transform:translateY(-8px)">
-          <h5 class="fw-semibold">স্ট্যান্ডার্ড ওয়েবসাইট</h5>
-          <div class="price my-3">৳১৪৯৯৯</div>
-          <ul class="list-unstyled lh-lg text-start small">
-            <li><i class="fas fa-check-circle text-success me-2"></i>৫ পেইজ কাস্টম রেস্পন্সিভ ওয়েবসাইট</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>সম্পূর্ণ মোবাইল ফ্রেন্ডলি ডিজাইন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>বেসিক SEO ও কনট্যাক্ট ফর্ম ইন্টিগ্রেশন</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>Frontend ডেভেলপমেন্ট</li>
-            <li><i class="fas fa-check-circle text-success me-2"></i>সীমিত ৩টি রিভিশন</li>
-            <li><i class="fas fa-clock text-warning me-2"></i>ডেলিভারি সময়: ৭–১৫ কার্যদিবস</li>
-          </ul>
-          <a class="btn btn-primary mt-3" href="#contact">
-            <i class="fas fa-paper-plane me-1"></i> অর্ডার করুন
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="bg-white">
-  <div class="container">
-    <h2 class="text-center mb-4" style="font-weight: 600;">গ্রাফিক ডিজাইন এবং ওয়েব ডেভেলপমেন্ট সংক্রান্ত প্রশ্ন ও উত্তর</h2>
-    <div class="accordion" id="faqAccordion">
-
-      <!-- FAQ 1 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            একটি লোগো ডিজাইন করতে কতদিন সময় লাগে?
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            আপনার প্যাকেজের উপর নির্ভর করে একটি লোগো ডিজাইন হতে ২ থেকে ৫ দিন সময় লাগে। ফিডব্যাক ও রিভিশনের পর ফাইনাল ডিজাইন পেতে অতিরিক্ত ১-২ দিন লাগতে পারে। জরুরী প্রয়োজনে আলাদা চার্জে এক্সপ্রেস ডেলিভারি সম্ভব।
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ 2 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            যদি ডিজাইন পছন্দ না হয় তাহলে কি হবে?
-          </button>
-        </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            আমরা সর্বদা ক্লায়েন্টের সন্তুষ্টি নিশ্চিত করতে কাজ করি। প্যাকেজ অনুযায়ী ২-৪টি কনসেপ্ট এবং ৩টি থেকে আনলিমিটেড রিভিশন দিয়ে থাকি। তবুও যদি ডিজাইন পছন্দ না হয়, আপনি অতিরিক্ত কিছু চার্জ দিয়ে নতুন কনসেপ্ট নিতে পারেন।
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ 3 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            আপনারা কি ধরনের সার্ভিস দিয়ে থাকেন?
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            আমরা গ্রাফিক ডিজাইন (লোগো, ব্র্যান্ডিং, সোশ্যাল মিডিয়া পোস্ট, ব্যানার, ফ্লায়ার) এবং ওয়েব ডেভেলপমেন্ট (স্ট্যাটিক ওয়েবসাইট, ই-কমার্স, পোর্টফোলিও, ব্লগ, ওয়েব অ্যাপ) সার্ভিস দিয়ে থাকি।
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ 4 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFour">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-            কিভাবে আপনাদের সার্ভিস নিতে পারি?
-          </button>
-        </h2>
-        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            আপনি আমাদের অফার করা প্যাকেজ থেকে যেটি আপনার জন্য উপযুক্ত তা সিলেক্ট করুন এবং মোট খরচের ৫০% অগ্রিম পরিশোধ করুন। এরপর আমরা কাজ শুরু করব এবং নির্দিষ্ট সময়ে ডেলিভারি দিবো।
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ 5 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFive">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-            একটি ওয়েবসাইট তৈরি করতে কতদিন সময় লাগে?
-          </button>
-        </h2>
-        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            ওয়েবসাইটের ধরণ ও ফিচারের উপর ভিত্তি করে সাধারণত ৫ থেকে ১৫ দিনের মধ্যে একটি ওয়েবসাইট সম্পূর্ণ করে ডেলিভারি দেয়া হয়। ই-কমার্স বা কাস্টম ফিচারসহ ওয়েবসাইটের ক্ষেত্রে সময় আরও বেশি লাগতে পারে।
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ 6 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingSix">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-            গ্রাফিক ডিজাইন সার্ভিসের চার্জ কেমন?
-          </button>
-        </h2>
-        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            আমাদের গ্রাফিক ডিজাইন সার্ভিসের চার্জ নির্ভর করে কাজের ধরন ও জটিলতার উপর। লোগো ডিজাইন, সোশ্যাল মিডিয়া পোস্ট, ব্যানার বা ব্র্যান্ড কিট – প্রতিটির জন্য আলাদা প্যাকেজ এবং মূল্য নির্ধারিত আছে। বিস্তারিত জানার জন্য যোগাযোগ করুন।
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ 7 -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingSeven">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-            কি ধরনের পেমেন্ট মেথড সাপোর্ট করেন?
-          </button>
-        </h2>
-        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
-          data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            আমরা বিকাশ, নগদ, রকেট এবং ব্যাংক ট্রান্সফার এর মাধ্যমে পেমেন্ট গ্রহণ করি।
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact" class="py-5">
-  <div class="container container-wide">
-    <div class="row g-5">
-      <div class="col-lg-6" data-aos="fade-right">
-        <h2 class="fw-bold">Get in touch</h2>
-        <p class="text-muted">Let’s collaborate on your next project. Reach out and I’ll respond quickly.</p>
-        <ul class="list-unstyled lh-lg">
-          <li><strong>Email:</strong> <a href="mailto:forhad@example.com">fh7614@gmail.com</a></li>
-          <li><strong>Phone:</strong> +880 1933-393656</li>
-          <li><strong>Location:</strong> Dhaka, Bangladesh</li>
-          <li><strong>Hours:</strong> Mon — Fri, 9am — 6pm</li>
-        </ul>
-        <div class="mt-3">
-          <a href="#" class="btn btn-outline-primary me-2"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-          <a href="#" class="btn btn-outline-secondary"><i class="fa-brands fa-square-behance"></i> Behance</a>
-        </div>
-      </div>
-      <div class="col-lg-6" data-aos="fade-left">
-        <form class="p-4 bg-white rounded shadow-sm" id="contactForm">
-          <div class="mb-3"><label class="form-label">Name</label><input type="text" class="form-control" placeholder="Your name" required></div>
-          <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="you@email.com" required></div>
-          <div class="mb-3"><label class="form-label">Project budget</label><select class="form-select" aria-label="Project budget"><option>1000–5,000 BDT</option><option>5000–15,000 BDT</option><option>15,000+ BDT</option></select></div>
-          <div class="mb-3"><label class="form-label">Message</label><textarea class="form-control" rows="5" placeholder="Tell me about your project" required></textarea></div>
-          <button type="submit" class="btn btn-primary">Send message</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<section class="py-5 bg-light">
-  <div class="container container-wide text-center">
-    <h4 class="fw-bold">Join my newsletter</h4>
-    <p class="text-muted">Design tips, case studies and occasional job availability — delivered monthly.</p>
-    <form class="row g-2 justify-content-center" id="newsletterForm">
-      <div class="col-md-6 col-lg-4"><input type="email" class="form-control" placeholder="Your email" required></div>
-      <div class="col-auto"><button class="btn btn-primary">Subscribe</button></div>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container container-wide">
-    <div class="row">
-      <div class="col-md-4">
-        <h5 class="text-white">Forhad Hossain</h5>
-        <p class="small text-white">Professional Graphic Designer & Frontend Developer. Available for freelance and part-time roles.</p>
-      </div>
-      <div class="col-md-2">
-        <h6 class="text-white">Work</h6>
-        <ul class="list-unstyled small text-white">
-          <li>Portfolio</li>
-          <li>Case Studies</li>
-          <li>Services</li>
-        </ul>
-      </div>
-      <div class="col-md-2">
-        <h6 class="text-white">Company</h6>
-        <ul class="list-unstyled small text-white">
-          <li>About</li>
-          <li>Blog</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h6 class="text-white">Contact</h6>
-        <ul class="list-unstyled small text-white">
-          <!-- <li><i class="fa-solid fa-building"></i> Headquater</li> -->
-          <li><i class="fa-solid fa-location-dot"></i> Dhaka Cantonment</li>
-          <li><i class="fa-solid fa-phone"></i> +8801933393656</li>
-          <li><i class="fa-solid fa-envelope"></i> support@forhadhossain.xyz</li>
-        </ul>
-      </div>
-    </div>
-    <div class="text-center mt-4 small text-white">© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
-  </div>
-</footer>
-
-<button class="back-to-top" id="backToTop" title="Back to top" aria-label="Back to top">↑</button>
-
-<!-- Special Offer Popup -->
-<div id="offer-popup"
-  style="font-family:'Hind Siliguri', sans-serif; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); display:none; justify-content:center; align-items:center; z-index:9999;">
-
-  <div
-    style="background:#fff; padding:25px 30px; border-radius:10px; max-width:360px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.25);">
-    <h2 style="color:#1976D2; margin:0 0 15px; font-size:22px;">বিশেষ অফার! 🎉</h2>
-    <p style="margin:0 0 20px; font-size:16px; line-height:1.5;">আপনার প্রথম অর্ডারে <b>২০% ছাড়</b> পান!</p>
-    <a href="https://wa.me/8801933393656" target="_blank"
-      style="display:inline-block; padding:12px 18px; background:#1976D2; color:#fff; text-decoration:none; border-radius:6px; font-weight:bold; font-size:15px;">
-      <i class="fa-brands fa-whatsapp"></i> WhatsApp মেসেজ করুন
-    </a>
-    <br>
-    <button onclick="document.getElementById('offer-popup').style.display='none'"
-      style="margin-top:20px; background:none; border:none; color:#1976D2; font-size:14px; cursor:pointer; text-decoration:underline;">
-      বন্ধ করুন
-    </button>
-
-  </div>
-</div>
-
-<script>
-  function shouldShowPopup() {
-    const now = Date.now();
-    const popupData = JSON.parse(localStorage.getItem('popupDisplayData')) || { count: 0, lastReset: now };
-
-    // Reset count if more than 1 hour passed
-    if (now - popupData.lastReset > 3600000) { // 1 hour = 3600000 ms
-      popupData.count = 0;
-      popupData.lastReset = now;
-    }
-
-    if (popupData.count < 2) {
-      popupData.count += 1;
-      localStorage.setItem('popupDisplayData', JSON.stringify(popupData));
-      return true;
-    }
-
-    return false;
-  }
-
-  window.onload = () => {
-    if (shouldShowPopup()) {
-      document.getElementById('offer-popup').style.display = 'flex';
-    }
-  };
-</script>
-
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const backToTop = document.getElementById('backToTop');
-  backToTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-  // Simple form handler for demo
-  document.querySelectorAll('form').forEach(form=>{
-    form.addEventListener('submit', e=>{
-      e.preventDefault();
-      alert('Thanks — this is a demo form. Replace with your own backend.')
-    })
-  })
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- AOS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-<script>
-  // Initialize AOS (Animate On Scroll)
-  AOS.init({
-    duration: 700,
-    easing: 'ease-out-cubic',
-    once: true,
-    offset: 60,
-  });
-
-  // Feather icons
-  feather.replace();
-
-  // Animate stats when visible
-  const stats = document.querySelectorAll('.stat');
-  const statObserver = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting && !entry.target.dataset.animated){
-        const el = entry.target;
-        const target = +el.getAttribute('data-target') || 0;
-        let current = 0;
-        const duration = 900;
-        const stepTime = Math.max(10, Math.floor(duration / target || 20));
-        const timer = setInterval(()=>{
-          current += 1;
-          el.textContent = current + (target > 50 ? '+' : '');
-          if(current >= target){
-            clearInterval(timer);
-            el.dataset.animated = "true";
-          }
-        }, stepTime);
+      // Close mobile drawer when clicking any mobile link
+      const mobileDrawer = document.getElementById('mobileNavDrawer');
+      if (mobileDrawer) {
+        mobileDrawer.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            const instance = bootstrap.Collapse.getInstance(mobileDrawer);
+            if (instance) instance.hide();
+          });
+        });
       }
-    });
-  }, {threshold: 0.6});
-  stats.forEach(s => statObserver.observe(s));
 
-  // Make navbar change on scroll
-  const mainNav = document.getElementById('mainNav');
-  const handleNav = () => {
-    if(window.scrollY > 20) mainNav.classList.add('sticky-scrolled');
-    else mainNav.classList.remove('sticky-scrolled');
-  };
-  handleNav();
-  window.addEventListener('scroll', handleNav, {passive:true});
+      // Portfolio category filtering
+      const filterBtns = document.querySelectorAll('.filter-tab-btn');
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-  // Enable keyboard access for back-to-top
-  backToTop.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      window.scrollTo({top:0,behavior:'smooth'});
-    }
-  });
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          filterBtns.forEach(b => b.classList.remove('is-active'));
+          btn.classList.add('is-active');
 
-  // Smooth anchor links (native scroll-behavior covers most, but ensure offset for sticky nav)
-  document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-    anchor.addEventListener('click', function(e){
-      const targetId = this.getAttribute('href').slice(1);
-      if(!targetId) return;
-      const targetEl = document.getElementById(targetId);
-      if(!targetEl) return; // keep default if no element
-      e.preventDefault();
-      const navHeight = mainNav.offsetHeight || 72;
-      const rect = targetEl.getBoundingClientRect();
-      const offsetTop = window.scrollY + rect.top - navHeight - 12;
-      window.scrollTo({top: offsetTop, behavior: 'smooth'});
-      // close mobile nav if open
-      const bsCollapse = document.querySelector('#navMenu.collapse.show');
-      if(bsCollapse){
-        const collapseInstance = bootstrap.Collapse.getInstance(bsCollapse);
-        if(collapseInstance) collapseInstance.hide();
-      }
-    });
-  });
-
-  // Lazy loading improvement: set loading="lazy" already in images, add IntersectionObserver to prefetch images for next section
-  const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
-  if('IntersectionObserver' in window){
-    const imgObserver = new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          const img = entry.target;
-          // add subtle fade-in when image loaded
-          img.onload = () => img.style.opacity = 1;
-          img.style.opacity = 0;
-          // no src swap needed because images already have src (picsum/etc), so we just mark observed
-          imgObserver.unobserve(img);
-        }
+          portfolioItems.forEach(item => {
+            const cats = (item.getAttribute('data-category') || '').split(' ');
+            const match = filter === 'all' || cats.includes(filter);
+            item.classList.toggle('d-none', !match);
+          });
+        });
       });
-    }, {rootMargin: '200px 0px'});
-    lazyImgs.forEach(i=> imgObserver.observe(i));
-  }
 
-  // small accessibility: focus visible on keyboard nav
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Tab') document.body.classList.add('user-is-tabbing');
-  });
+      // Portfolio Project Lightbox Data
+      const PROJECTS = {
+        pharma: {
+          title: 'Pharma WordPress Design',
+          meta: 'Web Design · WordPress · Healthcare',
+          img: './assets/20250920_203553_0000.png',
+          desc: 'Designed and developed a custom WordPress experience for a pharmaceutical brand. Structured clear product specification pages, medical news editorial templates, and fast mobile navigation.',
+          role: 'UI Design & WordPress Build',
+          deliverables: 'Custom Theme, Product Catalog, Blog',
+          tools: 'WordPress, Figma, HTML/CSS'
+        },
+        retouching: {
+          title: 'Retouching Website',
+          meta: 'Web Design · Gallery UI · Studio',
+          img: './assets/20250920_203554_0001.png',
+          desc: 'Created a high-clarity studio portfolio for commercial photo retouching services. Focused on distraction-free before/after visual framing and direct quote requests.',
+          role: 'Web Design & Frontend',
+          deliverables: 'Portfolio Layout, Client Gallery, Quote Form',
+          tools: 'HTML5, CSS3, Bootstrap, JS'
+        },
+        travel: {
+          title: 'Travel Website',
+          meta: 'UI/UX · Booking Flow · Travel',
+          img: './assets/20250920_203554_0002.png',
+          desc: 'Crafted an interactive travel discovery and booking interface featuring multi-day itinerary planning, visual destination cards, and streamlined reservation steps.',
+          role: 'UI/UX & Frontend Prototyping',
+          deliverables: 'Landing Page, Itinerary Builder UI',
+          tools: 'Figma, JavaScript, Responsive CSS'
+        },
+        nonprofit: {
+          title: 'Non Profit Website',
+          meta: 'Branding · Web Design · Non-Profit',
+          img: './assets/20250920_203554_0003.png',
+          desc: 'Built a trust-first non-profit website highlighting community impact metrics, volunteer registration flows, and transparent donation tiers.',
+          role: 'Brand Refresh & Web Design',
+          deliverables: 'Donation Flow, Volunteer Portal, Impact Pages',
+          tools: 'WordPress, Figma, Accessibility Audit'
+        },
+        naat: {
+          title: 'Naat Web App',
+          meta: 'Web App · Frontend · Audio UI',
+          img: './assets/20250920_203554_0004.png',
+          desc: 'Designed and implemented a responsive audio streaming web application with instant search filtering, curated playlists, and persistent playback controls.',
+          role: 'Product UI & Frontend Engineering',
+          deliverables: 'Audio Player UI, Playlist Views, Search',
+          tools: 'React, JavaScript, CSS Grid'
+        },
+        clubmaster: {
+          title: 'Club Master App',
+          meta: 'UI/UX & Apps · Dashboard · SaaS',
+          img: './assets/20250920_203554_0006.png',
+          desc: 'Designed an intuitive event and member management web interface helping club administrators track attendance, renewals, and upcoming schedules effortlessly.',
+          role: 'UI/UX Systems & Frontend',
+          deliverables: 'Admin Dashboard, Member Directory, Event Views',
+          tools: 'Figma, React, Bootstrap'
+        }
+      };
 
-  // optionally: preconnect to Google fonts (already added), prefetch images for hero for speed
-  const linkPrefetch = document.createElement('link');
-  linkPrefetch.rel = 'preload';
-  linkPrefetch.as = 'image';
-  linkPrefetch.href = 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1000&q=60';
-  document.head.appendChild(linkPrefetch);
+      const projectModalEl = document.getElementById('projectModal');
+      const projectModal = projectModalEl ? new bootstrap.Modal(projectModalEl) : null;
+      let activeProjectTitle = '';
 
-  // Small: support reduced motion by disabling AOS if preference set
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    AOS.init({disable: true});
-  }
-</script>
+      const openProject = (id) => {
+        const data = PROJECTS[id];
+        if (!data || !projectModal) return;
+        activeProjectTitle = data.title;
+        document.getElementById('projectModalTitle').textContent = data.title;
+        document.getElementById('projectModalMeta').textContent = data.meta;
+        const imgEl = document.getElementById('projectModalImg');
+        imgEl.src = data.img;
+        imgEl.alt = data.title;
+        document.getElementById('projectModalDesc').textContent = data.desc;
+        document.getElementById('projectModalRole').textContent = data.role;
+        document.getElementById('projectModalDeliverables').textContent = data.deliverables;
+        document.getElementById('projectModalTools').textContent = data.tools;
+        projectModal.show();
+      };
 
+      document.querySelectorAll('.portfolio-card').forEach(card => {
+        const id = card.getAttribute('data-project-id');
+        card.addEventListener('click', () => openProject(id));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openProject(id);
+          }
+        });
+      });
+
+      const projectSimilarBtn = document.getElementById('projectSimilarBtn');
+      if (projectSimilarBtn && projectModal) {
+        projectSimilarBtn.addEventListener('click', () => {
+          projectModal.hide();
+          prefillContact('Web Design', '', `Interested in a project similar to "${activeProjectTitle}".`);
+        });
+      }
+
+      // Case Studies & Blog Reader Modal
+      const READER_CONTENT = {
+        coffee: {
+          title: 'Branding for Coffee Co.',
+          meta: 'Case Study · Brand Identity & Web · 4 Weeks',
+          img: '/src/assets/images/casestudy_coffee_branding_1795380986021.jpg',
+          html: `
+            <h4 class="h6 fw-bold text-dark">The Challenge</h4>
+            <p>A specialty roaster needed an unmistakable shelf presence and digital storefront without costly multi-plate printing runs.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Approach &amp; Execution</h4>
+            <p>We developed a modular monogram and two-color label architecture paired with standard kraft pouches, reducing unit packaging cost while elevating perceived craft. On the web, we built a clean editorial landing page showcasing roast origins and subscription options.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Deliverables</h4>
+            <ul class="mb-0">
+              <li>Competitive positioning &amp; typography study</li>
+              <li>Primary monogram, wordmark, and packaging dielines</li>
+              <li>Responsive HTML/CSS flagship landing page</li>
+            </ul>
+          `
+        },
+        analytics: {
+          title: 'Enterprise Analytics Dashboard',
+          meta: 'Case Study · Product UI & React · 6 Weeks',
+          img: '/src/assets/images/casestudy_analytics_dashboard_1795380985931.jpg',
+          html: `
+            <h4 class="h6 fw-bold text-dark">The Challenge</h4>
+            <p>Product teams struggled to scan dense retention cohorts and daily revenue shifts inside a legacy spreadsheet-style interface.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Approach &amp; Execution</h4>
+            <p>Established a strict typographic hierarchy with tabular numerals, neutral surfaces, and focused cobalt data highlights. Built reusable filterable tables and responsive chart containers tuned in React for fast state transitions.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Highlights</h4>
+            <ul class="mb-0">
+              <li>Unified design tokens across charts, KPIs, and data grids</li>
+              <li>Sub-200ms interactive filter transitions</li>
+              <li>Accessible keyboard navigation across table rows</li>
+            </ul>
+          `
+        },
+        ecommerce: {
+          title: 'E-commerce Re-design',
+          meta: 'Case Study · E-commerce UX · +18% Conversion',
+          img: '/src/assets/images/casestudy_ecommerce_redesign_1795380986069.jpg',
+          html: `
+            <h4 class="h6 fw-bold text-dark">The Challenge</h4>
+            <p>Mobile shoppers were abandoning carts during a multi-page checkout burdened by slow image assets and unclear form hierarchy.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Approach &amp; Execution</h4>
+            <p>Consolidated checkout into clear progressive steps, improved product gallery contrast, and deferred offscreen assets to trim page weight.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Measured Outcomes</h4>
+            <ul class="mb-0">
+              <li><strong>+18%</strong> increase in completed checkout conversion rate</li>
+              <li><strong>-30%</strong> reduction in average page load time</li>
+              <li>Full WCAG AA contrast compliance across product cards and CTAs</li>
+            </ul>
+          `
+        },
+        systems: {
+          title: 'Design Systems: Building for Scale',
+          meta: 'Journal · Design Systems · 5 min read',
+          img: '/src/assets/images/blog_design_systems_1795380985675.jpg',
+          html: `
+            <p>A design system works best when it solves real friction between designers and frontend engineers—not when it becomes an oversized rulebook nobody reads.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">1. Start with Tokens, Not 80 Components</h4>
+            <p>Lock down your spacing scale, neutral surface hierarchy, single focal accent, and 2-font typographic pairing first. When tokens are consistent, individual components naturally look cohesive.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">2. Match Figma Names to Code</h4>
+            <p>Using identical naming for button variants, radius scales, and semantic colors eliminates guesswork during handoff and keeps future maintenance effortless.</p>
+          `
+        },
+        'react-perf': {
+          title: 'Performance Tips for React',
+          meta: 'Journal · Frontend · 4 min read',
+          img: '/src/assets/images/blog_frontend_performance_1795380985704.jpg',
+          html: `
+            <p>Perceived speed often matters just as much as raw Lighthouse scores. Small architectural habits make React interfaces feel crisp on everyday mobile devices.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Keep State Local</h4>
+            <p>Avoid lifting rapidly changing input or hover state to top-level app providers. Isolating state inside small leaf components prevents unnecessary subtree re-renders.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">Animate Compositor Properties Only</h4>
+            <p>Stick to <code>transform</code> and <code>opacity</code> for hover lifts and drawer transitions so the browser stays on the GPU without triggering layout recalculations.</p>
+          `
+        },
+        'budget-brand': {
+          title: 'Branding on a Budget',
+          meta: 'Journal · Branding · 4 min read',
+          img: '/src/assets/images/blog_brand_identity_1795380987264.jpg',
+          html: `
+            <p>Early-stage businesses do not need a 90-page brand book to look credible. Focus your budget on the three touchpoints customers actually see every day.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">1. A Clean, Legible Wordmark</h4>
+            <p>Ensure your logo scales effortlessly from a tiny favicon to a social profile avatar or printed business card.</p>
+            <h4 class="h6 fw-bold text-dark mt-3">2. Two Fonts + One Signature Accent</h4>
+            <p>Restraint creates authority. Pairing one expressive heading font with a legible body font and a disciplined color palette instantly sets a small brand apart.</p>
+          `
+        }
+      };
+
+      const readerModalEl = document.getElementById('readerModal');
+      const readerModal = readerModalEl ? new bootstrap.Modal(readerModalEl) : null;
+
+      const openReader = (id) => {
+        const entry = READER_CONTENT[id];
+        if (!entry || !readerModal) return;
+        document.getElementById('readerModalTitle').textContent = entry.title;
+        document.getElementById('readerModalMeta').textContent = entry.meta;
+        const img = document.getElementById('readerModalImg');
+        img.src = entry.img;
+        img.alt = entry.title;
+        document.getElementById('readerModalBody').innerHTML = entry.html;
+        readerModal.show();
+      };
+
+      document.querySelectorAll('[data-case-id]').forEach(btn => {
+        btn.addEventListener('click', () => openReader(btn.getAttribute('data-case-id')));
+      });
+
+      document.querySelectorAll('[data-article-id]').forEach(btn => {
+        btn.addEventListener('click', () => openReader(btn.getAttribute('data-article-id')));
+      });
+
+      const readerContactBtn = document.getElementById('readerContactBtn');
+      if (readerContactBtn && readerModal) {
+        readerContactBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          readerModal.hide();
+          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Service & Package Pre-fill to Contact Form
+      const contactSection = document.getElementById('contact');
+      const contactService = document.getElementById('contactService');
+      const contactBudget = document.getElementById('contactBudget');
+      const contactMessage = document.getElementById('contactMessage');
+      const selectedPlanNotice = document.getElementById('selectedPlanNotice');
+      const selectedPlanText = document.getElementById('selectedPlanText');
+      const clearSelectedPlan = document.getElementById('clearSelectedPlan');
+
+      function prefillContact(serviceVal, budgetVal, noteText) {
+        if (contactService && serviceVal) {
+          contactService.value = serviceVal;
+        }
+        if (contactBudget && budgetVal) {
+          contactBudget.value = budgetVal;
+        }
+        if (contactMessage && noteText && !contactMessage.value.trim()) {
+          contactMessage.value = noteText;
+        }
+        if (selectedPlanNotice && selectedPlanText && serviceVal) {
+          selectedPlanText.textContent = `Selected: ${serviceVal}`;
+          selectedPlanNotice.classList.remove('d-none');
+          selectedPlanNotice.classList.add('d-flex');
+        }
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      if (clearSelectedPlan && selectedPlanNotice) {
+        clearSelectedPlan.addEventListener('click', () => {
+          selectedPlanNotice.classList.add('d-none');
+          selectedPlanNotice.classList.remove('d-flex');
+        });
+      }
+
+      document.querySelectorAll('[data-select-service]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const svc = btn.getAttribute('data-select-service');
+          prefillContact(svc, '', `Hello Forhad, I would like to discuss a ${svc} project.`);
+        });
+      });
+
+      document.querySelectorAll('[data-order-package]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const pkg = btn.getAttribute('data-order-package');
+          const budget = btn.getAttribute('data-order-budget');
+          prefillContact(pkg, budget, `আমি "${pkg}" অর্ডার করতে আগ্রহী।`);
+        });
+      });
+
+      // Contact Form Handling (Zero window.alert, real validation & WhatsApp/Email handoff)
+      const contactForm = document.getElementById('contactForm');
+      const contactConfirmation = document.getElementById('contactConfirmation');
+      const contactConfirmationSummary = document.getElementById('contactConfirmationSummary');
+      const whatsappPrefillLink = document.getElementById('whatsappPrefillLink');
+      const mailtoPrefillLink = document.getElementById('mailtoPrefillLink');
+      const resetContactFormBtn = document.getElementById('resetContactFormBtn');
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!contactForm.checkValidity()) {
+            contactForm.classList.add('was-validated');
+            return;
+          }
+
+          const name = document.getElementById('contactName').value.trim();
+          const email = document.getElementById('contactEmail').value.trim();
+          const service = contactService.value;
+          const budget = contactBudget.value;
+          const msg = contactMessage.value.trim();
+
+          const fullText = `Hello Forhad,\nName: ${name}\nEmail: ${email}\nService: ${service}\nBudget: ${budget}\nDetails: ${msg}`;
+          if (whatsappPrefillLink) {
+            whatsappPrefillLink.href = `https://wa.me/8801933393656?text=${encodeURIComponent(fullText)}`;
+          }
+          if (mailtoPrefillLink) {
+            mailtoPrefillLink.href = `mailto:fh7614@gmail.com?subject=${encodeURIComponent(`Project Inquiry: ${service}`)}&body=${encodeURIComponent(fullText)}`;
+          }
+          if (contactConfirmationSummary) {
+            contactConfirmationSummary.textContent = `Thanks, ${name}. Your inquiry for "${service}" (${budget}) is prepared—choose WhatsApp or Email below to send it directly.`;
+          }
+
+          contactForm.classList.add('d-none');
+          contactConfirmation.classList.remove('d-none');
+        });
+      }
+
+      if (resetContactFormBtn) {
+        resetContactFormBtn.addEventListener('click', () => {
+          contactConfirmation.classList.add('d-none');
+          contactForm.classList.remove('d-none');
+        });
+      }
+
+      // Newsletter Form Handling
+      const newsletterForm = document.getElementById('newsletterForm');
+      const newsletterEmail = document.getElementById('newsletterEmail');
+      const newsletterFeedback = document.getElementById('newsletterFeedback');
+
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const val = newsletterEmail.value.trim();
+          if (!val || !newsletterEmail.checkValidity()) {
+            newsletterFeedback.className = 'small mt-2 text-danger';
+            newsletterFeedback.textContent = 'Please enter a valid email address.';
+            newsletterFeedback.classList.remove('d-none');
+            return;
+          }
+          newsletterFeedback.className = 'small mt-2 text-success fw-semibold';
+          newsletterFeedback.textContent = `Subscribed ${val} — thank you for joining.`;
+          newsletterFeedback.classList.remove('d-none');
+          newsletterForm.reset();
+        });
+      }
+
+      // Print CV button
+      const printCvBtn = document.getElementById('printCvBtn');
+      if (printCvBtn) {
+        printCvBtn.addEventListener('click', () => window.print());
+      }
+    })();
+  </script>
 </body>
 </html>
