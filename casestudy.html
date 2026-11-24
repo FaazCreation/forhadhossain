@@ -25,6 +25,9 @@
       --border-strong: rgba(255, 255, 255, 0.18);
       --accent: #0084ff;
       --accent-hover: #1a90ff;
+      --promo-start: #f8a26f;
+      --promo-mid: #ffd4b8;
+      --promo-end: #f8a26f;
       --radius-sm: 10px;
       --radius-lg: 18px;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -67,13 +70,74 @@
       font-weight: 400 !important;
     }
 
+    /* Top Warm Announcement Strip (Single-line 3-banner 1-by-1 slider) */
+    .promo-strip {
+      position: relative;
+      height: 36px;
+      overflow: hidden;
+      background: linear-gradient(90deg, var(--promo-start) 0%, var(--promo-mid) 50%, var(--promo-end) 100%);
+      color: #09090b;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    .promo-slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0 0.75rem;
+      color: #09090b;
+      font-size: clamp(0.72rem, 2.5vw, 0.82rem);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate3d(0, 75%, 0);
+      transition: transform 240ms var(--ease-out), opacity 180ms ease, filter 160ms var(--ease-out);
+    }
+
+    .promo-slide-text {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .promo-slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate3d(0, 0, 0);
+      transition: transform 380ms var(--ease-out) 160ms, opacity 280ms ease 160ms, filter 160ms var(--ease-out);
+    }
+
+    .promo-slide.is-exiting {
+      opacity: 0;
+      pointer-events: none;
+      transform: translate3d(0, -85%, 0);
+      transition: transform 240ms var(--ease-out) 0ms, opacity 170ms ease 0ms;
+    }
+
+    .promo-slide:hover {
+      color: #020307;
+      filter: brightness(1.04);
+    }
+
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1020;
-      background: rgba(2, 3, 7, 0.88);
+      background: rgba(2, 3, 7, 0.86);
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-hairline);
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out);
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(2, 3, 7, 0.96);
+      border-bottom-color: rgba(255, 255, 255, 0.12);
     }
 
     .navbar-inner {
@@ -82,6 +146,8 @@
       justify-content: space-between;
       gap: 2rem;
       min-height: 62px;
+      padding-top: 0.55rem;
+      padding-bottom: 0.55rem;
     }
 
     .brand-wordmark {
@@ -121,15 +187,196 @@
     }
 
     .nav-link-clean {
+      position: relative;
       font-size: 0.9375rem;
       font-weight: 400;
       color: var(--ink-muted);
       text-decoration: none;
       white-space: nowrap;
       flex-shrink: 0;
+      padding: 0.35rem 0;
+      transition: color 160ms var(--ease-out);
     }
 
-    .nav-link-clean:hover { color: var(--ink-primary); }
+    .nav-link-clean::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms var(--ease-out);
+    }
+
+    .nav-link-clean:hover,
+    .nav-link-clean:focus-visible {
+      color: var(--ink-primary);
+    }
+
+    .nav-link-clean:hover::after,
+    .nav-link-clean:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    /* Mobile Menu Toggle & Slide-In Drawer */
+    .mobile-menu-toggle {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0.55rem 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      color: var(--ink-primary);
+      cursor: pointer;
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 140ms var(--ease-out);
+    }
+
+    .mobile-menu-toggle:hover,
+    .mobile-menu-toggle:focus-visible {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: var(--accent);
+    }
+
+    .mobile-menu-toggle:active {
+      transform: scale(0.96);
+    }
+
+    .hamburger-lines {
+      width: 20px;
+      height: 14px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hamburger-lines span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: currentColor;
+      border-radius: 2px;
+      transition: transform 260ms var(--ease-out), opacity 180ms ease;
+    }
+
+    .hamburger-lines span:nth-child(1) { top: 0; }
+    .hamburger-lines span:nth-child(2) { top: 6px; }
+    .hamburger-lines span:nth-child(3) { top: 12px; }
+
+    .mobile-menu-toggle.is-open .hamburger-lines span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    .mobile-menu-toggle.is-open .hamburger-lines span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-6px);
+    }
+    .mobile-menu-toggle.is-open .hamburger-lines span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .mobile-nav-drawer {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 1015;
+      background: rgba(5, 8, 20, 0.97);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-strong);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.65);
+      max-height: calc(100dvh - 64px);
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate3d(-16px, -8px, 0);
+      transition: transform 300ms var(--ease-out), opacity 240ms var(--ease-out), visibility 0s linear 300ms;
+    }
+
+    .mobile-nav-drawer.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate3d(0, 0, 0);
+      transition: transform 320ms var(--ease-out), opacity 240ms var(--ease-out), visibility 0s;
+    }
+
+    .mobile-nav-list {
+      list-style: none;
+      margin: 0 0 1rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .mobile-nav-list li {
+      opacity: 0;
+      transform: translate3d(-14px, 0, 0);
+      transition: transform 320ms var(--ease-out), opacity 260ms var(--ease-out);
+      transition-delay: 0ms;
+    }
+
+    .mobile-nav-drawer.is-open .mobile-nav-list li {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .mobile-nav-drawer.is-open .mobile-nav-list li:nth-child(1) { transition-delay: 50ms; }
+    .mobile-nav-drawer.is-open .mobile-nav-list li:nth-child(2) { transition-delay: 90ms; }
+    .mobile-nav-drawer.is-open .mobile-nav-list li:nth-child(3) { transition-delay: 130ms; }
+    .mobile-nav-drawer.is-open .mobile-nav-list li:nth-child(4) { transition-delay: 170ms; }
+    .mobile-nav-drawer.is-open .mobile-nav-list li:nth-child(5) { transition-delay: 210ms; }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      min-height: 52px;
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-size: 1.025rem;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out);
+    }
+
+    .mobile-nav-link i {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      transition: transform 180ms var(--ease-out), color 180ms var(--ease-out);
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link:focus-visible,
+    .mobile-nav-link:active,
+    .mobile-nav-link.is-active {
+      background: rgba(0, 132, 255, 0.14);
+      border-color: rgba(0, 132, 255, 0.42);
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .mobile-nav-link:hover i,
+    .mobile-nav-link:focus-visible i,
+    .mobile-nav-link.is-active i {
+      color: #60a5fa;
+      transform: translateX(3px);
+    }
+
+    .mobile-drawer-cta {
+      min-height: 50px;
+      font-size: 1rem;
+    }
 
     .btn-azure {
       display: inline-flex;
@@ -138,7 +385,7 @@
       gap: 0.5rem;
       background-color: var(--accent);
       color: #ffffff;
-      font-weight: 600;
+      font-weight: 400;
       font-size: 0.9375rem;
       padding: 0.65rem 1.35rem;
       border-radius: var(--radius-sm);
@@ -148,13 +395,14 @@
       flex-shrink: 0;
       cursor: pointer;
       min-height: 42px;
-      transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+      transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
     }
 
     .btn-azure:hover {
       background-color: var(--accent-hover);
       color: #ffffff;
       transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0, 132, 255, 0.25);
     }
 
     .btn-dark-outline {
@@ -164,7 +412,7 @@
       gap: 0.5rem;
       background-color: rgba(255, 255, 255, 0.04);
       color: var(--ink-primary);
-      font-weight: 600;
+      font-weight: 400;
       font-size: 0.9375rem;
       padding: 0.65rem 1.35rem;
       border-radius: var(--radius-sm);
@@ -174,12 +422,61 @@
       flex-shrink: 0;
       cursor: pointer;
       min-height: 42px;
+      transition: background-color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 160ms var(--ease-out);
     }
 
     .btn-dark-outline:hover {
       background-color: rgba(255, 255, 255, 0.09);
       border-color: var(--accent);
       color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-azure:active,
+    .btn-dark-outline:active {
+      transform: scale(0.985);
+    }
+
+    /* Page Hero Text Animations */
+    .page-kicker-anim {
+      animation: pageTextRise 520ms var(--ease-out) 40ms both;
+    }
+
+    .page-headline-gradient {
+      background: linear-gradient(90deg, #3b71eb 0%, #6f9df7 28%, #dce7ff 48%, #ffffff 64%, #ffffff 100%);
+      background-size: 165% 100%;
+      background-position: 0% 50%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      animation:
+        pageTextRise 600ms var(--ease-out) 110ms both,
+        headlineGlowShift 8s ease-in-out 900ms infinite alternate;
+    }
+
+    .page-lead-anim {
+      animation: pageTextRise 580ms var(--ease-out) 180ms both;
+    }
+
+    .page-cta-anim {
+      animation: pageTextRise 580ms var(--ease-out) 230ms both;
+    }
+
+    @keyframes pageTextRise {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes headlineGlowShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 38% 50%; }
     }
 
     .case-row {
@@ -188,12 +485,20 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       margin-bottom: 2rem;
+      transition: transform 240ms var(--ease-out), border-color 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+    }
+
+    .case-row:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0, 132, 255, 0.35);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.38);
     }
 
     .case-media-pane {
       height: 100%;
       min-height: 280px;
       background: #10182b;
+      overflow: hidden;
     }
 
     .case-media-pane img {
@@ -201,6 +506,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 420ms var(--ease-out);
+    }
+
+    .case-row:hover .case-media-pane img {
+      transform: scale(1.035);
     }
 
     .case-content-pane {
@@ -209,6 +519,12 @@
       flex-direction: column;
       justify-content: center;
       height: 100%;
+    }
+
+    @media (max-width: 767.98px) {
+      .case-content-pane {
+        padding: 1.5rem;
+      }
     }
 
     .meta-line {
@@ -225,11 +541,48 @@
       background-color: #030409;
       color: var(--ink-muted);
       border-top: 1px solid var(--border-hairline);
-      padding: 3rem 0 2rem;
+      padding: 4rem 0 2.5rem;
     }
 
-    .site-footer a { color: var(--ink-muted); text-decoration: none; }
+    .site-footer h4,
+    .site-footer h5,
+    .site-footer h6 {
+      color: #f8fafc;
+      letter-spacing: 0.01em;
+    }
+
+    .site-footer a { color: var(--ink-muted); text-decoration: none; transition: color 150ms ease; }
     .site-footer a:hover { color: #ffffff; text-decoration: underline; }
+
+    .footer-social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-hairline);
+      color: var(--ink-secondary) !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none !important;
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out);
+    }
+
+    .footer-social-btn:hover {
+      background: rgba(0, 132, 255, 0.14);
+      border-color: rgba(0, 132, 255, 0.45);
+      color: #ffffff !important;
+      transform: translateY(-2px);
+      text-decoration: none !important;
+    }
+
+    .footer-cta-bar {
+      background: var(--surface-card);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 1.35rem 1.6rem;
+      margin-bottom: 3rem;
+    }
 
     .modal-content {
       background-color: var(--surface-card);
@@ -242,11 +595,61 @@
     .modal-footer {
       border-color: var(--border-hairline) !important;
     }
+
+    /* Scroll Reveal System */
+    [data-reveal] {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+      transition:
+        opacity 640ms var(--ease-out) var(--reveal-delay, 0ms),
+        transform 680ms var(--ease-out) var(--reveal-delay, 0ms);
+      will-change: opacity, transform;
+    }
+
+    [data-reveal="scale"] {
+      transform: translate3d(0, 24px, 0) scale(0.975);
+      transition:
+        opacity 660ms var(--ease-out) var(--reveal-delay, 0ms),
+        transform 700ms var(--ease-out) var(--reveal-delay, 0ms);
+    }
+
+    [data-reveal].is-revealed {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+      }
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <header class="site-header">
+  <!-- Top Warm Promo Strip (Single-line 3-Banner Slider) -->
+  <div class="promo-strip" id="promoSlider" role="region" aria-label="Featured announcements">
+    <a href="index.html#pricing" class="promo-slide is-active">
+      <span class="promo-slide-text">20% Off First Design Package — View Plans</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </a>
+    <a href="index.html#contact" class="promo-slide">
+      <span class="promo-slide-text">Fast 7–15 Day Web Delivery — Book Now</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </a>
+    <a href="index.html#contact" class="promo-slide">
+      <span class="promo-slide-text">Free 15-Min Project Call — Let’s Talk</span>
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <header class="site-header" id="mainNav">
     <div class="container container-wide">
       <div class="navbar-inner">
         <a class="brand-wordmark" href="index.html">
@@ -258,13 +661,42 @@
           <ul class="nav-links-desktop">
             <li><a class="nav-link-clean" href="index.html#about">About</a></li>
             <li><a class="nav-link-clean" href="index.html#portfolio">Portfolio</a></li>
-            <li><a class="nav-link-clean text-white fw-semibold" href="casestudy.html">Case Studies</a></li>
+            <li><a class="nav-link-clean text-white" href="casestudy.html">Case Studies</a></li>
             <li><a class="nav-link-clean" href="index.html#pricing">Pricing</a></li>
             <li><a class="nav-link-clean" href="index.html#contact">Contact</a></li>
           </ul>
         </nav>
 
-        <a class="btn-azure" href="index.html#contact">Start a Project</a>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn-azure d-none d-sm-inline-flex" href="index.html#contact">Start a Project</a>
+          <button
+            class="mobile-menu-toggle d-lg-none"
+            id="mobileMenuToggle"
+            type="button"
+            aria-controls="mobileNavDrawer"
+            aria-expanded="false"
+            aria-label="Toggle navigation menu">
+            <span class="hamburger-lines" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer d-lg-none" id="mobileNavDrawer" aria-hidden="true">
+      <div class="container container-wide py-3">
+        <nav aria-label="Mobile navigation">
+          <ul class="mobile-nav-list">
+            <li><a class="mobile-nav-link" href="index.html#about"><span>About</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="index.html#portfolio"><span>Portfolio</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link is-active" href="casestudy.html"><span>Case Studies</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="index.html#pricing"><span>Pricing</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="index.html#contact"><span>Contact</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+          </ul>
+          <a class="btn-azure w-100 d-sm-none mobile-drawer-cta" href="index.html#contact">Start a Project</a>
+        </nav>
       </div>
     </div>
   </header>
@@ -273,11 +705,11 @@
     <div class="container container-wide">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
         <div>
-          <p class="small fw-semibold mb-2" style="color: #60a5fa;">Case Studies</p>
-          <h1 class="display-6 fw-bold mb-2" style="letter-spacing: -0.03em;">In-depth project walkthroughs</h1>
-          <p class="text-muted-dark mb-0">Selected branding, product UI, and conversion-focused frontend engagements.</p>
+          <p class="small fw-semibold mb-2 page-kicker-anim" style="color: #60a5fa;">Case Studies</p>
+          <h1 class="display-6 fw-bold mb-2 page-headline-gradient" style="letter-spacing: -0.02em;">In-depth project walkthroughs</h1>
+          <p class="text-muted-dark mb-0 page-lead-anim">Selected branding, product UI, and conversion-focused frontend engagements.</p>
         </div>
-        <a href="index.html" class="btn-dark-outline">
+        <a href="index.html" class="btn-dark-outline page-cta-anim">
           <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
           <span>Back to Portfolio</span>
         </a>
@@ -374,12 +806,77 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container container-wide d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 small">
-      <div>© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
-      <div class="d-flex gap-4">
-        <a href="index.html">Home</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="index.html#contact">Contact</a>
+    <div class="container container-wide">
+      <div class="footer-cta-bar d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div>
+          <div class="small mb-1" style="color: #60a5fa;">Open for Q4 Projects</div>
+          <h4 class="h5 mb-0">Ready to elevate your brand or launch a fast website?</h4>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="index.html#contact" class="btn-azure">Start a Project</a>
+          <a href="index.html#portfolio" class="btn-dark-outline">Back to Portfolio</a>
+        </div>
+      </div>
+
+      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+        <div class="col-lg-4">
+          <a class="brand-wordmark mb-3 d-inline-flex" href="index.html">
+            <span class="brand-glyph" aria-hidden="true">FH</span>
+            <span>Forhad Hossain</span>
+          </a>
+          <p class="small mb-3" style="max-width: 34ch;">
+            Graphic Designer &amp; Frontend Developer crafting brand systems, UI/UX flows, and fast responsive websites from Dhaka.
+          </p>
+          <div class="d-flex align-items-center gap-2">
+            <a href="https://wa.me/8801933393656" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            </a>
+            <a href="mailto:fh7614@gmail.com" class="footer-social-btn" aria-label="Email Forhad Hossain">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+            </a>
+            <a href="https://github.com/FaazCreation" target="_blank" rel="noopener" class="footer-social-btn" aria-label="GitHub profile">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="index.html#portfolio" class="footer-social-btn" aria-label="Portfolio showcase">
+              <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="small mb-3">Work</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="index.html#portfolio">Portfolio</a></li>
+            <li><a href="casestudy.html">Case Studies</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#client-trust">Client Trust</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-3 col-lg-2">
+          <h6 class="small mb-3">Explore</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#testimonials">Testimonials</a></li>
+            <li><a href="index.html#blog">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <h6 class="small mb-3">Contact &amp; Studio</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li>Dhaka, Bangladesh</li>
+            <li class="tabular-nums"><a href="https://wa.me/8801933393656" target="_blank" rel="noopener">+880 1933-393656</a></li>
+            <li><a href="mailto:fh7614@gmail.com">fh7614@gmail.com</a></li>
+            <li><a href="mailto:support@forhadhossain.xyz">support@forhadhossain.xyz</a></li>
+            <li class="text-muted-dark">Mon – Fri, 9:00 AM – 6:00 PM (BST)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-4 small">
+        <div>© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
+        <div>Graphic Design · UI/UX Systems · Frontend Development</div>
       </div>
     </div>
   </footer>
@@ -410,6 +907,152 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const mainNav = document.getElementById('mainNav');
+    const updateScrollNav = () => {
+      if (mainNav) mainNav.classList.toggle('is-scrolled', window.scrollY > 24);
+    };
+    updateScrollNav();
+    window.addEventListener('scroll', updateScrollNav, { passive: true });
+
+    const mobileDrawer = document.getElementById('mobileNavDrawer');
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+
+    const setMobileMenuOpen = (open) => {
+      if (!mobileDrawer || !mobileToggle) return;
+      mobileDrawer.classList.toggle('is-open', open);
+      mobileDrawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+      mobileToggle.classList.toggle('is-open', open);
+      mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    if (mobileToggle && mobileDrawer) {
+      mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        setMobileMenuOpen(!mobileDrawer.classList.contains('is-open'));
+      });
+
+      mobileDrawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => setMobileMenuOpen(false));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (mobileDrawer.classList.contains('is-open') && mainNav && !mainNav.contains(e.target)) {
+          setMobileMenuOpen(false);
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileDrawer.classList.contains('is-open')) {
+          setMobileMenuOpen(false);
+          mobileToggle.focus();
+        }
+      });
+    }
+
+    // Scroll reveal for case cards & rotating single-line promo banner
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const promoSlider = document.getElementById('promoSlider');
+    if (promoSlider) {
+      const promoSlides = Array.from(promoSlider.querySelectorAll('.promo-slide'));
+      if (promoSlides.length > 1 && !prefersReducedMotion) {
+        let activePromoIdx = 0;
+        let promoPaused = false;
+
+        const advancePromo = () => {
+          if (promoPaused) return;
+          const current = promoSlides[activePromoIdx];
+          const nextIdx = (activePromoIdx + 1) % promoSlides.length;
+          const next = promoSlides[nextIdx];
+
+          current.classList.remove('is-active');
+          current.classList.add('is-exiting');
+          next.classList.remove('is-exiting');
+          void next.offsetWidth;
+          next.classList.add('is-active');
+
+          setTimeout(() => {
+            current.classList.remove('is-exiting');
+          }, 340);
+
+          activePromoIdx = nextIdx;
+        };
+
+        setInterval(advancePromo, 3500);
+        promoSlider.addEventListener('mouseenter', () => { promoPaused = true; });
+        promoSlider.addEventListener('mouseleave', () => { promoPaused = false; });
+        promoSlider.addEventListener('focusin', () => { promoPaused = true; });
+        promoSlider.addEventListener('focusout', () => { promoPaused = false; });
+      }
+    }
+
+    const revealItems = [];
+    document.querySelectorAll('.case-row').forEach((card, idx) => {
+      card.setAttribute('data-reveal', 'scale');
+      card.style.setProperty('--reveal-delay', `${Math.min(idx * 90, 270)}ms`);
+      revealItems.push(card);
+    });
+    document.querySelectorAll('footer .footer-cta-bar').forEach(el => {
+      el.setAttribute('data-reveal', 'scale');
+      revealItems.push(el);
+    });
+    document.querySelectorAll('footer .row.g-4 > div').forEach((el, idx) => {
+      el.setAttribute('data-reveal', 'up');
+      el.style.setProperty('--reveal-delay', `${Math.min(idx * 70, 240)}ms`);
+      revealItems.push(el);
+    });
+
+    if (prefersReducedMotion) {
+      revealItems.forEach(el => el.classList.add('is-revealed'));
+    } else {
+      const updateCaseReveals = () => {
+        const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+        const enterLine = vh * 0.90;
+        revealItems.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < enterLine && rect.bottom > 36) {
+            el.classList.add('is-revealed');
+          } else if (rect.top > vh * 1.06 || rect.bottom < -40) {
+            el.classList.remove('is-revealed');
+          }
+        });
+      };
+
+      let rafPending = false;
+      const scheduleCaseReveal = () => {
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(() => {
+          rafPending = false;
+          updateCaseReveals();
+        });
+      };
+
+      if ('IntersectionObserver' in window) {
+        const caseObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-revealed');
+            } else {
+              const vh = window.innerHeight || 800;
+              const rect = entry.boundingClientRect;
+              if (rect.top > vh * 1.04 || rect.bottom < -30) {
+                entry.target.classList.remove('is-revealed');
+              }
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+        revealItems.forEach(el => caseObserver.observe(el));
+      }
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(updateCaseReveals);
+      });
+      window.addEventListener('scroll', scheduleCaseReveal, { passive: true });
+      window.addEventListener('resize', scheduleCaseReveal, { passive: true });
+    }
 
     const CASES = {
       coffee: {
