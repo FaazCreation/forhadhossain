@@ -11,7 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter+Tight:wght@400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <style>
@@ -37,7 +37,7 @@
 
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-weight: 400;
+      font-weight: 300;
       color: var(--ink-primary);
       background-color: var(--bg-base);
       background-image:
@@ -52,7 +52,7 @@
     body .fw-bold,
     body .fw-semibold,
     body .fw-medium {
-      font-weight: 400 !important;
+      font-weight: 300 !important;
     }
 
     .tabular-nums { font-variant-numeric: tabular-nums; }
@@ -66,8 +66,25 @@
     .site-header a,
     .site-header button,
     .site-header span {
-      font-family: 'Inter Tight', 'Inter', system-ui, sans-serif;
+      font-family: 'Inter Tight', 'Hind Siliguri', 'Inter', system-ui, sans-serif;
       font-weight: 400 !important;
+    }
+
+    html[lang="bn"] body {
+      font-family: 'Hind Siliguri', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html[lang="bn"] h1,
+    html[lang="bn"] h2,
+    html[lang="bn"] h3,
+    html[lang="bn"] h4,
+    html[lang="bn"] h5,
+    html[lang="bn"] .brand-wordmark,
+    html[lang="bn"] .site-header,
+    html[lang="bn"] .site-header a,
+    html[lang="bn"] .site-header button,
+    html[lang="bn"] .site-header span {
+      font-family: 'Hind Siliguri', 'Inter Tight', 'Inter', system-ui, sans-serif;
     }
 
     /* Top Warm Announcement Strip (Single-line 3-banner 1-by-1 slider) */
@@ -223,28 +240,101 @@
 
     /* Mobile Menu Toggle & Slide-In Drawer */
     .mobile-menu-toggle {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0.55rem 0.7rem;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      min-height: 42px;
+      padding: 0;
+      margin-left: -2px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-strong);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: var(--radius-sm);
       color: var(--ink-primary);
       cursor: pointer;
+      flex-shrink: 0;
       transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 140ms var(--ease-out);
     }
 
     .mobile-menu-toggle:hover,
-    .mobile-menu-toggle:focus-visible {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: var(--accent);
+    .mobile-menu-toggle:focus-visible,
+    .mobile-menu-toggle.is-open {
+      background: rgba(0, 132, 255, 0.14);
+      border-color: rgba(0, 132, 255, 0.45);
+      color: #ffffff;
     }
 
     .mobile-menu-toggle:active {
       transform: scale(0.96);
+    }
+
+    .lang-toggle-btn {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-strong);
+      color: var(--ink-secondary);
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out);
+    }
+
+    .lang-toggle-btn i {
+      transition: transform 320ms var(--ease-out);
+    }
+
+    .lang-toggle-btn:hover,
+    .lang-toggle-btn:focus-visible {
+      background: rgba(0, 132, 255, 0.14);
+      border-color: rgba(0, 132, 255, 0.45);
+      color: #ffffff;
+    }
+
+    .lang-toggle-btn:active {
+      transform: scale(0.95);
+    }
+
+    .lang-toggle-btn.is-bn {
+      background: rgba(0, 132, 255, 0.16);
+      border-color: rgba(0, 132, 255, 0.55);
+      color: #60a5fa;
+    }
+
+    .lang-toggle-btn.is-bn i {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 575.98px) {
+      .navbar-inner {
+        gap: 0.5rem;
+      }
+      .brand-wordmark {
+        font-size: 0.96rem;
+        gap: 0.45rem;
+      }
+      .lang-toggle-btn {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+        font-size: 0.92rem;
+      }
+      .nav-cta-btn {
+        padding: 0.44rem 0.72rem !important;
+        font-size: 0.8rem !important;
+        min-height: 36px !important;
+      }
     }
 
     .hamburger-lines {
@@ -584,6 +674,20 @@
       margin-bottom: 3rem;
     }
 
+    @media (max-width: 767.98px) {
+      .site-footer {
+        padding: 2.25rem 0 1.75rem;
+      }
+      .footer-cta-bar {
+        padding: 1.1rem 1.15rem;
+        margin-bottom: 1.5rem;
+      }
+      .footer-bottom-bar {
+        padding-top: 1.1rem !important;
+        text-align: center;
+      }
+    }
+
     .modal-content {
       background-color: var(--surface-card);
       color: var(--ink-primary);
@@ -636,15 +740,15 @@
   <!-- Top Warm Promo Strip (Single-line 3-Banner Slider) -->
   <div class="promo-strip" id="promoSlider" role="region" aria-label="Featured announcements">
     <a href="index.html#pricing" class="promo-slide is-active">
-      <span class="promo-slide-text">20% Off First Design Package — View Plans</span>
+      <span class="promo-slide-text" data-i18n="promo.1">20% Off First Design Package — View Plans</span>
       <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </a>
     <a href="index.html#contact" class="promo-slide">
-      <span class="promo-slide-text">Fast 7–15 Day Web Delivery — Book Now</span>
+      <span class="promo-slide-text" data-i18n="promo.2">Fast 7–15 Day Web Delivery — Book Now</span>
       <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </a>
     <a href="index.html#contact" class="promo-slide">
-      <span class="promo-slide-text">Free 15-Min Project Call — Let’s Talk</span>
+      <span class="promo-slide-text" data-i18n="promo.3">Free 15-Min Project Call — Let’s Talk</span>
       <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </a>
   </div>
@@ -652,23 +756,7 @@
   <header class="site-header" id="mainNav">
     <div class="container container-wide">
       <div class="navbar-inner">
-        <a class="brand-wordmark" href="index.html">
-          <span class="brand-glyph" aria-hidden="true">FH</span>
-          <span>Forhad Hossain</span>
-        </a>
-
-        <nav class="d-none d-lg-block" aria-label="Main navigation">
-          <ul class="nav-links-desktop">
-            <li><a class="nav-link-clean" href="index.html#about">About</a></li>
-            <li><a class="nav-link-clean" href="index.html#portfolio">Portfolio</a></li>
-            <li><a class="nav-link-clean text-white" href="casestudy.html">Case Studies</a></li>
-            <li><a class="nav-link-clean" href="index.html#pricing">Pricing</a></li>
-            <li><a class="nav-link-clean" href="index.html#contact">Contact</a></li>
-          </ul>
-        </nav>
-
-        <div class="d-flex align-items-center gap-2">
-          <a class="btn-azure d-none d-sm-inline-flex" href="index.html#contact">Start a Project</a>
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
           <button
             class="mobile-menu-toggle d-lg-none"
             id="mobileMenuToggle"
@@ -680,6 +768,34 @@
               <span></span><span></span><span></span>
             </span>
           </button>
+
+          <a class="brand-wordmark" href="index.html">
+            <span class="brand-glyph" aria-hidden="true">FH</span>
+            <span data-i18n="brand.name">Forhad Hossain</span>
+          </a>
+        </div>
+
+        <nav class="d-none d-lg-block" aria-label="Main navigation">
+          <ul class="nav-links-desktop">
+            <li><a class="nav-link-clean" href="index.html#about" data-i18n="nav.about">About</a></li>
+            <li><a class="nav-link-clean" href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li><a class="nav-link-clean text-white" href="casestudy.html" data-i18n="nav.cases">Case Studies</a></li>
+            <li><a class="nav-link-clean" href="index.html#pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a class="nav-link-clean" href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="d-flex align-items-center gap-2">
+          <button
+            type="button"
+            class="lang-toggle-btn"
+            id="langToggleBtn"
+            aria-label="Switch language to Bengali"
+            aria-pressed="false"
+            title="Switch to বাংলা">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+          </button>
+          <a class="btn-azure nav-cta-btn" href="index.html#contact" data-i18n="nav.cta">Start a Project</a>
         </div>
       </div>
     </div>
@@ -689,13 +805,13 @@
       <div class="container container-wide py-3">
         <nav aria-label="Mobile navigation">
           <ul class="mobile-nav-list">
-            <li><a class="mobile-nav-link" href="index.html#about"><span>About</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link" href="index.html#portfolio"><span>Portfolio</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link is-active" href="casestudy.html"><span>Case Studies</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link" href="index.html#pricing"><span>Pricing</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link" href="index.html#contact"><span>Contact</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="index.html#about"><span data-i18n="nav.about">About</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="index.html#portfolio"><span data-i18n="nav.portfolio">Portfolio</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link is-active" href="casestudy.html"><span data-i18n="nav.cases">Case Studies</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="index.html#pricing"><span data-i18n="nav.pricing">Pricing</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="index.html#contact"><span data-i18n="nav.contact">Contact</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
           </ul>
-          <a class="btn-azure w-100 d-sm-none mobile-drawer-cta" href="index.html#contact">Start a Project</a>
+          <a class="btn-azure w-100 d-sm-none mobile-drawer-cta" href="index.html#contact" data-i18n="nav.ctaFull">Start a Project</a>
         </nav>
       </div>
     </div>
@@ -705,13 +821,13 @@
     <div class="container container-wide">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
         <div>
-          <p class="small fw-semibold mb-2 page-kicker-anim" style="color: #60a5fa;">Case Studies</p>
-          <h1 class="display-6 fw-bold mb-2 page-headline-gradient" style="letter-spacing: -0.02em;">In-depth project walkthroughs</h1>
-          <p class="text-muted-dark mb-0 page-lead-anim">Selected branding, product UI, and conversion-focused frontend engagements.</p>
+          <p class="small fw-semibold mb-2 page-kicker-anim" style="color: #60a5fa;" data-i18n="nav.cases">Case Studies</p>
+          <h1 class="display-6 fw-bold mb-2 page-headline-gradient" style="letter-spacing: -0.02em;" data-i18n="page.title">In-depth project walkthroughs</h1>
+          <p class="text-muted-dark mb-0 page-lead-anim" data-i18n="page.subtitle">Selected branding, product UI, and conversion-focused frontend engagements.</p>
         </div>
         <a href="index.html" class="btn-dark-outline page-cta-anim">
           <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
-          <span>Back to Portfolio</span>
+          <span data-i18n="page.back">Back to Portfolio</span>
         </a>
       </div>
 
@@ -725,20 +841,20 @@
           </div>
           <div class="col-lg-6">
             <div class="case-content-pane">
-              <div class="meta-line">
+              <div class="meta-line" data-i18n="c1.meta">
                 <span>01. Case Study</span><span aria-hidden="true">·</span><span>Brand Identity &amp; Web</span><span aria-hidden="true">·</span><span>4 Weeks</span>
               </div>
-              <h2 class="h3 fw-bold mb-3">Branding for Coffee Co.</h2>
-              <p class="text-muted-dark">A full brand identity project defining the visual language, packaging system, and digital presence—balancing warm craft appeal with lean early-stage print production.</p>
-              <h3 class="h6 fw-bold mt-2 text-white">My Role</h3>
+              <h2 class="h3 fw-bold mb-3" data-i18n="c1.title">Branding for Coffee Co.</h2>
+              <p class="text-muted-dark" data-i18n="c1.desc">A full brand identity project defining the visual language, packaging system, and digital presence—balancing warm craft appeal with lean early-stage print production.</p>
+              <h3 class="h6 fw-bold mt-2 text-white" data-i18n="c1.roleTitle">My Role</h3>
               <ul class="small text-secondary-dark lh-lg mb-4">
-                <li>Research &amp; competitive analysis</li>
-                <li>Logo &amp; visual identity system</li>
-                <li>Packaging mockups and print dielines</li>
-                <li>Front-end landing page implementation</li>
+                <li data-i18n="c1.b1">Research &amp; competitive analysis</li>
+                <li data-i18n="c1.b2">Logo &amp; visual identity system</li>
+                <li data-i18n="c1.b3">Packaging mockups and print dielines</li>
+                <li data-i18n="c1.b4">Front-end landing page implementation</li>
               </ul>
               <div>
-                <button type="button" class="btn-azure" data-case-id="coffee">Read Full Case Study</button>
+                <button type="button" class="btn-azure" data-case-id="coffee" data-i18n="cases.readBtn">Read Full Case Study</button>
               </div>
             </div>
           </div>
@@ -755,19 +871,19 @@
           </div>
           <div class="col-lg-6 order-lg-1">
             <div class="case-content-pane">
-              <div class="meta-line">
+              <div class="meta-line" data-i18n="c2.meta">
                 <span>02. Case Study</span><span aria-hidden="true">·</span><span>Product UI &amp; React</span><span aria-hidden="true">·</span><span>6 Weeks</span>
               </div>
-              <h2 class="h3 fw-bold mb-3">Analytics Dashboard</h2>
-              <p class="text-muted-dark">Designed a complex analytics dashboard to visualize user behavior and revenue metrics with clear hierarchy, responsive layout, and high-density tables.</p>
-              <h3 class="h6 fw-bold mt-2 text-white">Highlights</h3>
+              <h2 class="h3 fw-bold mb-3" data-i18n="c2.title">Analytics Dashboard</h2>
+              <p class="text-muted-dark" data-i18n="c2.desc">Designed a complex analytics dashboard to visualize user behavior and revenue metrics with clear hierarchy, responsive layout, and high-density tables.</p>
+              <h3 class="h6 fw-bold mt-2 text-white" data-i18n="c2.highTitle">Highlights</h3>
               <ul class="small text-secondary-dark lh-lg mb-4">
-                <li>Custom charts and low-latency interactions</li>
-                <li>Responsive data tables and multi-criteria filters</li>
-                <li>Performance-tuned React implementation</li>
+                <li data-i18n="c2.b1">Custom charts and low-latency interactions</li>
+                <li data-i18n="c2.b2">Responsive data tables and multi-criteria filters</li>
+                <li data-i18n="c2.b3">Performance-tuned React implementation</li>
               </ul>
               <div>
-                <button type="button" class="btn-azure" data-case-id="analytics">Read Full Case Study</button>
+                <button type="button" class="btn-azure" data-case-id="analytics" data-i18n="cases.readBtn">Read Full Case Study</button>
               </div>
             </div>
           </div>
@@ -784,19 +900,19 @@
           </div>
           <div class="col-lg-6">
             <div class="case-content-pane">
-              <div class="meta-line tabular-nums">
+              <div class="meta-line tabular-nums" data-i18n="c3.meta">
                 <span>03. Case Study</span><span aria-hidden="true">·</span><span>E-commerce UX</span><span aria-hidden="true">·</span><span>+18% Conversion</span>
               </div>
-              <h2 class="h3 fw-bold mb-3">E-commerce Re-design</h2>
-              <p class="text-muted-dark">Revamped product pages and mobile checkout flows to reduce friction and increase conversions, improving visual clarity across devices.</p>
-              <h3 class="h6 fw-bold mt-2 text-white">Outcome</h3>
+              <h2 class="h3 fw-bold mb-3" data-i18n="c3.title">E-commerce Re-design</h2>
+              <p class="text-muted-dark" data-i18n="c3.desc">Revamped product pages and mobile checkout flows to reduce friction and increase conversions, improving visual clarity across devices.</p>
+              <h3 class="h6 fw-bold mt-2 text-white" data-i18n="c3.outTitle">Outcome</h3>
               <ul class="small text-secondary-dark lh-lg mb-4 tabular-nums">
-                <li>Improved conversion rate by 18%</li>
-                <li>Reduced page load time by 30%</li>
-                <li>Accessible and responsive implementation</li>
+                <li data-i18n="c3.b1">Improved conversion rate by 18%</li>
+                <li data-i18n="c3.b2">Reduced page load time by 30%</li>
+                <li data-i18n="c3.b3">Accessible and responsive implementation</li>
               </ul>
               <div>
-                <button type="button" class="btn-azure" data-case-id="ecommerce">Read Full Case Study</button>
+                <button type="button" class="btn-azure" data-case-id="ecommerce" data-i18n="cases.readBtn">Read Full Case Study</button>
               </div>
             </div>
           </div>
@@ -809,22 +925,22 @@
     <div class="container container-wide">
       <div class="footer-cta-bar d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
         <div>
-          <div class="small mb-1" style="color: #60a5fa;">Open for Q4 Projects</div>
-          <h4 class="h5 mb-0">Ready to elevate your brand or launch a fast website?</h4>
+          <div class="small mb-1" style="color: #60a5fa;" data-i18n="footer.badge">Open for Q4 Projects</div>
+          <h4 class="h5 mb-0" data-i18n="footer.ctaTitle">Ready to elevate your brand or launch a fast website?</h4>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <a href="index.html#contact" class="btn-azure">Start a Project</a>
-          <a href="index.html#portfolio" class="btn-dark-outline">Back to Portfolio</a>
+          <a href="index.html#contact" class="btn-azure" data-i18n="nav.ctaFull">Start a Project</a>
+          <a href="index.html#portfolio" class="btn-dark-outline" data-i18n="page.back">Back to Portfolio</a>
         </div>
       </div>
 
-      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+      <div class="row g-4 pb-3 pb-md-4 border-bottom border-secondary border-opacity-25">
         <div class="col-lg-4">
-          <a class="brand-wordmark mb-3 d-inline-flex" href="index.html">
+          <a class="brand-wordmark mb-2 mb-md-3 d-inline-flex" href="index.html">
             <span class="brand-glyph" aria-hidden="true">FH</span>
-            <span>Forhad Hossain</span>
+            <span data-i18n="brand.name">Forhad Hossain</span>
           </a>
-          <p class="small mb-3" style="max-width: 34ch;">
+          <p class="small mb-3" style="max-width: 34ch;" data-i18n="footer.bio">
             Graphic Designer &amp; Frontend Developer crafting brand systems, UI/UX flows, and fast responsive websites from Dhaka.
           </p>
           <div class="d-flex align-items-center gap-2">
@@ -842,41 +958,41 @@
             </a>
           </div>
         </div>
-        <div class="col-6 col-md-3 col-lg-2">
-          <h6 class="small mb-3">Work</h6>
+        <div class="col-6 col-md-3 col-lg-2 d-none d-md-block">
+          <h6 class="small mb-3" data-i18n="footer.colWork">Work</h6>
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-            <li><a href="index.html#portfolio">Portfolio</a></li>
-            <li><a href="casestudy.html">Case Studies</a></li>
-            <li><a href="index.html#services">Services</a></li>
-            <li><a href="index.html#client-trust">Client Trust</a></li>
-            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="index.html#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li><a href="casestudy.html" data-i18n="nav.cases">Case Studies</a></li>
+            <li><a href="index.html#services" data-i18n="footer.services">Services</a></li>
+            <li><a href="index.html#client-trust" data-i18n="footer.trust">Client Trust</a></li>
+            <li><a href="index.html#pricing" data-i18n="nav.pricing">Pricing</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md-3 col-lg-2">
-          <h6 class="small mb-3">Explore</h6>
+        <div class="col-6 col-md-3 col-lg-2 d-none d-md-block">
+          <h6 class="small mb-3" data-i18n="footer.colExplore">Explore</h6>
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#blog">Blog</a></li>
-            <li><a href="index.html#faq">FAQ</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+            <li><a href="index.html#testimonials" data-i18n="footer.testimonials">Testimonials</a></li>
+            <li><a href="index.html#blog" data-i18n="footer.blog">Blog</a></li>
+            <li><a href="index.html#faq" data-i18n="footer.faq">FAQ</a></li>
+            <li><a href="index.html#contact" data-i18n="nav.contact">Contact</a></li>
           </ul>
         </div>
-        <div class="col-md-6 col-lg-4">
-          <h6 class="small mb-3">Contact &amp; Studio</h6>
+        <div class="col-md-6 col-lg-4 d-none d-md-block">
+          <h6 class="small mb-3" data-i18n="footer.colContact">Contact &amp; Studio</h6>
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-            <li>Dhaka, Bangladesh</li>
+            <li data-i18n="common.location">Dhaka, Bangladesh</li>
             <li class="tabular-nums"><a href="https://wa.me/8801933393656" target="_blank" rel="noopener">+880 1933-393656</a></li>
             <li><a href="mailto:fh7614@gmail.com">fh7614@gmail.com</a></li>
             <li><a href="mailto:support@forhadhossain.xyz">support@forhadhossain.xyz</a></li>
-            <li class="text-muted-dark">Mon – Fri, 9:00 AM – 6:00 PM (BST)</li>
+            <li class="text-muted-dark" data-i18n="footer.hours">Mon – Fri, 9:00 AM – 6:00 PM (BST)</li>
           </ul>
         </div>
       </div>
 
-      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-4 small">
-        <div>© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
-        <div>Graphic Design · UI/UX Systems · Frontend Development</div>
+      <div class="footer-bottom-bar d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-4 small">
+        <div>© <span id="year"></span> <span data-i18n="brand.name">Forhad Hossain</span>. <span data-i18n="footer.rights">All rights reserved.</span></div>
+        <div class="d-none d-md-block" data-i18n="footer.tagline">Graphic Design · UI/UX Systems · Frontend Development</div>
       </div>
     </div>
   </footer>
@@ -897,8 +1013,8 @@
           <div id="caseReaderBody" class="text-secondary-dark" style="line-height: 1.55;"></div>
         </div>
         <div class="modal-footer px-4 py-3">
-          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal">Close</button>
-          <a href="index.html#contact" class="btn-azure">Start a Similar Project</a>
+          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal" data-i18n="modal.close">Close</button>
+          <a href="index.html#contact" class="btn-azure" data-i18n="modal.similar">Start a Similar Project</a>
         </div>
       </div>
     </div>
@@ -907,6 +1023,106 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // EN / বাংলা Language Toggle
+    const BN_TEXT = {
+      'promo.1': 'প্রথম ডিজাইন প্যাকেজে ২০% ছাড় — প্যাকেজ দেখুন',
+      'promo.2': 'দ্রুত ৭–১৫ দিনে ওয়েব ডেলিভারি — বুক করুন',
+      'promo.3': 'ফ্রি ১৫ মিনিটের প্রজেক্ট কল — কথা বলুন',
+      'brand.name': 'ফরহাদ হোসেন',
+      'nav.about': 'সম্পর্কে',
+      'nav.portfolio': 'পোর্টফোলিও',
+      'nav.cases': 'কেস স্টাডি',
+      'nav.pricing': 'প্যাকেজ',
+      'nav.contact': 'যোগাযোগ',
+      'nav.cta': 'প্রজেক্ট শুরু',
+      'nav.ctaFull': 'প্রজেক্ট শুরু করুন',
+      'page.title': 'বিস্তারিত প্রজেক্ট বিশ্লেষণ',
+      'page.subtitle': 'নির্বাচিত ব্র্যান্ডিং, প্রোডাক্ট UI এবং কনভার্শন-কেন্দ্রিক ফ্রন্টএন্ড কাজ।',
+      'page.back': 'পোর্টফোলিওতে ফিরুন',
+      'cases.readBtn': 'সম্পূর্ণ কেস স্টাডি পড়ুন',
+      'c1.meta': '<span>০১. কেস স্টাডি</span><span aria-hidden="true">·</span><span>ব্র্যান্ড আইডেন্টিটি ও ওয়েব</span><span aria-hidden="true">·</span><span>৪ সপ্তাহ</span>',
+      'c1.title': 'কফি কোম্পানির ব্র্যান্ডিং',
+      'c1.desc': 'সাশ্রয়ী প্রিন্ট উৎপাদনের সাথে সামঞ্জস্য রেখে ভিজ্যুয়াল ল্যাঙ্গুয়েজ, প্যাকেজিং সিস্টেম ও ডিজিটাল উপস্থিতি নির্মাণের একটি পূর্ণাঙ্গ ব্র্যান্ড প্রজেক্ট।',
+      'c1.roleTitle': 'আমার ভূমিকা',
+      'c1.b1': 'গবেষণা ও প্রতিযোগী বিশ্লেষণ',
+      'c1.b2': 'লোগো ও ভিজ্যুয়াল আইডেন্টিটি সিস্টেম',
+      'c1.b3': 'প্যাকেজিং মকআপ এবং প্রিন্ট ডাইলাইন',
+      'c1.b4': 'ফ্রন্টএন্ড ল্যান্ডিং পেজ তৈরি',
+      'c2.meta': '<span>০২. কেস স্টাডি</span><span aria-hidden="true">·</span><span>প্রোডাক্ট UI ও রিয়্যাক্ট</span><span aria-hidden="true">·</span><span>৬ সপ্তাহ</span>',
+      'c2.title': 'অ্যানালিটিক্স ড্যাশবোর্ড',
+      'c2.desc': 'স্পষ্ট হায়ারার্কি, রেসপনসিভ লেআউট ও ডেটা টেবিলের মাধ্যমে ইউজার অ্যাক্টিভিটি এবং আয়ের হিসাব প্রদর্শনের জন্য নির্মিত ড্যাশবোর্ড।',
+      'c2.highTitle': 'প্রধান বৈশিষ্ট্য',
+      'c2.b1': 'কাস্টম চার্ট ও দ্রুতগতির ইন্টার‍্যাকশন',
+      'c2.b2': 'রেসপনসিভ ডেটা টেবিল ও মাল্টি-ফিল্টার',
+      'c2.b3': 'পারফরম্যান্স-টিউনড রিয়্যাক্ট কোড',
+      'c3.meta': '<span>০৩. কেস স্টাডি</span><span aria-hidden="true">·</span><span>ই-কমার্স UX</span><span aria-hidden="true">·</span><span>+১৮% কনভার্শন</span>',
+      'c3.title': 'ই-কমার্স রি-ডিজাইন',
+      'c3.desc': 'পণ্য পেজ ও মোবাইল চেকআউট সহজ করে ভিজ্যুয়াল স্পষ্টতা এবং কনভার্শন হার বাড়ানো হয়েছে।',
+      'c3.outTitle': 'ফলাফল',
+      'c3.b1': 'কনভার্শন হার ১৮% বৃদ্ধি',
+      'c3.b2': 'পেজ লোডিং সময় ৩০% হ্রাস',
+      'c3.b3': 'অ্যাক্সেসিবল ও রেসপনসিভ ডিজাইন',
+      'common.location': 'ঢাকা, বাংলাদেশ',
+      'footer.badge': 'Q4 প্রজেক্টের জন্য উন্মুক্ত',
+      'footer.ctaTitle': 'আপনার ব্র্যান্ডকে এগিয়ে নিতে বা দ্রুত ওয়েবসাইট লঞ্চ করতে প্রস্তুত?',
+      'footer.bio': 'ঢাকা থেকে ব্র্যান্ড সিস্টেম, UI/UX ফ্লো এবং দ্রুতগতির রেসপনসিভ ওয়েবসাইট নির্মাণকারী গ্রাফিক ডিজাইনার ও ফ্রন্টএন্ড ডেভেলপার।',
+      'footer.colWork': 'কাজ',
+      'footer.colExplore': 'ঘুরে দেখুন',
+      'footer.colContact': 'যোগাযোগ ও স্টুডিও',
+      'footer.services': 'সার্ভিসসমূহ',
+      'footer.trust': 'ক্লায়েন্ট ট্রাস্ট',
+      'footer.testimonials': 'প্রশংসাপত্র',
+      'footer.blog': 'ব্লগ',
+      'footer.faq': 'সাধারণ জিজ্ঞাসা',
+      'footer.hours': 'সোম – শুক্র, সকাল ৯:০০ – সন্ধ্যা ৬:০০ (BST)',
+      'footer.rights': 'সর্বস্বত্ব সংরক্ষিত।',
+      'footer.tagline': 'গ্রাফিক ডিজাইন · UI/UX সিস্টেম · ফ্রন্টএন্ড ডেভেলপমেন্ট',
+      'modal.close': 'বন্ধ করুন',
+      'modal.similar': 'অনুরূপ প্রজেক্ট শুরু করুন'
+    };
+
+    const i18nNodes = Array.from(document.querySelectorAll('[data-i18n]'));
+    i18nNodes.forEach(el => { el.dataset.i18nEn = el.innerHTML; });
+    const langToggleBtn = document.getElementById('langToggleBtn');
+    let currentLang = 'en';
+
+    const applyLanguage = (lang) => {
+      currentLang = lang === 'bn' ? 'bn' : 'en';
+      document.documentElement.setAttribute('lang', currentLang);
+      try { localStorage.setItem('fh_lang', currentLang); } catch (err) {}
+
+      i18nNodes.forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (currentLang === 'bn' && BN_TEXT[key] !== undefined) {
+          el.innerHTML = BN_TEXT[key];
+        } else if (el.dataset.i18nEn !== undefined) {
+          el.innerHTML = el.dataset.i18nEn;
+        }
+      });
+
+      if (langToggleBtn) {
+        langToggleBtn.classList.toggle('is-bn', currentLang === 'bn');
+        langToggleBtn.setAttribute('aria-pressed', currentLang === 'bn' ? 'true' : 'false');
+        langToggleBtn.setAttribute(
+          'aria-label',
+          currentLang === 'bn' ? 'Switch language to English' : 'Switch language to Bengali'
+        );
+        langToggleBtn.setAttribute(
+          'title',
+          currentLang === 'bn' ? 'Switch to English' : 'Switch to বাংলা'
+        );
+      }
+    };
+
+    let savedLang = 'en';
+    try { savedLang = localStorage.getItem('fh_lang') || 'en'; } catch (err) {}
+    if (savedLang === 'bn') applyLanguage('bn');
+    if (langToggleBtn) {
+      langToggleBtn.addEventListener('click', () => {
+        applyLanguage(currentLang === 'en' ? 'bn' : 'en');
+      });
+    }
 
     const mainNav = document.getElementById('mainNav');
     const updateScrollNav = () => {

@@ -14,7 +14,7 @@
   <!-- Typography: Inter Tight (headers & titles) + Inter (body) + Hind Siliguri (Bengali) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter+Tight:wght@400&family=Inter:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter+Tight:wght@400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <style>
@@ -50,7 +50,7 @@
 
     body {
       font-family: 'Inter', 'Hind Siliguri', system-ui, -apple-system, sans-serif;
-      font-weight: 400;
+      font-weight: 300;
       color: var(--ink-primary);
       background-color: var(--bg-base);
       font-size: 16px;
@@ -64,12 +64,12 @@
     body .fw-bold,
     body .fw-semibold,
     body .fw-medium {
-      font-weight: 400 !important;
+      font-weight: 300 !important;
     }
 
     .font-serif-accent {
       font-family: 'Inter', system-ui, sans-serif;
-      font-weight: 400;
+      font-weight: 300;
     }
 
     .font-bn {
@@ -98,8 +98,27 @@
     .site-header a,
     .site-header button,
     .site-header span {
-      font-family: 'Inter Tight', 'Inter', system-ui, sans-serif;
+      font-family: 'Inter Tight', 'Hind Siliguri', 'Inter', system-ui, sans-serif;
       font-weight: 400 !important;
+    }
+
+    html[lang="bn"] body {
+      font-family: 'Hind Siliguri', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html[lang="bn"] h1,
+    html[lang="bn"] h2,
+    html[lang="bn"] h3,
+    html[lang="bn"] h4,
+    html[lang="bn"] h5,
+    html[lang="bn"] .hero-headline,
+    html[lang="bn"] .section-title,
+    html[lang="bn"] .brand-wordmark,
+    html[lang="bn"] .site-header,
+    html[lang="bn"] .site-header a,
+    html[lang="bn"] .site-header button,
+    html[lang="bn"] .site-header span {
+      font-family: 'Hind Siliguri', 'Inter Tight', 'Inter', system-ui, sans-serif;
     }
 
     .container-wide {
@@ -275,28 +294,101 @@
 
     /* Mobile Menu Toggle & Slide-In Drawer */
     .mobile-menu-toggle {
-      min-width: 44px;
-      min-height: 44px;
-      padding: 0.55rem 0.7rem;
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      min-height: 42px;
+      padding: 0;
+      margin-left: -2px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-strong);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: var(--radius-sm);
       color: var(--ink-primary);
       cursor: pointer;
+      flex-shrink: 0;
       transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), transform 140ms var(--ease-out);
     }
 
     .mobile-menu-toggle:hover,
-    .mobile-menu-toggle:focus-visible {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: var(--accent);
+    .mobile-menu-toggle:focus-visible,
+    .mobile-menu-toggle.is-open {
+      background: rgba(0, 132, 255, 0.14);
+      border-color: rgba(0, 132, 255, 0.45);
+      color: #ffffff;
     }
 
     .mobile-menu-toggle:active {
       transform: scale(0.96);
+    }
+
+    .lang-toggle-btn {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      min-height: 40px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-strong);
+      color: var(--ink-secondary);
+      font-size: 1rem;
+      line-height: 1;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out);
+    }
+
+    .lang-toggle-btn i {
+      transition: transform 320ms var(--ease-out);
+    }
+
+    .lang-toggle-btn:hover,
+    .lang-toggle-btn:focus-visible {
+      background: rgba(0, 132, 255, 0.14);
+      border-color: rgba(0, 132, 255, 0.45);
+      color: #ffffff;
+    }
+
+    .lang-toggle-btn:active {
+      transform: scale(0.95);
+    }
+
+    .lang-toggle-btn.is-bn {
+      background: rgba(0, 132, 255, 0.16);
+      border-color: rgba(0, 132, 255, 0.55);
+      color: #60a5fa;
+    }
+
+    .lang-toggle-btn.is-bn i {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 575.98px) {
+      .navbar-inner {
+        gap: 0.5rem;
+      }
+      .brand-wordmark {
+        font-size: 0.96rem;
+        gap: 0.45rem;
+      }
+      .lang-toggle-btn {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+        min-height: 36px;
+        font-size: 0.92rem;
+      }
+      .nav-cta-btn {
+        padding: 0.44rem 0.72rem !important;
+        font-size: 0.8rem !important;
+        min-height: 36px !important;
+      }
     }
 
     .hamburger-lines {
@@ -1181,6 +1273,180 @@
       color: #f8fafc;
     }
 
+    /* Custom Styled Dropdowns with Subtle Slide-In Animation */
+    .custom-select-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .custom-select-wrap.is-open {
+      z-index: 50;
+    }
+
+    .custom-select-native {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .custom-select-trigger {
+      width: 100%;
+      min-height: 47px;
+      padding: 0.7rem 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      background-color: var(--surface-input);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-sm);
+      color: var(--ink-primary);
+      font-size: 0.95rem;
+      font-weight: 300;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+    }
+
+    .custom-select-trigger:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      background-color: #0d152a;
+    }
+
+    .custom-select-trigger:focus-visible,
+    .custom-select-wrap.is-open .custom-select-trigger {
+      background-color: #11192e;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 132, 255, 0.2);
+      outline: none;
+    }
+
+    .custom-select-value {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    .custom-select-chevron {
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      flex-shrink: 0;
+      transition: transform 240ms var(--ease-out), color 180ms ease;
+    }
+
+    .custom-select-wrap.is-open .custom-select-chevron {
+      transform: rotate(180deg);
+      color: #60a5fa;
+    }
+
+    .custom-select-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(100% + 6px);
+      z-index: 60;
+      list-style: none;
+      margin: 0;
+      padding: 0.4rem;
+      background: rgba(8, 13, 29, 0.98);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.68), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+      max-height: 252px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate3d(0, -10px, 0) scale(0.985);
+      transform-origin: top center;
+      transition:
+        opacity 200ms var(--ease-out),
+        transform 240ms var(--ease-out),
+        visibility 0s linear 240ms;
+    }
+
+    .custom-select-wrap.is-open .custom-select-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate3d(0, 0, 0) scale(1);
+      transition:
+        opacity 200ms var(--ease-out),
+        transform 260ms var(--ease-out),
+        visibility 0s;
+    }
+
+    .custom-select-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.65rem;
+      width: 100%;
+      min-height: 40px;
+      padding: 0.55rem 0.78rem;
+      border: none;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--ink-secondary);
+      font-size: 0.9125rem;
+      font-weight: 300;
+      text-align: left;
+      cursor: pointer;
+      opacity: 0;
+      transform: translate3d(-8px, 0, 0);
+      transition:
+        background-color 150ms var(--ease-out),
+        color 150ms var(--ease-out),
+        opacity 220ms var(--ease-out),
+        transform 240ms var(--ease-out);
+      transition-delay: 0ms;
+    }
+
+    .custom-select-wrap.is-open .custom-select-option {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      transition-delay: var(--opt-delay, 0ms);
+    }
+
+    .custom-select-option:hover,
+    .custom-select-option:focus-visible {
+      background: rgba(0, 132, 255, 0.14);
+      color: #ffffff;
+      outline: none;
+    }
+
+    .custom-select-option.is-selected {
+      background: rgba(0, 132, 255, 0.2);
+      color: #ffffff;
+    }
+
+    .custom-select-check {
+      font-size: 0.75rem;
+      color: #60a5fa;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 150ms ease, transform 150ms var(--ease-out);
+      flex-shrink: 0;
+    }
+
+    .custom-select-option.is-selected .custom-select-check {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     /* Selected Notice */
     .selected-plan-banner {
       background: rgba(0, 132, 255, 0.14);
@@ -1295,7 +1561,21 @@
       margin-bottom: 3rem;
     }
 
-    /* Floating Actions (modeled after 9proxy bottom-right chat launcher + scroll top) */
+    @media (max-width: 767.98px) {
+      .site-footer {
+        padding: 2.25rem 0 1.75rem;
+      }
+      .footer-cta-bar {
+        padding: 1.1rem 1.15rem;
+        margin-bottom: 1.5rem;
+      }
+      .footer-bottom-bar {
+        padding-top: 1.1rem !important;
+        text-align: center;
+      }
+    }
+
+    /* Floating Actions (WhatsApp bottom-right + Back-to-top bottom-left at #contact) */
     .floating-actions {
       position: fixed;
       right: 1.25rem;
@@ -1321,6 +1601,11 @@
       transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
     }
 
+    .chat-fab i {
+      font-size: 1.45rem;
+      line-height: 1;
+    }
+
     .chat-fab:hover {
       background: var(--accent);
       color: #ffffff;
@@ -1328,6 +1613,10 @@
     }
 
     .back-to-top {
+      position: fixed;
+      left: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 1010;
       width: 44px;
       height: 44px;
       border-radius: 10px;
@@ -1341,7 +1630,8 @@
       opacity: 0;
       pointer-events: none;
       transform: translateY(8px);
-      transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out), background-color 160ms var(--ease-out);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out), background-color 160ms var(--ease-out), border-color 160ms var(--ease-out);
     }
 
     .back-to-top.is-visible {
@@ -1461,40 +1751,24 @@
   <!-- Top Warm Promo Strip (Single-line 3-Banner Slider) -->
   <div class="promo-strip" id="promoSlider" role="region" aria-label="Featured announcements">
     <a href="#pricing" class="promo-slide is-active">
-      <span class="promo-slide-text">20% Off First Design Package — View Plans</span>
+      <span class="promo-slide-text" data-i18n="promo.1">20% Off First Design Package — View Plans</span>
       <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </a>
     <a href="#contact" class="promo-slide">
-      <span class="promo-slide-text">Fast 7–15 Day Web Delivery — Book Now</span>
+      <span class="promo-slide-text" data-i18n="promo.2">Fast 7–15 Day Web Delivery — Book Now</span>
       <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </a>
     <a href="#contact" class="promo-slide">
-      <span class="promo-slide-text">Free 15-Min Project Call — Let’s Talk</span>
+      <span class="promo-slide-text" data-i18n="promo.3">Free 15-Min Project Call — Let’s Talk</span>
       <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
     </a>
   </div>
 
-  <!-- TOP BAR CONTRACT: 1 Brand wordmark — 5 concise links — 1 Primary Action -->
+  <!-- TOP BAR CONTRACT: 1 Brand wordmark — 5 concise links — Language Toggle + Primary Action -->
   <header class="site-header" id="mainNav">
     <div class="container container-wide">
       <div class="navbar-inner">
-        <a class="brand-wordmark" href="#home">
-          <span class="brand-glyph" aria-hidden="true">FH</span>
-          <span>Forhad Hossain</span>
-        </a>
-
-        <nav class="d-none d-lg-block" aria-label="Main navigation">
-          <ul class="nav-links-desktop">
-            <li><a class="nav-link-clean" href="#about">About</a></li>
-            <li><a class="nav-link-clean" href="#portfolio">Portfolio</a></li>
-            <li><a class="nav-link-clean" href="#cases">Case Studies</a></li>
-            <li><a class="nav-link-clean" href="#pricing">Pricing</a></li>
-            <li><a class="nav-link-clean" href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-
-        <div class="d-flex align-items-center gap-2">
-          <a class="btn-azure d-none d-sm-inline-flex" href="#contact">Start a Project</a>
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
           <button
             class="mobile-menu-toggle d-lg-none"
             id="mobileMenuToggle"
@@ -1506,6 +1780,34 @@
               <span></span><span></span><span></span>
             </span>
           </button>
+
+          <a class="brand-wordmark" href="#home">
+            <span class="brand-glyph" aria-hidden="true">FH</span>
+            <span data-i18n="brand.name">Forhad Hossain</span>
+          </a>
+        </div>
+
+        <nav class="d-none d-lg-block" aria-label="Main navigation">
+          <ul class="nav-links-desktop">
+            <li><a class="nav-link-clean" href="#about" data-i18n="nav.about">About</a></li>
+            <li><a class="nav-link-clean" href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li><a class="nav-link-clean" href="#cases" data-i18n="nav.cases">Case Studies</a></li>
+            <li><a class="nav-link-clean" href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a class="nav-link-clean" href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="d-flex align-items-center gap-2">
+          <button
+            type="button"
+            class="lang-toggle-btn"
+            id="langToggleBtn"
+            aria-label="Switch language to Bengali"
+            aria-pressed="false"
+            title="Switch to বাংলা">
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+          </button>
+          <a class="btn-azure nav-cta-btn" href="#contact" data-i18n="nav.cta">Start a Project</a>
         </div>
       </div>
     </div>
@@ -1515,13 +1817,13 @@
       <div class="container container-wide py-3">
         <nav aria-label="Mobile navigation">
           <ul class="mobile-nav-list">
-            <li><a class="mobile-nav-link" href="#about"><span>About</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link" href="#portfolio"><span>Portfolio</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link" href="#cases"><span>Case Studies</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link" href="#pricing"><span>Pricing</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
-            <li><a class="mobile-nav-link" href="#contact"><span>Contact</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="#about"><span data-i18n="nav.about">About</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="#portfolio"><span data-i18n="nav.portfolio">Portfolio</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="#cases"><span data-i18n="nav.cases">Case Studies</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="#pricing"><span data-i18n="nav.pricing">Pricing</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
+            <li><a class="mobile-nav-link" href="#contact"><span data-i18n="nav.contact">Contact</span><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a></li>
           </ul>
-          <a class="btn-azure w-100 d-sm-none mobile-drawer-cta" href="#contact">Start a Project</a>
+          <a class="btn-azure w-100 d-sm-none mobile-drawer-cta" href="#contact" data-i18n="nav.ctaFull">Start a Project</a>
         </nav>
       </div>
     </div>
@@ -1532,21 +1834,21 @@
     <section class="hero-section" id="home" aria-label="Introduction">
       <div class="container container-wide">
         <div class="text-center">
-          <p class="hero-kicker">Graphic Designer · Frontend Developer · Dhaka</p>
-          <h1 class="hero-headline">
+          <p class="hero-kicker" data-i18n="hero.kicker">Graphic Designer · Frontend Developer · Dhaka</p>
+          <h1 class="hero-headline" data-i18n="hero.headline">
             Top-Tier Brand Design &amp; Frontend Craft for Modern Digital Products
           </h1>
-          <p class="hero-lead">
+          <p class="hero-lead" data-i18n="hero.lead">
             I design distinctive visual identities, high-clarity UI/UX systems, and fast responsive web experiences built to convert visitors and scale cleanly with your business.
           </p>
 
           <div class="d-flex flex-column flex-sm-row justify-content-center align-items-stretch align-items-sm-center gap-3 mx-auto hero-cta-group" style="max-width: 460px;">
             <button type="button" class="btn-contrast-white flex-fill" data-bs-toggle="modal" data-bs-target="#cvModal">
               <i class="fa-regular fa-file-lines" aria-hidden="true"></i>
-              <span>Preview Full CV</span>
+              <span data-i18n="hero.cv">Preview Full CV</span>
             </button>
             <a class="btn-azure flex-fill" href="#pricing">
-              <span>Go to Pricing</span>
+              <span data-i18n="hero.pricing">Go to Pricing</span>
             </a>
           </div>
         </div>
@@ -1558,8 +1860,8 @@
               <div class="window-dots" aria-hidden="true">
                 <span></span><span></span><span></span>
               </div>
-              <div class="fw-semibold text-secondary-dark">Studio Profile &amp; Featured Work</div>
-              <a href="#portfolio" class="text-decoration-none fw-semibold" style="color: #60a5fa;">Explore Gallery →</a>
+              <div class="fw-semibold text-secondary-dark" data-i18n="showcase.barTitle">Studio Profile &amp; Featured Work</div>
+              <a href="#portfolio" class="text-decoration-none fw-semibold" style="color: #60a5fa;" data-i18n="showcase.explore">Explore Gallery →</a>
             </div>
             <div class="p-3 p-md-4 p-lg-5">
               <div class="row g-4 align-items-center">
@@ -1574,17 +1876,17 @@
                 </div>
                 <div class="col-lg-7">
                   <div class="meta-line">
-                    <span>Available for Freelance &amp; Part-Time</span>
+                    <span data-i18n="showcase.avail">Available for Freelance &amp; Part-Time</span>
                     <span aria-hidden="true">·</span>
-                    <span>Dhaka, Bangladesh</span>
+                    <span data-i18n="common.location">Dhaka, Bangladesh</span>
                   </div>
-                  <h2 class="h3 fw-bold mb-3">From initial brand concept to production-ready frontend code.</h2>
-                  <p class="text-muted-dark mb-4">
+                  <h2 class="h3 fw-bold mb-3" data-i18n="showcase.title">From initial brand concept to production-ready frontend code.</h2>
+                  <p class="text-muted-dark mb-4" data-i18n="showcase.desc">
                     Combining brand identity, UI/UX prototyping, WordPress customization, and React development into one reliable workflow—trusted by startups, non-profits, and growing businesses.
                   </p>
                   <div class="d-flex flex-wrap gap-3">
-                    <a class="btn-azure" href="#portfolio">View Selected Work</a>
-                    <a class="btn-dark-outline" href="#cases">Read Case Studies</a>
+                    <a class="btn-azure" href="#portfolio" data-i18n="showcase.workBtn">View Selected Work</a>
+                    <a class="btn-dark-outline" href="#cases" data-i18n="showcase.casesBtn">Read Case Studies</a>
                   </div>
                 </div>
               </div>
@@ -1593,19 +1895,19 @@
               <div class="metrics-strip tabular-nums" aria-label="Key career metrics">
                 <div class="metric-cell">
                   <div class="metric-value" data-count="5" data-suffix="+">5+</div>
-                  <div class="metric-label">Years of Design &amp; Code</div>
+                  <div class="metric-label" data-i18n="metrics.years">Years of Design &amp; Code</div>
                 </div>
                 <div class="metric-cell">
                   <div class="metric-value" data-count="120" data-suffix="+">120+</div>
-                  <div class="metric-label">Projects Completed</div>
+                  <div class="metric-label" data-i18n="metrics.projects">Projects Completed</div>
                 </div>
                 <div class="metric-cell">
                   <div class="metric-value" data-count="35" data-suffix="+">35+</div>
-                  <div class="metric-label">Returning Clients</div>
+                  <div class="metric-label" data-i18n="metrics.clients">Returning Clients</div>
                 </div>
                 <div class="metric-cell">
-                  <div class="metric-value">7–15 Days</div>
-                  <div class="metric-label">Standard Web Delivery</div>
+                  <div class="metric-value" data-i18n="metrics.daysVal">7–15 Days</div>
+                  <div class="metric-label" data-i18n="metrics.delivery">Standard Web Delivery</div>
                 </div>
               </div>
             </div>
@@ -1619,29 +1921,29 @@
       <div class="container container-wide">
         <div class="row g-5 align-items-start">
           <div class="col-lg-5">
-            <p class="section-kicker">About Me</p>
-            <h2 class="section-title">Design taste paired with frontend discipline.</h2>
-            <p class="text-secondary-dark mt-3">
+            <p class="section-kicker" data-i18n="about.kicker">About Me</p>
+            <h2 class="section-title" data-i18n="about.title">Design taste paired with frontend discipline.</h2>
+            <p class="text-secondary-dark mt-3" data-i18n="about.p1">
               I’m Forhad Hossain — a designer and frontend developer focused on building modern, pixel-accurate interfaces and memorable brand identities. I partner with founders, agencies, and local businesses to ship digital products that look sharp and load fast.
             </p>
-            <p class="text-muted-dark">
+            <p class="text-muted-dark" data-i18n="about.p2">
               My workflow bridges strategic brand thinking, user-centered wireframes, and clean production code.
             </p>
 
             <div class="border-top border-secondary border-opacity-25 pt-3 mt-4 d-flex flex-column gap-2 small">
               <div class="d-flex justify-content-between py-2 border-bottom border-secondary border-opacity-25">
-                <span class="text-muted-dark">Location</span>
-                <span class="fw-semibold text-white">Dhaka, Bangladesh</span>
+                <span class="text-muted-dark" data-i18n="about.locLabel">Location</span>
+                <span class="fw-semibold text-white" data-i18n="common.location">Dhaka, Bangladesh</span>
               </div>
               <div class="d-flex justify-content-between py-2">
-                <span class="text-muted-dark">Availability</span>
-                <span class="fw-semibold text-white">Freelance &amp; Part-time</span>
+                <span class="text-muted-dark" data-i18n="about.availLabel">Availability</span>
+                <span class="fw-semibold text-white" data-i18n="about.availVal">Freelance &amp; Part-time</span>
               </div>
             </div>
 
             <div class="d-flex flex-wrap gap-2 mt-4">
-              <a class="btn-azure" href="#contact">Contact Me</a>
-              <button type="button" class="btn-dark-outline" data-bs-toggle="modal" data-bs-target="#cvModal">View Full CV</button>
+              <a class="btn-azure" href="#contact" data-i18n="about.contactBtn">Contact Me</a>
+              <button type="button" class="btn-dark-outline" data-bs-toggle="modal" data-bs-target="#cvModal" data-i18n="about.cvBtn">View Full CV</button>
             </div>
           </div>
 
@@ -1649,19 +1951,19 @@
             <div class="row g-4">
               <div class="col-md-6">
                 <div class="dark-card">
-                  <h3 class="h5 fw-bold mb-2">Design Craft</h3>
-                  <p class="text-muted-dark small mb-4">Branding systems, visual identity, UI/UX flows, and WordPress layouts.</p>
+                  <h3 class="h5 fw-bold mb-2" data-i18n="skills.designTitle">Design Craft</h3>
+                  <p class="text-muted-dark small mb-4" data-i18n="skills.designDesc">Branding systems, visual identity, UI/UX flows, and WordPress layouts.</p>
 
                   <div class="d-flex flex-column gap-3 tabular-nums">
                     <div>
                       <div class="d-flex justify-content-between small fw-semibold mb-1 text-secondary-dark">
-                        <span>Brand Identity</span><span>95%</span>
+                        <span data-i18n="skills.brand">Brand Identity</span><span>95%</span>
                       </div>
                       <div class="skill-meter-track"><div class="skill-meter-fill" style="width:95%"></div></div>
                     </div>
                     <div>
                       <div class="d-flex justify-content-between small fw-semibold mb-1 text-secondary-dark">
-                        <span>UI/UX Design</span><span>90%</span>
+                        <span data-i18n="skills.uiux">UI/UX Design</span><span>90%</span>
                       </div>
                       <div class="skill-meter-track"><div class="skill-meter-fill" style="width:90%"></div></div>
                     </div>
@@ -1677,8 +1979,8 @@
 
               <div class="col-md-6">
                 <div class="dark-card">
-                  <h3 class="h5 fw-bold mb-2">Frontend Engineering</h3>
-                  <p class="text-muted-dark small mb-4">Responsive architecture, semantic markup, accessibility, and speed tuning.</p>
+                  <h3 class="h5 fw-bold mb-2" data-i18n="skills.devTitle">Frontend Engineering</h3>
+                  <p class="text-muted-dark small mb-4" data-i18n="skills.devDesc">Responsive architecture, semantic markup, accessibility, and speed tuning.</p>
 
                   <div class="d-flex flex-column gap-3 tabular-nums">
                     <div>
@@ -1721,9 +2023,9 @@
     <section id="services" class="section-pad">
       <div class="container container-wide">
         <div class="section-header">
-          <p class="section-kicker">Services</p>
-          <h2 class="section-title">End-to-end design and frontend delivery.</h2>
-          <p class="section-subtitle">Select any service below to pre-fill an inquiry with your project goals.</p>
+          <p class="section-kicker" data-i18n="services.kicker">Services</p>
+          <h2 class="section-title" data-i18n="services.title">End-to-end design and frontend delivery.</h2>
+          <p class="section-subtitle" data-i18n="services.subtitle">Select any service below to pre-fill an inquiry with your project goals.</p>
         </div>
 
         <div class="row g-4">
@@ -1731,80 +2033,80 @@
             <button type="button" class="dark-card dark-card-interactive service-card-btn" data-select-service="Branding & Identity">
               <div>
                 <div class="service-index tabular-nums">01.</div>
-                <h3 class="h5 fw-bold mb-2">Branding &amp; Identity</h3>
-                <p class="text-muted-dark small mb-0">Distinctive logo systems, curated color palettes, typography pairings, and practical brand guidelines.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="services.s1.title">Branding &amp; Identity</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="services.s1.desc">Distinctive logo systems, curated color palettes, typography pairings, and practical brand guidelines.</p>
               </div>
-              <span class="service-card-action">Inquire about Branding <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              <span class="service-card-action"><span data-i18n="services.s1.cta">Inquire about Branding</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </button>
           </div>
           <div class="col-md-6 col-lg-4">
             <button type="button" class="dark-card dark-card-interactive service-card-btn" data-select-service="UI/UX Design">
               <div>
                 <div class="service-index tabular-nums">02.</div>
-                <h3 class="h5 fw-bold mb-2">UI/UX Design</h3>
-                <p class="text-muted-dark small mb-0">Clear user flows, wireframes, and interactive Figma prototypes structured for high conversion.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="services.s2.title">UI/UX Design</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="services.s2.desc">Clear user flows, wireframes, and interactive Figma prototypes structured for high conversion.</p>
               </div>
-              <span class="service-card-action">Inquire about UI/UX <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              <span class="service-card-action"><span data-i18n="services.s2.cta">Inquire about UI/UX</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </button>
           </div>
           <div class="col-md-6 col-lg-4">
             <button type="button" class="dark-card dark-card-interactive service-card-btn" data-select-service="Frontend Development">
               <div>
                 <div class="service-index tabular-nums">03.</div>
-                <h3 class="h5 fw-bold mb-2">Frontend Development</h3>
-                <p class="text-muted-dark small mb-0">Responsive HTML/CSS, React interfaces, and performance tuning built for desktop and mobile.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="services.s3.title">Frontend Development</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="services.s3.desc">Responsive HTML/CSS, React interfaces, and performance tuning built for desktop and mobile.</p>
               </div>
-              <span class="service-card-action">Inquire about Frontend <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              <span class="service-card-action"><span data-i18n="services.s3.cta">Inquire about Frontend</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </button>
           </div>
           <div class="col-md-6 col-lg-4">
             <button type="button" class="dark-card dark-card-interactive service-card-btn" data-select-service="Social Media Design">
               <div>
                 <div class="service-index tabular-nums">04.</div>
-                <h3 class="h5 fw-bold mb-2">Social Media Design</h3>
-                <p class="text-muted-dark small mb-0">Cohesive campaign graphics tailored for Instagram, Facebook, and LinkedIn brand channels.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="services.s4.title">Social Media Design</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="services.s4.desc">Cohesive campaign graphics tailored for Instagram, Facebook, and LinkedIn brand channels.</p>
               </div>
-              <span class="service-card-action">Inquire about Social Media <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              <span class="service-card-action"><span data-i18n="services.s4.cta">Inquire about Social Media</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </button>
           </div>
           <div class="col-md-6 col-lg-4">
             <button type="button" class="dark-card dark-card-interactive service-card-btn" data-select-service="Corporate Design">
               <div>
                 <div class="service-index tabular-nums">05.</div>
-                <h3 class="h5 fw-bold mb-2">Corporate Design</h3>
-                <p class="text-muted-dark small mb-0">Print-ready business cards, pitch decks, flyers, brochures, and executive report layouts.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="services.s5.title">Corporate Design</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="services.s5.desc">Print-ready business cards, pitch decks, flyers, brochures, and executive report layouts.</p>
               </div>
-              <span class="service-card-action">Inquire about Corporate <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              <span class="service-card-action"><span data-i18n="services.s5.cta">Inquire about Corporate</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </button>
           </div>
           <div class="col-md-6 col-lg-4">
             <button type="button" class="dark-card dark-card-interactive service-card-btn" data-select-service="Web Design">
               <div>
                 <div class="service-index tabular-nums">06.</div>
-                <h3 class="h5 fw-bold mb-2">Web Design</h3>
-                <p class="text-muted-dark small mb-0">Custom portfolio, business, and e-commerce websites optimized for SEO and accessibility.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="services.s6.title">Web Design</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="services.s6.desc">Custom portfolio, business, and e-commerce websites optimized for SEO and accessibility.</p>
               </div>
-              <span class="service-card-action">Inquire about Web Design <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              <span class="service-card-action"><span data-i18n="services.s6.cta">Inquire about Web Design</span> <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </button>
           </div>
         </div>
 
         <div class="principles-grid">
           <div>
-            <h4 class="h6 fw-bold mb-1">Fast Turnaround</h4>
-            <p class="text-muted-dark small mb-0">Reliable milestone delivery without cutting corners on craft.</p>
+            <h4 class="h6 fw-bold mb-1" data-i18n="principles.p1.title">Fast Turnaround</h4>
+            <p class="text-muted-dark small mb-0" data-i18n="principles.p1.desc">Reliable milestone delivery without cutting corners on craft.</p>
           </div>
           <div>
-            <h4 class="h6 fw-bold mb-1">Clear Communication</h4>
-            <p class="text-muted-dark small mb-0">Transparent progress updates and collaborative feedback loops.</p>
+            <h4 class="h6 fw-bold mb-1" data-i18n="principles.p2.title">Clear Communication</h4>
+            <p class="text-muted-dark small mb-0" data-i18n="principles.p2.desc">Transparent progress updates and collaborative feedback loops.</p>
           </div>
           <div>
-            <h4 class="h6 fw-bold mb-1">Scalable Systems</h4>
-            <p class="text-muted-dark small mb-0">Modular components and clean codebases ready to grow.</p>
+            <h4 class="h6 fw-bold mb-1" data-i18n="principles.p3.title">Scalable Systems</h4>
+            <p class="text-muted-dark small mb-0" data-i18n="principles.p3.desc">Modular components and clean codebases ready to grow.</p>
           </div>
           <div>
-            <h4 class="h6 fw-bold mb-1">Attention to Detail</h4>
-            <p class="text-muted-dark small mb-0">Consistent spacing, accessible contrast, and crisp typography.</p>
+            <h4 class="h6 fw-bold mb-1" data-i18n="principles.p4.title">Attention to Detail</h4>
+            <p class="text-muted-dark small mb-0" data-i18n="principles.p4.desc">Consistent spacing, accessible contrast, and crisp typography.</p>
           </div>
         </div>
       </div>
@@ -1815,16 +2117,16 @@
       <div class="container container-wide">
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4 pb-2">
           <div>
-            <p class="section-kicker">Selected Works</p>
-            <h2 class="section-title mb-1">Portfolio Showcase</h2>
-            <p class="section-subtitle">Click any project to inspect details in full view.</p>
+            <p class="section-kicker" data-i18n="portfolio.kicker">Selected Works</p>
+            <h2 class="section-title mb-1" data-i18n="portfolio.title">Portfolio Showcase</h2>
+            <p class="section-subtitle" data-i18n="portfolio.subtitle">Click any project to inspect details in full view.</p>
           </div>
 
           <div class="filter-segmented" role="group" aria-label="Filter portfolio projects">
-            <button type="button" class="filter-tab-btn is-active" data-filter="all">All Work</button>
-            <button type="button" class="filter-tab-btn" data-filter="web">Web Design</button>
-            <button type="button" class="filter-tab-btn" data-filter="app">UI/UX &amp; Apps</button>
-            <button type="button" class="filter-tab-btn" data-filter="branding">Branding</button>
+            <button type="button" class="filter-tab-btn is-active" data-filter="all" data-i18n="portfolio.filterAll">All Work</button>
+            <button type="button" class="filter-tab-btn" data-filter="web" data-i18n="portfolio.filterWeb">Web Design</button>
+            <button type="button" class="filter-tab-btn" data-filter="app" data-i18n="portfolio.filterApp">UI/UX &amp; Apps</button>
+            <button type="button" class="filter-tab-btn" data-filter="branding" data-i18n="portfolio.filterBrand">Branding</button>
           </div>
         </div>
 
@@ -1835,11 +2137,11 @@
                 <img src="./assets/20250920_203553_0000.png" alt="Pharma WordPress Design mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Pharma WordPress Design';">
               </div>
               <div class="portfolio-card-body">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="portfolio.pharma.meta">
                   <span>Web Design</span><span aria-hidden="true">·</span><span>WordPress</span><span aria-hidden="true">·</span><span>Healthcare</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Pharma WordPress Design</h3>
-                <p class="text-muted-dark small mb-0">Custom WordPress architecture for a pharmaceutical brand featuring product catalogs and editorial blog.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="portfolio.pharma.title">Pharma WordPress Design</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="portfolio.pharma.desc">Custom WordPress architecture for a pharmaceutical brand featuring product catalogs and editorial blog.</p>
               </div>
             </article>
           </div>
@@ -1850,11 +2152,11 @@
                 <img src="./assets/20250920_203554_0001.png" alt="Retouching Website mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Retouching Website';">
               </div>
               <div class="portfolio-card-body">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="portfolio.retouching.meta">
                   <span>Web Design</span><span aria-hidden="true">·</span><span>Gallery UI</span><span aria-hidden="true">·</span><span>Studio</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Retouching Website</h3>
-                <p class="text-muted-dark small mb-0">Conversion-focused portfolio website for photo retouching services with interactive client gallery.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="portfolio.retouching.title">Retouching Website</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="portfolio.retouching.desc">Conversion-focused portfolio website for photo retouching services with interactive client gallery.</p>
               </div>
             </article>
           </div>
@@ -1865,11 +2167,11 @@
                 <img src="./assets/20250920_203554_0002.png" alt="Travel Website mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Travel Website';">
               </div>
               <div class="portfolio-card-body">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="portfolio.travel.meta">
                   <span>UI/UX</span><span aria-hidden="true">·</span><span>Booking Flow</span><span aria-hidden="true">·</span><span>Travel</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Travel Website</h3>
-                <p class="text-muted-dark small mb-0">Interactive travel booking experience with visual itinerary builder and destination discovery.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="portfolio.travel.title">Travel Website</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="portfolio.travel.desc">Interactive travel booking experience with visual itinerary builder and destination discovery.</p>
               </div>
             </article>
           </div>
@@ -1880,11 +2182,11 @@
                 <img src="./assets/20250920_203554_0003.png" alt="Non Profit Website mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Non Profit Website';">
               </div>
               <div class="portfolio-card-body">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="portfolio.nonprofit.meta">
                   <span>Branding</span><span aria-hidden="true">·</span><span>Web Design</span><span aria-hidden="true">·</span><span>Non-Profit</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Non Profit Website</h3>
-                <p class="text-muted-dark small mb-0">Donation-centered organization platform with volunteer onboarding and measurable impact stories.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="portfolio.nonprofit.title">Non Profit Website</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="portfolio.nonprofit.desc">Donation-centered organization platform with volunteer onboarding and measurable impact stories.</p>
               </div>
             </article>
           </div>
@@ -1895,11 +2197,11 @@
                 <img src="./assets/20250920_203554_0004.png" alt="Naat Web App mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Naat Web App';">
               </div>
               <div class="portfolio-card-body">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="portfolio.naat.meta">
                   <span>Web App</span><span aria-hidden="true">·</span><span>Frontend</span><span aria-hidden="true">·</span><span>Audio UI</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Naat Web App</h3>
-                <p class="text-muted-dark small mb-0">Responsive audio streaming web application featuring curated playlists, fast search, and player controls.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="portfolio.naat.title">Naat Web App</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="portfolio.naat.desc">Responsive audio streaming web application featuring curated playlists, fast search, and player controls.</p>
               </div>
             </article>
           </div>
@@ -1910,11 +2212,11 @@
                 <img src="./assets/20250920_203554_0006.png" alt="Club Master App mockup" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Club Master App';">
               </div>
               <div class="portfolio-card-body">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="portfolio.clubmaster.meta">
                   <span>UI/UX &amp; Apps</span><span aria-hidden="true">·</span><span>Dashboard</span><span aria-hidden="true">·</span><span>SaaS</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Club Master App</h3>
-                <p class="text-muted-dark small mb-0">Event scheduling and membership management interface designed for community clubs and organizations.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="portfolio.clubmaster.title">Club Master App</h3>
+                <p class="text-muted-dark small mb-0" data-i18n="portfolio.clubmaster.desc">Event scheduling and membership management interface designed for community clubs and organizations.</p>
               </div>
             </article>
           </div>
@@ -1927,11 +2229,11 @@
       <div class="container container-wide">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-5">
           <div>
-            <p class="section-kicker">Deep Dives</p>
-            <h2 class="section-title mb-1">Featured Case Studies</h2>
-            <p class="section-subtitle">How strategy, visual craft, and frontend optimization come together in real engagements.</p>
+            <p class="section-kicker" data-i18n="cases.kicker">Deep Dives</p>
+            <h2 class="section-title mb-1" data-i18n="cases.title">Featured Case Studies</h2>
+            <p class="section-subtitle" data-i18n="cases.subtitle">How strategy, visual craft, and frontend optimization come together in real engagements.</p>
           </div>
-          <a href="casestudy.html" class="btn-dark-outline">Open Standalone Page</a>
+          <a href="casestudy.html" class="btn-dark-outline" data-i18n="cases.standaloneBtn">Open Standalone Page</a>
         </div>
 
         <article class="case-row">
@@ -1943,21 +2245,21 @@
             </div>
             <div class="col-lg-6">
               <div class="case-content-pane">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="cases.c1.meta">
                   <span>01. Case Study</span><span aria-hidden="true">·</span><span>Brand Identity &amp; Web</span><span aria-hidden="true">·</span><span>4 Weeks</span>
                 </div>
-                <h3 class="h3 fw-bold mb-3">Branding for Coffee Co.</h3>
-                <p class="text-muted-dark">
+                <h3 class="h3 fw-bold mb-3" data-i18n="cases.c1.title">Branding for Coffee Co.</h3>
+                <p class="text-muted-dark" data-i18n="cases.c1.desc">
                   A full brand identity engagement defining the visual language, print packaging system, and digital flagship. Designed to evoke warm artisan craft while keeping early-stage production costs lean.
                 </p>
                 <div class="row g-2 small text-secondary-dark mb-4">
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Logo &amp; visual system</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Packaging dielines</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Competitive research</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Responsive landing page</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c1.b1">Logo &amp; visual system</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c1.b2">Packaging dielines</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c1.b3">Competitive research</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c1.b4">Responsive landing page</span></div>
                 </div>
                 <div>
-                  <button type="button" class="btn-azure" data-case-id="coffee">Read Full Case Study</button>
+                  <button type="button" class="btn-azure" data-case-id="coffee" data-i18n="cases.readBtn">Read Full Case Study</button>
                 </div>
               </div>
             </div>
@@ -1973,21 +2275,21 @@
             </div>
             <div class="col-lg-6 order-lg-1">
               <div class="case-content-pane">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="cases.c2.meta">
                   <span>02. Case Study</span><span aria-hidden="true">·</span><span>Product UI &amp; React</span><span aria-hidden="true">·</span><span>6 Weeks</span>
                 </div>
-                <h3 class="h3 fw-bold mb-3">Enterprise Analytics Dashboard</h3>
-                <p class="text-muted-dark">
+                <h3 class="h3 fw-bold mb-3" data-i18n="cases.c2.title">Enterprise Analytics Dashboard</h3>
+                <p class="text-muted-dark" data-i18n="cases.c2.desc">
                   Architected a data-dense analytics dashboard to surface user behavior and revenue metrics without visual clutter. Built around high-contrast hierarchy and responsive multi-breakpoint tables.
                 </p>
                 <div class="row g-2 small text-secondary-dark mb-4">
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Custom chart components</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Filterable data tables</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Performance-tuned React</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Keyboard-accessible UI</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c2.b1">Custom chart components</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c2.b2">Filterable data tables</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c2.b3">Performance-tuned React</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c2.b4">Keyboard-accessible UI</span></div>
                 </div>
                 <div>
-                  <button type="button" class="btn-azure" data-case-id="analytics">Read Full Case Study</button>
+                  <button type="button" class="btn-azure" data-case-id="analytics" data-i18n="cases.readBtn">Read Full Case Study</button>
                 </div>
               </div>
             </div>
@@ -2003,21 +2305,21 @@
             </div>
             <div class="col-lg-6">
               <div class="case-content-pane">
-                <div class="meta-line tabular-nums">
+                <div class="meta-line tabular-nums" data-i18n="cases.c3.meta">
                   <span>03. Case Study</span><span aria-hidden="true">·</span><span>E-commerce UX</span><span aria-hidden="true">·</span><span>+18% Conversion</span>
                 </div>
-                <h3 class="h3 fw-bold mb-3">E-commerce Re-design</h3>
-                <p class="text-muted-dark">
+                <h3 class="h3 fw-bold mb-3" data-i18n="cases.c3.title">E-commerce Re-design</h3>
+                <p class="text-muted-dark" data-i18n="cases.c3.desc">
                   Redesigned product discovery pages and streamlined mobile checkout to remove friction. Improved visual hierarchy and asset loading speed across desktop and mobile viewports.
                 </p>
                 <div class="row g-2 small text-secondary-dark mb-4 tabular-nums">
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>+18% checkout conversion</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>-30% page load time</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>Mobile-first checkout</div>
-                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i>WCAG AA contrast</div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c3.b1">+18% checkout conversion</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c3.b2">-30% page load time</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c3.b3">Mobile-first checkout</span></div>
+                  <div class="col-sm-6"><i class="fa-solid fa-check me-2" style="color: #60a5fa;" aria-hidden="true"></i><span data-i18n="cases.c3.b4">WCAG AA contrast</span></div>
                 </div>
                 <div>
-                  <button type="button" class="btn-azure" data-case-id="ecommerce">Read Full Case Study</button>
+                  <button type="button" class="btn-azure" data-case-id="ecommerce" data-i18n="cases.readBtn">Read Full Case Study</button>
                 </div>
               </div>
             </div>
@@ -2030,44 +2332,44 @@
     <section id="testimonials" class="section-pad section-alt">
       <div class="container container-wide">
         <div class="section-header">
-          <p class="section-kicker">Client Proof</p>
-          <h2 class="section-title">Trusted by founders and product teams.</h2>
-          <p class="section-subtitle">Long-term partnerships built on reliable turnaround and thoughtful execution.</p>
+          <p class="section-kicker" data-i18n="testimonials.kicker">Client Proof</p>
+          <h2 class="section-title" data-i18n="testimonials.title">Trusted by founders and product teams.</h2>
+          <p class="section-subtitle" data-i18n="testimonials.subtitle">Long-term partnerships built on reliable turnaround and thoughtful execution.</p>
         </div>
 
         <div class="row g-4">
           <div class="col-md-4">
             <blockquote class="dark-card d-flex flex-column justify-content-between mb-0">
-              <p class="font-serif-accent fs-5 text-white mb-4">
+              <p class="font-serif-accent fs-5 text-white mb-4" data-i18n="testimonials.q1">
                 “Forhad transformed our brand identity and delivered a stunning website ahead of launch.”
               </p>
               <footer class="border-top border-secondary border-opacity-25 pt-3 small">
-                <div class="fw-bold text-white">Sarah L.</div>
-                <div class="text-muted-dark">Startup Founder · Brand &amp; Web Launch</div>
+                <div class="fw-bold text-white" data-i18n="testimonials.a1">Sarah L.</div>
+                <div class="text-muted-dark" data-i18n="testimonials.r1">Startup Founder · Brand &amp; Web Launch</div>
               </footer>
             </blockquote>
           </div>
 
           <div class="col-md-4">
             <blockquote class="dark-card d-flex flex-column justify-content-between mb-0">
-              <p class="font-serif-accent fs-5 text-white mb-4">
+              <p class="font-serif-accent fs-5 text-white mb-4" data-i18n="testimonials.q2">
                 “Creative, reliable, and detail-oriented. He’s our go-to designer for every campaign.”
               </p>
               <footer class="border-top border-secondary border-opacity-25 pt-3 small">
-                <div class="fw-bold text-white">Mark T.</div>
-                <div class="text-muted-dark">Marketing Manager · Campaign Collateral</div>
+                <div class="fw-bold text-white" data-i18n="testimonials.a2">Mark T.</div>
+                <div class="text-muted-dark" data-i18n="testimonials.r2">Marketing Manager · Campaign Collateral</div>
               </footer>
             </blockquote>
           </div>
 
           <div class="col-md-4">
             <blockquote class="dark-card d-flex flex-column justify-content-between mb-0">
-              <p class="font-serif-accent fs-5 text-white mb-4">
+              <p class="font-serif-accent fs-5 text-white mb-4" data-i18n="testimonials.q3">
                 “The frontend he built for us is fast, responsive, and effortless for our engineers to maintain.”
               </p>
               <footer class="border-top border-secondary border-opacity-25 pt-3 small">
-                <div class="fw-bold text-white">Emily R.</div>
-                <div class="text-muted-dark">Tech Lead · React Frontend</div>
+                <div class="fw-bold text-white" data-i18n="testimonials.a3">Emily R.</div>
+                <div class="text-muted-dark" data-i18n="testimonials.r3">Tech Lead · React Frontend</div>
               </footer>
             </blockquote>
           </div>
@@ -2076,14 +2378,14 @@
         <div class="row g-4 mt-2">
           <div class="col-md-6">
             <div class="dark-card">
-              <h3 class="h6 fw-bold mb-2">Client Spotlight — 6-Week MVP Launch</h3>
-              <p class="text-muted-dark small mb-0">Working alongside a lean founding team, we shipped a complete MVP in 6 weeks and iterated rapidly from real user feedback to reach early product-market fit.</p>
+              <h3 class="h6 fw-bold mb-2" data-i18n="testimonials.s1Title">Client Spotlight — 6-Week MVP Launch</h3>
+              <p class="text-muted-dark small mb-0" data-i18n="testimonials.s1Desc">Working alongside a lean founding team, we shipped a complete MVP in 6 weeks and iterated rapidly from real user feedback to reach early product-market fit.</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="dark-card">
-              <h3 class="h6 fw-bold mb-2">Long-Term Design Partnerships</h3>
-              <p class="text-muted-dark small mb-0">Most clients continue working together for ongoing UI improvements, campaign visuals, and frontend feature releases after initial launch.</p>
+              <h3 class="h6 fw-bold mb-2" data-i18n="testimonials.s2Title">Long-Term Design Partnerships</h3>
+              <p class="text-muted-dark small mb-0" data-i18n="testimonials.s2Desc">Most clients continue working together for ongoing UI improvements, campaign visuals, and frontend feature releases after initial launch.</p>
             </div>
           </div>
         </div>
@@ -2094,9 +2396,9 @@
     <section id="client-trust" class="section-pad client-trust-section" aria-label="Trusted technology and startup platforms">
       <div class="container container-wide">
         <div class="text-center mx-auto mb-5" style="max-width: 660px;">
-          <p class="section-kicker">Client Trust</p>
-          <h2 class="section-title">Trusted across modern tech &amp; startup platforms.</h2>
-          <p class="section-subtitle">Shipping clean brand systems, product UI, and responsive storefronts for teams building on leading web stacks.</p>
+          <p class="section-kicker" data-i18n="trust.kicker">Client Trust</p>
+          <h2 class="section-title" data-i18n="trust.title">Trusted across modern tech &amp; startup platforms.</h2>
+          <p class="section-subtitle" data-i18n="trust.subtitle">Shipping clean brand systems, product UI, and responsive storefronts for teams building on leading web stacks.</p>
         </div>
 
         <div class="row row-cols-2 row-cols-sm-4 g-3 g-md-4">
@@ -2174,7 +2476,7 @@
     <section id="pricing" class="section-pad font-bn">
       <div class="container container-wide">
         <div class="text-center mx-auto mb-5" style="max-width: 680px;">
-          <p class="section-kicker">Packages &amp; Pricing</p>
+          <p class="section-kicker" data-i18n="pricing.kicker">Packages &amp; Pricing</p>
           <h2 class="section-title">প্যাকেজ ও মূল্য তালিকা</h2>
           <p class="section-subtitle">সহজ, বাজেট ফ্রেন্ডলি এবং কোনো গোপন চার্জ ছাড়াই পরিষেবা প্রদান করা হয়। প্রথম অর্ডারে সরাসরি WhatsApp-এ বিশেষ ডিসকাউন্টের সুবিধা নিন।</p>
         </div>
@@ -2275,9 +2577,9 @@
     <section id="blog" class="section-pad section-alt">
       <div class="container container-wide">
         <div class="section-header">
-          <p class="section-kicker">Journal</p>
-          <h2 class="section-title">Blog &amp; Field Notes</h2>
-          <p class="section-subtitle">Practical notes on design systems, React speed, and lean branding.</p>
+          <p class="section-kicker" data-i18n="blog.kicker">Journal</p>
+          <h2 class="section-title" data-i18n="blog.title">Blog &amp; Field Notes</h2>
+          <p class="section-subtitle" data-i18n="blog.subtitle">Practical notes on design systems, React speed, and lean branding.</p>
         </div>
 
         <div class="row g-4">
@@ -2287,13 +2589,13 @@
                 <img src="/src/assets/images/blog_design_systems_1795380985675.jpg" alt="Design system color swatches, grid sketches, and typography specimen sheets" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Design Systems';">
               </div>
               <div class="p-4 d-flex flex-column flex-grow-1">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="blog.b1.meta">
                   <span>Design Systems</span><span aria-hidden="true">·</span><span>5 min read</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Design Systems: Building for Scale</h3>
-                <p class="text-muted-dark small mb-4">How to structure spacing tokens, type scales, and reusable UI components that grow cleanly with your product.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="blog.b1.title">Design Systems: Building for Scale</h3>
+                <p class="text-muted-dark small mb-4" data-i18n="blog.b1.desc">How to structure spacing tokens, type scales, and reusable UI components that grow cleanly with your product.</p>
                 <button type="button" class="btn btn-link p-0 text-start fw-semibold text-decoration-none mt-auto" style="color: #60a5fa;" data-article-id="systems">
-                  Read article <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+                  <span data-i18n="blog.readMore">Read article</span> <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
                 </button>
               </div>
             </article>
@@ -2305,13 +2607,13 @@
                 <img src="/src/assets/images/blog_frontend_performance_1795380985704.jpg" alt="Frontend developer workstation showing web wireframes and performance metrics" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Frontend Performance';">
               </div>
               <div class="p-4 d-flex flex-column flex-grow-1">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="blog.b2.meta">
                   <span>Frontend</span><span aria-hidden="true">·</span><span>4 min read</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Performance Tips for React</h3>
-                <p class="text-muted-dark small mb-4">Practical rendering, asset-loading, and bundle-splitting habits that make React interfaces feel instantaneous.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="blog.b2.title">Performance Tips for React</h3>
+                <p class="text-muted-dark small mb-4" data-i18n="blog.b2.desc">Practical rendering, asset-loading, and bundle-splitting habits that make React interfaces feel instantaneous.</p>
                 <button type="button" class="btn btn-link p-0 text-start fw-semibold text-decoration-none mt-auto" style="color: #60a5fa;" data-article-id="react-perf">
-                  Read article <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+                  <span data-i18n="blog.readMore">Read article</span> <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
                 </button>
               </div>
             </article>
@@ -2323,13 +2625,13 @@
                 <img src="/src/assets/images/blog_brand_identity_1795380987264.jpg" alt="Bespoke stationery cards and embossed brand guidelines book" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback-active'); this.parentElement.textContent='Branding on a Budget';">
               </div>
               <div class="p-4 d-flex flex-column flex-grow-1">
-                <div class="meta-line">
+                <div class="meta-line" data-i18n="blog.b3.meta">
                   <span>Branding</span><span aria-hidden="true">·</span><span>4 min read</span>
                 </div>
-                <h3 class="h5 fw-bold mb-2">Branding on a Budget</h3>
-                <p class="text-muted-dark small mb-4">How early-stage founders can launch a memorable, cohesive visual identity without enterprise agency retainers.</p>
+                <h3 class="h5 fw-bold mb-2" data-i18n="blog.b3.title">Branding on a Budget</h3>
+                <p class="text-muted-dark small mb-4" data-i18n="blog.b3.desc">How early-stage founders can launch a memorable, cohesive visual identity without enterprise agency retainers.</p>
                 <button type="button" class="btn btn-link p-0 text-start fw-semibold text-decoration-none mt-auto" style="color: #60a5fa;" data-article-id="budget-brand">
-                  Read article <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+                  <span data-i18n="blog.readMore">Read article</span> <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
                 </button>
               </div>
             </article>
@@ -2342,7 +2644,7 @@
     <section id="faq" class="section-pad font-bn">
       <div class="container container-wide" style="max-width: 900px;">
         <div class="text-center mb-5">
-          <p class="section-kicker">FAQ</p>
+          <p class="section-kicker" data-i18n="faq.kicker">FAQ</p>
           <h2 class="section-title">গ্রাফিক ডিজাইন এবং ওয়েব ডেভেলপমেন্ট সংক্রান্ত প্রশ্ন ও উত্তর</h2>
         </div>
 
@@ -2446,39 +2748,39 @@
       <div class="container container-wide">
         <div class="row g-5 align-items-start">
           <div class="col-lg-5">
-            <p class="section-kicker">Contact</p>
-            <h2 class="section-title">Let’s build your next project.</h2>
-            <p class="text-muted-dark mt-3 mb-4">
+            <p class="section-kicker" data-i18n="contact.kicker">Contact</p>
+            <h2 class="section-title" data-i18n="contact.title">Let’s build your next project.</h2>
+            <p class="text-muted-dark mt-3 mb-4" data-i18n="contact.subtitle">
               Share your timeline, budget, and goals. I typically respond within a few business hours.
             </p>
 
             <div class="border-top border-secondary border-opacity-25 pt-3 d-flex flex-column gap-3 small">
               <div>
-                <div class="text-muted-dark">Email</div>
+                <div class="text-muted-dark" data-i18n="contact.emailLabel">Email</div>
                 <a href="mailto:fh7614@gmail.com" class="fw-semibold text-white text-decoration-none">fh7614@gmail.com</a>
               </div>
               <div>
-                <div class="text-muted-dark">Phone &amp; WhatsApp</div>
+                <div class="text-muted-dark" data-i18n="contact.phoneLabel">Phone &amp; WhatsApp</div>
                 <a href="https://wa.me/8801933393656" target="_blank" rel="noopener" class="fw-semibold text-white text-decoration-none tabular-nums">+880 1933-393656</a>
               </div>
               <div>
-                <div class="text-muted-dark">Studio Location</div>
-                <div class="fw-semibold text-white">Dhaka, Bangladesh</div>
+                <div class="text-muted-dark" data-i18n="contact.locLabel">Studio Location</div>
+                <div class="fw-semibold text-white" data-i18n="common.location">Dhaka, Bangladesh</div>
               </div>
               <div>
-                <div class="text-muted-dark">Working Hours</div>
-                <div class="fw-semibold text-white">Mon — Fri, 9:00 AM — 6:00 PM (BST)</div>
+                <div class="text-muted-dark" data-i18n="contact.hoursLabel">Working Hours</div>
+                <div class="fw-semibold text-white" data-i18n="contact.hoursVal">Mon — Fri, 9:00 AM — 6:00 PM (BST)</div>
               </div>
             </div>
 
             <div class="d-flex flex-wrap gap-2 mt-4">
               <a href="https://wa.me/8801933393656" target="_blank" rel="noopener" class="btn-azure">
                 <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                <span>Message on WhatsApp</span>
+                <span data-i18n="contact.waBtn">Message on WhatsApp</span>
               </a>
               <a href="mailto:fh7614@gmail.com" class="btn-dark-outline">
                 <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-                <span>Email Directly</span>
+                <span data-i18n="contact.emailBtn">Email Directly</span>
               </a>
             </div>
           </div>
@@ -2493,17 +2795,17 @@
               <form id="contactForm" novalidate>
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label for="contactName" class="form-label fw-semibold small">Your Name</label>
-                    <input type="text" id="contactName" class="form-control" placeholder="e.g. Tariq Ahmed" required>
-                    <div class="invalid-feedback">Please enter your name.</div>
+                    <label for="contactName" class="form-label fw-semibold small" data-i18n="form.nameLabel">Your Name</label>
+                    <input type="text" id="contactName" class="form-control" placeholder="e.g. Tariq Ahmed" data-i18n-placeholder="form.namePh" required>
+                    <div class="invalid-feedback" data-i18n="form.nameErr">Please enter your name.</div>
                   </div>
                   <div class="col-md-6">
-                    <label for="contactEmail" class="form-label fw-semibold small">Email Address</label>
-                    <input type="email" id="contactEmail" class="form-control" placeholder="you@company.com" required>
-                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                    <label for="contactEmail" class="form-label fw-semibold small" data-i18n="form.emailLabel">Email Address</label>
+                    <input type="email" id="contactEmail" class="form-control" placeholder="you@company.com" data-i18n-placeholder="form.emailPh" required>
+                    <div class="invalid-feedback" data-i18n="form.emailErr">Please enter a valid email address.</div>
                   </div>
                   <div class="col-md-6">
-                    <label for="contactService" class="form-label fw-semibold small">Service or Package</label>
+                    <label for="contactService" class="form-label fw-semibold small" data-i18n="form.serviceLabel">Service or Package</label>
                     <select id="contactService" class="form-select">
                       <option value="Web Design">Web Design</option>
                       <option value="Branding & Identity">Branding &amp; Identity</option>
@@ -2518,7 +2820,7 @@
                     </select>
                   </div>
                   <div class="col-md-6">
-                    <label for="contactBudget" class="form-label fw-semibold small">Estimated Budget</label>
+                    <label for="contactBudget" class="form-label fw-semibold small" data-i18n="form.budgetLabel">Estimated Budget</label>
                     <select id="contactBudget" class="form-select tabular-nums">
                       <option value="1000–5,000 BDT">1,000–5,000 BDT</option>
                       <option value="5000–15,000 BDT">5,000–15,000 BDT</option>
@@ -2526,12 +2828,12 @@
                     </select>
                   </div>
                   <div class="col-12">
-                    <label for="contactMessage" class="form-label fw-semibold small">Project Details</label>
-                    <textarea id="contactMessage" class="form-control" rows="4" placeholder="Tell me about your goals, timeline, and reference links..." required></textarea>
-                    <div class="invalid-feedback">Please share a brief description of your project.</div>
+                    <label for="contactMessage" class="form-label fw-semibold small" data-i18n="form.msgLabel">Project Details</label>
+                    <textarea id="contactMessage" class="form-control" rows="4" placeholder="Tell me about your goals, timeline, and reference links..." data-i18n-placeholder="form.msgPh" required></textarea>
+                    <div class="invalid-feedback" data-i18n="form.msgErr">Please share a brief description of your project.</div>
                   </div>
                   <div class="col-12 pt-2">
-                    <button type="submit" class="btn-azure">Send Project Inquiry</button>
+                    <button type="submit" class="btn-azure" data-i18n="form.submit">Send Project Inquiry</button>
                   </div>
                 </div>
               </form>
@@ -2540,18 +2842,18 @@
                 <div class="d-flex align-items-start gap-3">
                   <i class="fa-solid fa-circle-check text-success fs-4 mt-1" aria-hidden="true"></i>
                   <div>
-                    <h3 class="h6 fw-bold mb-1">Inquiry Ready to Send</h3>
+                    <h3 class="h6 fw-bold mb-1" data-i18n="form.readyTitle">Inquiry Ready to Send</h3>
                     <p class="small text-secondary-dark mb-3" id="contactConfirmationSummary"></p>
                     <div class="d-flex flex-wrap gap-2">
                       <a id="whatsappPrefillLink" href="https://wa.me/8801933393656" target="_blank" rel="noopener" class="btn-azure">
                         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                        <span>Send via WhatsApp</span>
+                        <span data-i18n="form.sendWa">Send via WhatsApp</span>
                       </a>
                       <a id="mailtoPrefillLink" href="mailto:fh7614@gmail.com" class="btn-dark-outline">
                         <i class="fa-regular fa-envelope" aria-hidden="true"></i>
-                        <span>Send via Email App</span>
+                        <span data-i18n="form.sendEmail">Send via Email App</span>
                       </a>
-                      <button type="button" class="btn btn-link text-muted-dark small text-decoration-none" id="resetContactFormBtn">
+                      <button type="button" class="btn btn-link text-muted-dark small text-decoration-none" id="resetContactFormBtn" data-i18n="form.edit">
                         Edit inquiry
                       </button>
                     </div>
@@ -2569,14 +2871,14 @@
       <div class="container container-wide">
         <div class="row align-items-center g-4">
           <div class="col-lg-6">
-            <h3 class="h4 fw-bold mb-1">Monthly Design &amp; Frontend Notes</h3>
-            <p class="text-muted-dark mb-0 small">Case studies, practical UI tips, and freelance availability updates — zero spam.</p>
+            <h3 class="h4 fw-bold mb-1" data-i18n="news.title">Monthly Design &amp; Frontend Notes</h3>
+            <p class="text-muted-dark mb-0 small" data-i18n="news.subtitle">Case studies, practical UI tips, and freelance availability updates — zero spam.</p>
           </div>
           <div class="col-lg-6">
             <form class="d-flex flex-column flex-sm-row gap-2" id="newsletterForm" novalidate>
               <label for="newsletterEmail" class="visually-hidden">Email address</label>
-              <input type="email" id="newsletterEmail" class="form-control" placeholder="Enter your email address" required>
-              <button type="submit" class="btn-azure">Subscribe</button>
+              <input type="email" id="newsletterEmail" class="form-control" placeholder="Enter your email address" data-i18n-placeholder="news.ph" required>
+              <button type="submit" class="btn-azure" data-i18n="news.btn">Subscribe</button>
             </form>
             <div id="newsletterFeedback" class="small mt-2 d-none" role="status"></div>
           </div>
@@ -2590,22 +2892,22 @@
     <div class="container container-wide">
       <div class="footer-cta-bar d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
         <div>
-          <div class="small mb-1" style="color: #60a5fa;">Open for Q4 Projects</div>
-          <h4 class="h5 mb-0">Ready to elevate your brand or launch a fast website?</h4>
+          <div class="small mb-1" style="color: #60a5fa;" data-i18n="footer.badge">Open for Q4 Projects</div>
+          <h4 class="h5 mb-0" data-i18n="footer.ctaTitle">Ready to elevate your brand or launch a fast website?</h4>
         </div>
         <div class="d-flex flex-wrap gap-2">
-          <a href="#contact" class="btn-azure">Start a Project</a>
-          <a href="casestudy.html" class="btn-dark-outline">View Case Studies</a>
+          <a href="#contact" class="btn-azure" data-i18n="nav.ctaFull">Start a Project</a>
+          <a href="casestudy.html" class="btn-dark-outline" data-i18n="footer.viewCases">View Case Studies</a>
         </div>
       </div>
 
-      <div class="row g-4 pb-4 border-bottom border-secondary border-opacity-25">
+      <div class="row g-4 pb-3 pb-md-4 border-bottom border-secondary border-opacity-25">
         <div class="col-lg-4">
-          <a class="brand-wordmark mb-3 d-inline-flex" href="#home">
+          <a class="brand-wordmark mb-2 mb-md-3 d-inline-flex" href="#home">
             <span class="brand-glyph" aria-hidden="true">FH</span>
-            <span>Forhad Hossain</span>
+            <span data-i18n="brand.name">Forhad Hossain</span>
           </a>
-          <p class="small mb-3" style="max-width: 34ch;">
+          <p class="small mb-3" style="max-width: 34ch;" data-i18n="footer.bio">
             Graphic Designer &amp; Frontend Developer crafting brand systems, UI/UX flows, and fast responsive websites from Dhaka.
           </p>
           <div class="d-flex align-items-center gap-2">
@@ -2623,52 +2925,52 @@
             </a>
           </div>
         </div>
-        <div class="col-6 col-md-3 col-lg-2">
-          <h6 class="small mb-3">Work</h6>
+        <div class="col-6 col-md-3 col-lg-2 d-none d-md-block">
+          <h6 class="small mb-3" data-i18n="footer.colWork">Work</h6>
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#cases">Case Studies</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#client-trust">Client Trust</a></li>
-            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li><a href="#cases" data-i18n="nav.cases">Case Studies</a></li>
+            <li><a href="#services" data-i18n="services.kicker">Services</a></li>
+            <li><a href="#client-trust" data-i18n="trust.kicker">Client Trust</a></li>
+            <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
           </ul>
         </div>
-        <div class="col-6 col-md-3 col-lg-2">
-          <h6 class="small mb-3">Explore</h6>
+        <div class="col-6 col-md-3 col-lg-2 d-none d-md-block">
+          <h6 class="small mb-3" data-i18n="footer.colExplore">Explore</h6>
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-            <li><a href="#about">About</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="casestudy.html">Case Study Page</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#testimonials" data-i18n="footer.testimonials">Testimonials</a></li>
+            <li><a href="#blog" data-i18n="footer.blog">Blog</a></li>
+            <li><a href="#faq" data-i18n="faq.kicker">FAQ</a></li>
+            <li><a href="casestudy.html" data-i18n="footer.casePage">Case Study Page</a></li>
           </ul>
         </div>
-        <div class="col-md-6 col-lg-4">
-          <h6 class="small mb-3">Contact &amp; Studio</h6>
+        <div class="col-md-6 col-lg-4 d-none d-md-block">
+          <h6 class="small mb-3" data-i18n="footer.colContact">Contact &amp; Studio</h6>
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
-            <li>Dhaka, Bangladesh</li>
+            <li data-i18n="common.location">Dhaka, Bangladesh</li>
             <li class="tabular-nums"><a href="https://wa.me/8801933393656" target="_blank" rel="noopener">+880 1933-393656</a></li>
             <li><a href="mailto:fh7614@gmail.com">fh7614@gmail.com</a></li>
             <li><a href="mailto:support@forhadhossain.xyz">support@forhadhossain.xyz</a></li>
-            <li class="text-muted-dark">Mon – Fri, 9:00 AM – 6:00 PM (BST)</li>
+            <li class="text-muted-dark" data-i18n="footer.hours">Mon – Fri, 9:00 AM – 6:00 PM (BST)</li>
           </ul>
         </div>
       </div>
 
-      <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-4 small">
-        <div>© <span id="year"></span> Forhad Hossain. All rights reserved.</div>
-        <div>Graphic Design · UI/UX Systems · Frontend Development</div>
+      <div class="footer-bottom-bar d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 pt-4 small">
+        <div>© <span id="year"></span> <span data-i18n="brand.name">Forhad Hossain</span>. <span data-i18n="footer.rights">All rights reserved.</span></div>
+        <div class="d-none d-md-block" data-i18n="footer.tagline">Graphic Design · UI/UX Systems · Frontend Development</div>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Back-to-Top & Chat Quick Action (matches bottom-right chat launcher in 9proxy screenshot) -->
+  <!-- Floating Back-to-Top (bottom-left at #contact) & WhatsApp Quick Action (bottom-right) -->
+  <button class="back-to-top" id="backToTop" type="button" title="Back to top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
   <div class="floating-actions">
-    <button class="back-to-top" id="backToTop" type="button" title="Back to top" aria-label="Back to top">
-      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-    </button>
     <a class="chat-fab" href="https://wa.me/8801933393656" target="_blank" rel="noopener" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
-      <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
   </div>
 
@@ -2706,8 +3008,8 @@
           </div>
         </div>
         <div class="modal-footer px-4 py-3">
-          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn-azure" id="projectSimilarBtn">Request Similar Project</button>
+          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal" data-i18n="modal.close">Close</button>
+          <button type="button" class="btn-azure" id="projectSimilarBtn" data-i18n="modal.similar">Request Similar Project</button>
         </div>
       </div>
     </div>
@@ -2731,8 +3033,8 @@
           <div id="readerModalBody" class="text-secondary-dark" style="line-height: 1.55;"></div>
         </div>
         <div class="modal-footer px-4 py-3">
-          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal">Close</button>
-          <a href="#contact" class="btn-azure" id="readerContactBtn">Discuss a Project</a>
+          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal" data-i18n="modal.close">Close</button>
+          <a href="#contact" class="btn-azure" id="readerContactBtn" data-i18n="modal.discuss">Discuss a Project</a>
         </div>
       </div>
     </div>
@@ -2744,53 +3046,53 @@
       <div class="modal-content">
         <div class="modal-header px-4 py-3">
           <div>
-            <div class="small text-muted-dark">Curriculum Vitae</div>
-            <h2 class="h5 fw-bold mb-0" id="cvModalTitle">Forhad Hossain — Graphic Designer &amp; Frontend Developer</h2>
+            <div class="small text-muted-dark" data-i18n="cv.kicker">Curriculum Vitae</div>
+            <h2 class="h5 fw-bold mb-0" id="cvModalTitle" data-i18n="cv.modalTitle">Forhad Hossain — Graphic Designer &amp; Frontend Developer</h2>
           </div>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close CV preview"></button>
         </div>
         <div class="modal-body p-4">
           <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 border-bottom border-secondary border-opacity-25 pb-3 mb-4">
             <div>
-              <h3 class="h4 fw-bold mb-1">Forhad Hossain</h3>
-              <p class="text-secondary-dark mb-0">Graphic Designer &amp; Frontend Developer</p>
+              <h3 class="h4 fw-bold mb-1" data-i18n="brand.name">Forhad Hossain</h3>
+              <p class="text-secondary-dark mb-0" data-i18n="cv.role">Graphic Designer &amp; Frontend Developer</p>
             </div>
             <div class="small text-muted-dark text-sm-end tabular-nums">
-              <div>Dhaka, Bangladesh</div>
+              <div data-i18n="common.location">Dhaka, Bangladesh</div>
               <div>fh7614@gmail.com</div>
               <div>+880 1933-393656</div>
             </div>
           </div>
 
-          <h4 class="h6 fw-bold mb-2">Profile Summary</h4>
-          <p class="small text-secondary-dark mb-4">
+          <h4 class="h6 fw-bold mb-2" data-i18n="cv.summaryTitle">Profile Summary</h4>
+          <p class="small text-secondary-dark mb-4" data-i18n="cv.summaryDesc">
             Multidisciplinary designer and frontend engineer with 5+ years of experience delivering brand identities, UI/UX prototypes, WordPress sites, and responsive React applications across 120+ client projects.
           </p>
 
-          <h4 class="h6 fw-bold mb-2">Core Capabilities</h4>
+          <h4 class="h6 fw-bold mb-2" data-i18n="cv.capTitle">Core Capabilities</h4>
           <div class="row g-3 small text-secondary-dark mb-4">
             <div class="col-sm-6">
-              <strong class="text-white d-block mb-1">Design</strong>
-              Brand Identity, Logo Systems, Packaging Dielines, UI/UX Wireframing, Social &amp; Print Collateral, Figma
+              <strong class="text-white d-block mb-1" data-i18n="cv.designTitle">Design</strong>
+              <span data-i18n="cv.designList">Brand Identity, Logo Systems, Packaging Dielines, UI/UX Wireframing, Social &amp; Print Collateral, Figma</span>
             </div>
             <div class="col-sm-6">
-              <strong class="text-white d-block mb-1">Development</strong>
-              HTML5, CSS3, Bootstrap 5, JavaScript (ES6+), React, WordPress Custom Themes, Responsive &amp; Basic SEO
+              <strong class="text-white d-block mb-1" data-i18n="cv.devTitle">Development</strong>
+              <span data-i18n="cv.devList">HTML5, CSS3, Bootstrap 5, JavaScript (ES6+), React, WordPress Custom Themes, Responsive &amp; Basic SEO</span>
             </div>
           </div>
 
-          <h4 class="h6 fw-bold mb-2">Selected Highlights</h4>
+          <h4 class="h6 fw-bold mb-2" data-i18n="cv.highTitle">Selected Highlights</h4>
           <ul class="small text-secondary-dark mb-0 d-flex flex-column gap-2">
-            <li>Delivered 120+ design and web builds for startups, non-profits, pharmaceutical brands, and e-commerce stores.</li>
-            <li>Improved e-commerce checkout conversion by 18% and reduced page load latency by 30% through asset &amp; layout optimization.</li>
-            <li>Maintained long-term creative partnerships with 35+ returning clients across Bangladesh and international remote teams.</li>
+            <li data-i18n="cv.h1">Delivered 120+ design and web builds for startups, non-profits, pharmaceutical brands, and e-commerce stores.</li>
+            <li data-i18n="cv.h2">Improved e-commerce checkout conversion by 18% and reduced page load latency by 30% through asset &amp; layout optimization.</li>
+            <li data-i18n="cv.h3">Maintained long-term creative partnerships with 35+ returning clients across Bangladesh and international remote teams.</li>
           </ul>
         </div>
         <div class="modal-footer px-4 py-3">
-          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn-dark-outline" data-bs-dismiss="modal" data-i18n="modal.close">Close</button>
           <button type="button" class="btn-azure" id="printCvBtn">
             <i class="fa-solid fa-print" aria-hidden="true"></i>
-            <span>Print / Save PDF</span>
+            <span data-i18n="cv.print">Print / Save PDF</span>
           </button>
         </div>
       </div>
@@ -2803,16 +3105,464 @@
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+      // EN / বাংলা Language Toggle
+      const BN_TEXT = {
+        'promo.1': 'প্রথম ডিজাইন প্যাকেজে ২০% ছাড় — প্যাকেজ দেখুন',
+        'promo.2': 'দ্রুত ৭–১৫ দিনে ওয়েব ডেলিভারি — বুক করুন',
+        'promo.3': 'ফ্রি ১৫ মিনিটের প্রজেক্ট কল — কথা বলুন',
+        'brand.name': 'ফরহাদ হোসেন',
+        'nav.about': 'সম্পর্কে',
+        'nav.portfolio': 'পোর্টফোলিও',
+        'nav.cases': 'কেস স্টাডি',
+        'nav.pricing': 'প্যাকেজ',
+        'nav.contact': 'যোগাযোগ',
+        'nav.cta': 'প্রজেক্ট শুরু',
+        'nav.ctaFull': 'প্রজেক্ট শুরু করুন',
+        'hero.kicker': 'গ্রাফিক ডিজাইনার · ফ্রন্টএন্ড ডেভেলপার · ঢাকা',
+        'hero.headline': 'আধুনিক ডিজিটাল পণ্যের জন্য প্রিমিয়াম ব্র্যান্ড ডিজাইন ও ফ্রন্টএন্ড কারিগরি',
+        'hero.lead': 'আমি তৈরি করি স্বতন্ত্র ভিজ্যুয়াল আইডেন্টিটি, স্পষ্ট UI/UX সিস্টেম এবং দ্রুত রেসপনসিভ ওয়েবসাইট—যা ভিজিটরকে গ্রাহকে রূপান্তরিত করে এবং ব্যবসার সাথে তাল মিলিয়ে এগোয়।',
+        'hero.cv': 'সিভি দেখুন',
+        'hero.pricing': 'প্যাকেজ ও মূল্য দেখুন',
+        'showcase.barTitle': 'স্টুডিও প্রোফাইল ও নির্বাচিত কাজ',
+        'showcase.explore': 'গ্যালারি দেখুন →',
+        'showcase.avail': 'ফ্রিল্যান্স ও পার্ট-টাইম কাজের জন্য উন্মুক্ত',
+        'common.location': 'ঢাকা, বাংলাদেশ',
+        'showcase.title': 'প্রাথমিক ব্র্যান্ড ধারণা থেকে প্রোডাকশন-রেডি ফ্রন্টএন্ড কোড পর্যন্ত।',
+        'showcase.desc': 'ব্র্যান্ড আইডেন্টিটি, UI/UX প্রোটোটাইপিং, ওয়ার্ডপ্রেস কাস্টমাইজেশন এবং রিয়্যাক্ট ডেভেলপমেন্টের সমন্বয়ে নির্ভরযোগ্য ওয়ার্কফ্লো—স্টার্টআপ, নন-প্রফিট ও ক্রমবর্ধমান ব্যবসার আস্থাভাজন।',
+        'showcase.workBtn': 'নির্বাচিত কাজ দেখুন',
+        'showcase.casesBtn': 'কেস স্টাডি পড়ুন',
+        'metrics.years': 'ডিজাইন ও কোডিং অভিজ্ঞতা (বছর)',
+        'metrics.projects': 'সম্পন্ন প্রজেক্ট',
+        'metrics.clients': 'নিয়মিত ক্লায়েন্ট',
+        'metrics.daysVal': '৭–১৫ দিন',
+        'metrics.delivery': 'স্ট্যান্ডার্ড ওয়েব ডেলিভারি',
+        'about.kicker': 'আমার সম্পর্কে',
+        'about.title': 'ডিজাইনের রুচিবোধের সাথে ফ্রন্টএন্ডের নিখুঁত সমন্বয়।',
+        'about.p1': 'আমি ফরহাদ হোসেন — একজন ডিজাইনার ও ফ্রন্টএন্ড ডেভেলপার, যিনি আধুনিক ও পিক্সেল-নিখুঁত ইন্টারফেস এবং স্মরণীয় ব্র্যান্ড আইডেন্টিটি তৈরি করেন। স্টার্টআপ, এজেন্সি ও দেশীয় প্রতিষ্ঠানের সাথে কাজ করে দ্রুত ও আকর্ষণীয় ডিজিটাল পণ্য পৌঁছে দিই।',
+        'about.p2': 'আমার কাজের ধারা কৌশলগত ব্র্যান্ড চিন্তা, ব্যবহারকারী-বান্ধব ওয়্যারফ্রেম এবং পরিচ্ছন্ন প্রোডাকশন কোডকে একসাথে যুক্ত করে।',
+        'about.locLabel': 'অবস্থান',
+        'about.availLabel': 'উপলব্ধতা',
+        'about.availVal': 'ফ্রিল্যান্স ও পার্ট-টাইম',
+        'about.contactBtn': 'যোগাযোগ করুন',
+        'about.cvBtn': 'সম্পূর্ণ সিভি দেখুন',
+        'skills.designTitle': 'ডিজাইন দক্ষতা',
+        'skills.designDesc': 'ব্র্যান্ডিং সিস্টেম, ভিজ্যুয়াল আইডেন্টিটি, UI/UX ফ্লো এবং ওয়ার্ডপ্রেস লেআউট।',
+        'skills.brand': 'ব্র্যান্ড আইডেন্টিটি',
+        'skills.uiux': 'UI/UX ডিজাইন',
+        'skills.devTitle': 'ফ্রন্টএন্ড ইঞ্জিনিয়ারিং',
+        'skills.devDesc': 'রেসপনসিভ আর্কিটেকচার, সিম্যান্টিক মার্কআপ, অ্যাক্সেসিবিলিটি এবং স্পিড টিউনিং।',
+        'services.kicker': 'সার্ভিসসমূহ',
+        'services.title': 'শুরু থেকে শেষ পর্যন্ত ডিজাইন ও ফ্রন্টএন্ড ডেলিভারি।',
+        'services.subtitle': 'আপনার প্রজেক্টের লক্ষ্য অনুযায়ী ফর্ম পূরণ করতে নিচের যেকোনো সার্ভিসে ক্লিক করুন।',
+        'services.s1.title': 'ব্র্যান্ডিং ও আইডেন্টিটি',
+        'services.s1.desc': 'স্বতন্ত্র লোগো সিস্টেম, মানানসই কালার প্যালেট, টাইপোগ্রাফি এবং ব্যবহারিক ব্র্যান্ড গাইডলাইন।',
+        'services.s1.cta': 'ব্র্যান্ডিং সম্পর্কে জানুন',
+        'services.s2.title': 'UI/UX ডিজাইন',
+        'services.s2.desc': 'সহজ ইউজার ফ্লো, ওয়্যারফ্রেম এবং কনভার্শন-কেন্দ্রিক ইন্টার‍্যাক্টিভ ফিগমা প্রোটোটাইপ।',
+        'services.s2.cta': 'UI/UX সম্পর্কে জানুন',
+        'services.s3.title': 'ফ্রন্টএন্ড ডেভেলপমেন্ট',
+        'services.s3.desc': 'ডেস্কটপ ও মোবাইলের জন্য রেসপনসিভ HTML/CSS, রিয়্যাক্ট ইন্টারফেস এবং পারফরম্যান্স অপ্টিমাইজেশন।',
+        'services.s3.cta': 'ফ্রন্টএন্ড সম্পর্কে জানুন',
+        'services.s4.title': 'সোশ্যাল মিডিয়া ডিজাইন',
+        'services.s4.desc': 'ইনস্টাগ্রাম, ফেসবুক ও লিংকডইন ব্র্যান্ডের জন্য সামঞ্জস্যপূর্ণ ক্যাম্পেইন গ্রাফিক্স।',
+        'services.s4.cta': 'সোশ্যাল মিডিয়া ডিজাইন',
+        'services.s5.title': 'কর্পোরেট ডিজাইন',
+        'services.s5.desc': 'প্রিন্ট-রেডি বিজনেস কার্ড, পিচ ডেক, ফ্লায়ার, ব্রোশার এবং প্রফেশনাল রিপোর্ট লেআউট।',
+        'services.s5.cta': 'কর্পোরেট ডিজাইন',
+        'services.s6.title': 'ওয়েব ডিজাইন',
+        'services.s6.desc': 'SEO ও অ্যাক্সেসিবিলিটি সমৃদ্ধ কাস্টম পোর্টফোলিও, বিজনেস এবং ই-কমার্স ওয়েবসাইট।',
+        'services.s6.cta': 'ওয়েব ডিজাইন সম্পর্কে জানুন',
+        'principles.p1.title': 'দ্রুত ডেলিভারি',
+        'principles.p1.desc': 'মানের সাথে কোনো আপস না করে সময়মতো নির্ভরযোগ্য মাইলস্টোন ডেলিভারি।',
+        'principles.p2.title': 'স্বচ্ছ যোগাযোগ',
+        'principles.p2.desc': 'নিয়মিত কাজের আপডেট এবং সমন্বিত ফিডব্যাক প্রক্রিয়া।',
+        'principles.p3.title': 'স্কেলেবল সিস্টেম',
+        'principles.p3.desc': 'ভবিষ্যতে সহজে সম্প্রসারণযোগ্য মডুলার কম্পোনেন্ট ও পরিচ্ছন্ন কোডবেস।',
+        'principles.p4.title': 'সূক্ষ্ম মনোযোগ',
+        'principles.p4.desc': 'সামঞ্জস্যপূর্ণ স্পেসিং, স্পষ্ট কনট্রাস্ট এবং পরিপাটি টাইপোগ্রাফি।',
+        'portfolio.kicker': 'নির্বাচিত কাজ',
+        'portfolio.title': 'পোর্টফোলিও প্রদর্শনী',
+        'portfolio.subtitle': 'বিস্তারিত দেখতে যেকোনো প্রজেক্টে ক্লিক করুন।',
+        'portfolio.filterAll': 'সব কাজ',
+        'portfolio.filterWeb': 'ওয়েব ডিজাইন',
+        'portfolio.filterApp': 'UI/UX ও অ্যাপ',
+        'portfolio.filterBrand': 'ব্র্যান্ডিং',
+        'portfolio.pharma.meta': '<span>ওয়েব ডিজাইন</span><span aria-hidden="true">·</span><span>ওয়ার্ডপ্রেস</span><span aria-hidden="true">·</span><span>হেলথকেয়ার</span>',
+        'portfolio.pharma.title': 'ফার্মা ওয়ার্ডপ্রেস ডিজাইন',
+        'portfolio.pharma.desc': 'প্রোডাক্ট ক্যাটালগ ও এডিটোরিয়াল ব্লগসহ একটি ফার্মাসিউটিক্যাল ব্র্যান্ডের কাস্টম ওয়ার্ডপ্রেস আর্কিটেকচার।',
+        'portfolio.retouching.meta': '<span>ওয়েব ডিজাইন</span><span aria-hidden="true">·</span><span>গ্যালারি UI</span><span aria-hidden="true">·</span><span>স্টুডিও</span>',
+        'portfolio.retouching.title': 'রিটাচিং ওয়েবসাইট',
+        'portfolio.retouching.desc': 'ইন্টার‍্যাক্টিভ ক্লায়েন্ট গ্যালারিসহ ফটো রিটাচিং সার্ভিসের জন্য কনভার্শন-কেন্দ্রিক পোর্টফোলিও ওয়েবসাইট।',
+        'portfolio.travel.meta': '<span>UI/UX</span><span aria-hidden="true">·</span><span>বুকিং ফ্লো</span><span aria-hidden="true">·</span><span>ভ্রমণ</span>',
+        'portfolio.travel.title': 'ট্রাভেল ওয়েবসাইট',
+        'portfolio.travel.desc': 'ভিজ্যুয়াল আইটিনারারি বিল্ডার ও ডেস্টিনেশন সার্চসহ ইন্টার‍্যাক্টিভ ট্রাভেল বুকিং অভিজ্ঞতা।',
+        'portfolio.nonprofit.meta': '<span>ব্র্যান্ডিং</span><span aria-hidden="true">·</span><span>ওয়েব ডিজাইন</span><span aria-hidden="true">·</span><span>নন-প্রফিট</span>',
+        'portfolio.nonprofit.title': 'নন-প্রফিট ওয়েবসাইট',
+        'portfolio.nonprofit.desc': 'স্বেচ্ছাসেবক যুক্ত হওয়া ও ডোনেশন ফ্লো-সহ একটি সামাজিক সংস্থার কার্যকর ওয়েব প্ল্যাটফর্ম।',
+        'portfolio.naat.meta': '<span>ওয়েব অ্যাপ</span><span aria-hidden="true">·</span><span>ফ্রন্টএন্ড</span><span aria-hidden="true">·</span><span>অডিও UI</span>',
+        'portfolio.naat.title': 'নাত ওয়েব অ্যাপ',
+        'portfolio.naat.desc': 'কিউরেটেড প্লেলিস্ট, দ্রুত সার্চ ও প্লেয়ার কন্ট্রোলসহ রেসপনসিভ অডিও স্ট্রিমিং ওয়েব অ্যাপ।',
+        'portfolio.clubmaster.meta': '<span>UI/UX ও অ্যাপ</span><span aria-hidden="true">·</span><span>ড্যাশবোর্ড</span><span aria-hidden="true">·</span><span>SaaS</span>',
+        'portfolio.clubmaster.title': 'ক্লাব মাস্টার অ্যাপ',
+        'portfolio.clubmaster.desc': 'কমিউনিটি ক্লাব ও সংগঠনের ইভেন্ট শিডিউলিং এবং সদস্য ব্যবস্থাপনা ইন্টারফেস।',
+        'cases.kicker': 'বিস্তারিত বিশ্লেষণ',
+        'cases.title': 'নির্বাচিত কেস স্টাডি',
+        'cases.subtitle': 'বাস্তব প্রজেক্টে কৌশল, ভিজ্যুয়াল মান এবং ফ্রন্টএন্ড অপ্টিমাইজেশন কীভাবে একসাথে কাজ করে।',
+        'cases.standaloneBtn': 'পূর্ণ কেস স্টাডি পেজ খুলুন',
+        'cases.readBtn': 'সম্পূর্ণ কেস স্টাডি পড়ুন',
+        'cases.c1.meta': '<span>০১. কেস স্টাডি</span><span aria-hidden="true">·</span><span>ব্র্যান্ড আইডেন্টিটি ও ওয়েব</span><span aria-hidden="true">·</span><span>৪ সপ্তাহ</span>',
+        'cases.c1.title': 'কফি কোম্পানির ব্র্যান্ডিং',
+        'cases.c1.desc': 'একটি সম্পূর্ণ ব্র্যান্ড আইডেন্টিটি প্রজেক্ট—যেখানে প্রিন্ট প্যাকেজিং খরচ সাশ্রয়ী রেখেই ভিজ্যুয়াল ল্যাঙ্গুয়েজ ও ডিজিটাল ওয়েব উপস্থিতি তৈরি করা হয়েছে।',
+        'cases.c1.b1': 'লোগো ও ভিজ্যুয়াল সিস্টেম',
+        'cases.c1.b2': 'প্যাকেজিং ডাইলাইন',
+        'cases.c1.b3': 'প্রতিযোগী গবেষণা',
+        'cases.c1.b4': 'রেসপনসিভ ল্যান্ডিং পেজ',
+        'cases.c2.meta': '<span>০২. কেস স্টাডি</span><span aria-hidden="true">·</span><span>প্রোডাক্ট UI ও রিয়্যাক্ট</span><span aria-hidden="true">·</span><span>৬ সপ্তাহ</span>',
+        'cases.c2.title': 'এন্টারপ্রাইজ অ্যানালিটিক্স ড্যাশবোর্ড',
+        'cases.c2.desc': 'জটিলতাবিহীনভাবে ইউজার অ্যাক্টিভিটি ও আয়ের হিসাব দেখানোর জন্য হাই-কনট্রাস্ট হায়ারার্কি এবং রেসপনসিভ ডেটা টেবিলসমৃদ্ধ ড্যাশবোর্ড।',
+        'cases.c2.b1': 'কাস্টম চার্ট কম্পোনেন্ট',
+        'cases.c2.b2': 'ফিল্টারযোগ্য ডেটা টেবিল',
+        'cases.c2.b3': 'গতিময় রিয়্যাক্ট কোড',
+        'cases.c2.b4': 'কীবোর্ড-অ্যাক্সেসিবল UI',
+        'cases.c3.meta': '<span>০৩. কেস স্টাডি</span><span aria-hidden="true">·</span><span>ই-কমার্স UX</span><span aria-hidden="true">·</span><span>+১৮% কনভার্শন</span>',
+        'cases.c3.title': 'ই-কমার্স রি-ডিজাইন',
+        'cases.c3.desc': 'পণ্য খোঁজার অভিজ্ঞতা ও মোবাইল চেকআউট সহজ করে ভিজ্যুয়াল স্পষ্টতা এবং পেজ লোডিং স্পিড উন্নত করা হয়েছে।',
+        'cases.c3.b1': '+১৮% চেকআউট কনভার্শন',
+        'cases.c3.b2': '-৩০% পেজ লোড সময়',
+        'cases.c3.b3': 'মোবাইল-ফার্স্ট চেকআউট',
+        'cases.c3.b4': 'WCAG AA কনট্রাস্ট',
+        'testimonials.kicker': 'ক্লায়েন্ট মতামত',
+        'testimonials.title': 'উদ্যোক্তা ও প্রোডাক্ট টিমের আস্থাভাজন।',
+        'testimonials.subtitle': 'সময়মতো ডেলিভারি ও যত্নশীল কাজের মাধ্যমে গড়ে ওঠা দীর্ঘমেয়াদি অংশীদারিত্ব।',
+        'testimonials.q1': '“ফরহাদ আমাদের ব্র্যান্ড আইডেন্টিটি নতুনভাবে গড়ে তুলেছেন এবং লঞ্চের আগেই চমৎকার একটি ওয়েবসাইট ডেলিভারি দিয়েছেন।”',
+        'testimonials.a1': 'সারা এল.',
+        'testimonials.r1': 'স্টার্টআপ ফাউন্ডার · ব্র্যান্ড ও ওয়েব লঞ্চ',
+        'testimonials.q2': '“সৃজনশীল, নির্ভরযোগ্য এবং প্রতিটি খুঁটিনাটিতে মনোযোগী। আমাদের সব ক্যাম্পেইনের জন্য তিনিই প্রথম পছন্দ।”',
+        'testimonials.a2': 'মার্ক টি.',
+        'testimonials.r2': 'মার্কেটিং ম্যানেজার · ক্যাম্পেইন ডিজাইন',
+        'testimonials.q3': '“তাঁর তৈরি ফ্রন্টএন্ড অত্যন্ত দ্রুত, রেসপনসিভ এবং আমাদের ডেভেলপারদের জন্য রক্ষণাবেক্ষণ করা খুবই সহজ।”',
+        'testimonials.a3': 'এমিলি আর.',
+        'testimonials.r3': 'টেক লিড · রিয়্যাক্ট ফ্রন্টএন্ড',
+        'testimonials.s1Title': 'ক্লায়েন্ট স্পটলাইট — ৬ সপ্তাহে MVP লঞ্চ',
+        'testimonials.s1Desc': 'একটি ছোট প্রতিষ্ঠাতা দলের সাথে কাজ করে আমরা মাত্র ৬ সপ্তাহে সম্পূর্ণ MVP লঞ্চ করেছি এবং ব্যবহারকারীদের ফিডব্যাক অনুযায়ী দ্রুত আপডেট করেছি।',
+        'testimonials.s2Title': 'দীর্ঘমেয়াদি ডিজাইন পার্টনারশিপ',
+        'testimonials.s2Desc': 'প্রথম লঞ্চের পরও অধিকাংশ ক্লায়েন্ট নিয়মিত UI উন্নয়ন, ক্যাম্পেইন ভিজ্যুয়াল এবং নতুন ফ্রন্টএন্ড ফিচারের জন্য সাথেই কাজ চালিয়ে যান।',
+        'trust.kicker': 'ক্লায়েন্ট ট্রাস্ট',
+        'trust.title': 'আধুনিক টেক ও স্টার্টআপ প্ল্যাটফর্মজুড়ে বিশ্বস্ত।',
+        'trust.subtitle': 'আধুনিক ওয়েব প্রযুক্তিতে গড়া টিমগুলোর জন্য পরিচ্ছন্ন ব্র্যান্ড সিস্টেম, প্রোডাক্ট UI ও রেসপনসিভ স্টোরফ্রন্ট তৈরি।',
+        'pricing.kicker': 'প্যাকেজ ও মূল্য',
+        'blog.kicker': 'জার্নাল',
+        'blog.title': 'ব্লগ ও ফিল্ড নোটস',
+        'blog.subtitle': 'ডিজাইন সিস্টেম, রিয়্যাক্ট স্পিড ও সাশ্রয়ী ব্র্যান্ডিং নিয়ে ব্যবহারিক লেখা।',
+        'blog.readMore': 'প্রবন্ধ পড়ুন',
+        'blog.b1.meta': '<span>ডিজাইন সিস্টেম</span><span aria-hidden="true">·</span><span>৫ মিনিট পাঠ</span>',
+        'blog.b1.title': 'ডিজাইন সিস্টেম: স্কেলেবিলিটির ভিত্তি',
+        'blog.b1.desc': 'কীভাবে স্পেসিং টোকেন, টাইপ স্কেল ও পুনর্ব্যবহারযোগ্য UI কম্পোনেন্ট সাজালে প্রোডাক্ট সহজে বড় হয়।',
+        'blog.b2.meta': '<span>ফ্রন্টএন্ড</span><span aria-hidden="true">·</span><span>৪ মিনিট পাঠ</span>',
+        'blog.b2.title': 'রিয়্যাক্ট পারফরম্যান্স টিপস',
+        'blog.b2.desc': 'রেন্ডারিং, অ্যাসেট লোডিং ও বান্ডেল স্প্লিটিংয়ের সহজ অভ্যাস—যা রিয়্যাক্ট ইন্টারফেসকে করে তোলে তাৎক্ষণিক।',
+        'blog.b3.meta': '<span>ব্র্যান্ডিং</span><span aria-hidden="true">·</span><span>৪ মিনিট পাঠ</span>',
+        'blog.b3.title': 'বাজেটের মধ্যে কার্যকর ব্র্যান্ডিং',
+        'blog.b3.desc': 'বড় এজেন্সির খরচ ছাড়াই নতুন উদ্যোক্তারা কীভাবে একটি স্মরণীয় ও সামঞ্জস্যপূর্ণ ব্র্যান্ড গড়ে তুলতে পারেন।',
+        'faq.kicker': 'সাধারণ জিজ্ঞাসা',
+        'contact.kicker': 'যোগাযোগ',
+        'contact.title': 'চলুন আপনার পরবর্তী প্রজেক্ট শুরু করি।',
+        'contact.subtitle': 'আপনার সময়সীমা, বাজেট এবং লক্ষ্য শেয়ার করুন। সাধারণত কয়েক ঘণ্টার মধ্যেই উত্তর দিই।',
+        'contact.emailLabel': 'ইমেইল',
+        'contact.phoneLabel': 'ফোন ও হোয়াটসঅ্যাপ',
+        'contact.locLabel': 'স্টুডিও অবস্থান',
+        'contact.hoursLabel': 'কর্মঘণ্টা',
+        'contact.hoursVal': 'সোম — শুক্র, সকাল ৯:০০ — সন্ধ্যা ৬:০০ (BST)',
+        'contact.waBtn': 'হোয়াটসঅ্যাপে বার্তা পাঠান',
+        'contact.emailBtn': 'সরাসরি ইমেইল করুন',
+        'form.nameLabel': 'আপনার নাম',
+        'form.namePh': 'যেমন: তারেক আহমেদ',
+        'form.nameErr': 'অনুগ্রহ করে আপনার নাম লিখুন।',
+        'form.emailLabel': 'ইমেইল ঠিকানা',
+        'form.emailPh': 'you@company.com',
+        'form.emailErr': 'অনুগ্রহ করে সঠিক ইমেইল ঠিকানা দিন।',
+        'form.serviceLabel': 'সার্ভিস বা প্যাকেজ',
+        'form.budgetLabel': 'সম্ভাব্য বাজেট',
+        'form.msgLabel': 'প্রজেক্টের বিবরণ',
+        'form.msgPh': 'আপনার প্রজেক্টের লক্ষ্য, সময়সীমা এবং রেফারেন্স লিংক সম্পর্কে লিখুন...',
+        'form.msgErr': 'অনুগ্রহ করে প্রজেক্ট সম্পর্কে সংক্ষিপ্ত বিবরণ লিখুন।',
+        'form.submit': 'প্রজেক্ট বার্তা পাঠান',
+        'form.readyTitle': 'বার্তা পাঠানোর জন্য প্রস্তুত',
+        'form.sendWa': 'হোয়াটসঅ্যাপে পাঠান',
+        'form.sendEmail': 'ইমেইল অ্যাপে পাঠান',
+        'form.edit': 'তথ্য পরিবর্তন করুন',
+        'news.title': 'মাসিক ডিজাইন ও ফ্রন্টএন্ড নোটস',
+        'news.subtitle': 'নতুন কেস স্টাডি, ব্যবহারিক UI টিপস ও কাজের সময়সূচি আপডেট — কোনো স্প্যাম নয়।',
+        'news.ph': 'আপনার ইমেইল ঠিকানা লিখুন',
+        'news.btn': 'সাবস্ক্রাইব',
+        'footer.badge': 'Q4 প্রজেক্টের জন্য উন্মুক্ত',
+        'footer.ctaTitle': 'আপনার ব্র্যান্ডকে এগিয়ে নিতে বা দ্রুত ওয়েবসাইট লঞ্চ করতে প্রস্তুত?',
+        'footer.viewCases': 'কেস স্টাডি দেখুন',
+        'footer.bio': 'ঢাকা থেকে ব্র্যান্ড সিস্টেম, UI/UX ফ্লো এবং দ্রুতগতির রেসপনসিভ ওয়েবসাইট নির্মাণকারী গ্রাফিক ডিজাইনার ও ফ্রন্টএন্ড ডেভেলপার।',
+        'footer.colWork': 'কাজ',
+        'footer.colExplore': 'ঘুরে দেখুন',
+        'footer.colContact': 'যোগাযোগ ও স্টুডিও',
+        'footer.testimonials': 'প্রশংসাপত্র',
+        'footer.blog': 'ব্লগ',
+        'footer.casePage': 'কেস স্টাডি পেজ',
+        'footer.hours': 'সোম – শুক্র, সকাল ৯:০০ – সন্ধ্যা ৬:০০ (BST)',
+        'footer.rights': 'সর্বস্বত্ব সংরক্ষিত।',
+        'footer.tagline': 'গ্রাফিক ডিজাইন · UI/UX সিস্টেম · ফ্রন্টএন্ড ডেভেলপমেন্ট',
+        'modal.close': 'বন্ধ করুন',
+        'modal.similar': 'অনুরূপ প্রজেক্টের অনুরোধ করুন',
+        'modal.discuss': 'প্রজেক্ট নিয়ে আলোচনা করুন',
+        'cv.kicker': 'জীবনবৃত্তান্ত (CV)',
+        'cv.modalTitle': 'ফরহাদ হোসেন — গ্রাফিক ডিজাইনার ও ফ্রন্টএন্ড ডেভেলপার',
+        'cv.role': 'গ্রাফিক ডিজাইনার ও ফ্রন্টএন্ড ডেভেলপার',
+        'cv.summaryTitle': 'সংক্ষিপ্ত পরিচিতি',
+        'cv.summaryDesc': '৫+ বছরের অভিজ্ঞতাসম্পন্ন মাল্টিডিসিপ্লিনারি ডিজাইনার ও ফ্রন্টএন্ড ইঞ্জিনিয়ার, যিনি ১২০+ ক্লায়েন্ট প্রজেক্টে ব্র্যান্ড আইডেন্টিটি, UI/UX প্রোটোটাইপ, ওয়ার্ডপ্রেস সাইট ও রেসপনসিভ রিয়্যাক্ট অ্যাপ ডেলিভারি দিয়েছেন।',
+        'cv.capTitle': 'মূল দক্ষতা',
+        'cv.designTitle': 'ডিজাইন',
+        'cv.designList': 'ব্র্যান্ড আইডেন্টিটি, লোগো সিস্টেম, প্যাকেজিং ডাইলাইন, UI/UX ওয়্যারফ্রেমিং, সোশ্যাল ও প্রিন্ট ডিজাইন, ফিগমা',
+        'cv.devTitle': 'ডেভেলপমেন্ট',
+        'cv.devList': 'HTML5, CSS3, Bootstrap 5, JavaScript (ES6+), React, ওয়ার্ডপ্রেস কাস্টম থিম, রেসপনসিভ ও বেসিক SEO',
+        'cv.highTitle': 'উল্লেখযোগ্য সাফল্য',
+        'cv.h1': 'স্টার্টআপ, নন-প্রফিট, ফার্মাসিউটিক্যাল ব্র্যান্ড এবং ই-কমার্স স্টোরের জন্য ১২০+ ডিজাইন ও ওয়েব প্রজেক্ট সম্পন্ন।',
+        'cv.h2': 'অ্যাসেট ও লেআউট অপ্টিমাইজেশনের মাধ্যমে ই-কমার্স চেকআউট কনভার্শন ১৮% বৃদ্ধি এবং পেজ লোডিং সময় ৩০% হ্রাস।',
+        'cv.h3': 'বাংলাদেশ ও আন্তর্জাতিক রিমোট টিমের ৩৫+ নিয়মিত ক্লায়েন্টের সাথে দীর্ঘমেয়াদি সৃজনশীল অংশীদারিত্ব বজায় রাখা।',
+        'cv.print': 'প্রিন্ট / PDF সংরক্ষণ করুন'
+      };
+
+      const i18nNodes = Array.from(document.querySelectorAll('[data-i18n]'));
+      i18nNodes.forEach(el => {
+        el.dataset.i18nEn = el.innerHTML;
+      });
+      const i18nPlaceholders = Array.from(document.querySelectorAll('[data-i18n-placeholder]'));
+      i18nPlaceholders.forEach(el => {
+        el.dataset.i18nPhEn = el.getAttribute('placeholder') || '';
+      });
+
+      const langToggleBtn = document.getElementById('langToggleBtn');
+      let currentLang = 'en';
+
+      const applyLanguage = (lang) => {
+        currentLang = lang === 'bn' ? 'bn' : 'en';
+        document.documentElement.setAttribute('lang', currentLang);
+        try {
+          localStorage.setItem('fh_lang', currentLang);
+        } catch (err) {}
+
+        i18nNodes.forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (currentLang === 'bn' && BN_TEXT[key] !== undefined) {
+            el.innerHTML = BN_TEXT[key];
+          } else if (el.dataset.i18nEn !== undefined) {
+            el.innerHTML = el.dataset.i18nEn;
+          }
+        });
+
+        i18nPlaceholders.forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (currentLang === 'bn' && BN_TEXT[key] !== undefined) {
+            el.setAttribute('placeholder', BN_TEXT[key]);
+          } else if (el.dataset.i18nPhEn !== undefined) {
+            el.setAttribute('placeholder', el.dataset.i18nPhEn);
+          }
+        });
+
+        if (langToggleBtn) {
+          langToggleBtn.classList.toggle('is-bn', currentLang === 'bn');
+          langToggleBtn.setAttribute('aria-pressed', currentLang === 'bn' ? 'true' : 'false');
+          langToggleBtn.setAttribute(
+            'aria-label',
+            currentLang === 'bn' ? 'Switch language to English' : 'Switch language to Bengali'
+          );
+          langToggleBtn.setAttribute(
+            'title',
+            currentLang === 'bn' ? 'Switch to English' : 'Switch to বাংলা'
+          );
+        }
+      };
+
+      let savedLang = 'en';
+      try {
+        savedLang = localStorage.getItem('fh_lang') || 'en';
+      } catch (err) {}
+      if (savedLang === 'bn') {
+        applyLanguage('bn');
+      }
+
+      if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+          applyLanguage(currentLang === 'en' ? 'bn' : 'en');
+        });
+      }
+
+      // Custom Styled Dropdowns (replaces native default <select> menus with slide-in animated menus)
+      const customDropdownWraps = [];
+      const closeAllCustomDropdowns = (exceptWrap = null) => {
+        customDropdownWraps.forEach(({ wrap, trigger }) => {
+          if (wrap !== exceptWrap && wrap.classList.contains('is-open')) {
+            wrap.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      };
+
+      document.querySelectorAll('select.form-select').forEach(selectEl => {
+        const wrap = document.createElement('div');
+        wrap.className = 'custom-select-wrap';
+        selectEl.parentNode.insertBefore(wrap, selectEl);
+        wrap.appendChild(selectEl);
+        selectEl.classList.add('custom-select-native');
+        selectEl.setAttribute('tabindex', '-1');
+        selectEl.setAttribute('aria-hidden', 'true');
+
+        const trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'custom-select-trigger';
+        trigger.setAttribute('aria-haspopup', 'listbox');
+        trigger.setAttribute('aria-expanded', 'false');
+        if (selectEl.id) {
+          const linkedLabel = document.querySelector(`label[for="${selectEl.id}"]`);
+          if (linkedLabel) {
+            if (!linkedLabel.id) linkedLabel.id = `${selectEl.id}Label`;
+            trigger.setAttribute('aria-labelledby', linkedLabel.id);
+            linkedLabel.addEventListener('click', (e) => {
+              e.preventDefault();
+              trigger.focus();
+            });
+          }
+        }
+
+        const valueSpan = document.createElement('span');
+        valueSpan.className = 'custom-select-value';
+        const chevron = document.createElement('i');
+        chevron.className = 'fa-solid fa-chevron-down custom-select-chevron';
+        chevron.setAttribute('aria-hidden', 'true');
+        trigger.appendChild(valueSpan);
+        trigger.appendChild(chevron);
+
+        const menu = document.createElement('ul');
+        menu.className = 'custom-select-menu';
+        menu.setAttribute('role', 'listbox');
+
+        const optionBtns = [];
+        Array.from(selectEl.options).forEach((opt, idx) => {
+          const li = document.createElement('li');
+          li.setAttribute('role', 'presentation');
+          const optBtn = document.createElement('button');
+          optBtn.type = 'button';
+          optBtn.className = 'custom-select-option';
+          optBtn.setAttribute('role', 'option');
+          optBtn.setAttribute('data-value', opt.value);
+          optBtn.style.setProperty('--opt-delay', `${Math.min(idx * 18, 140)}ms`);
+
+          const textSpan = document.createElement('span');
+          textSpan.textContent = opt.textContent;
+          const checkIcon = document.createElement('i');
+          checkIcon.className = 'fa-solid fa-check custom-select-check';
+          checkIcon.setAttribute('aria-hidden', 'true');
+
+          optBtn.appendChild(textSpan);
+          optBtn.appendChild(checkIcon);
+          li.appendChild(optBtn);
+          menu.appendChild(li);
+          optionBtns.push(optBtn);
+
+          optBtn.addEventListener('click', () => {
+            selectEl.value = opt.value;
+            selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+            wrap.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            trigger.focus();
+          });
+        });
+
+        const syncCustomSelect = () => {
+          const selectedOpt = selectEl.options[selectEl.selectedIndex] || selectEl.options[0];
+          valueSpan.textContent = selectedOpt ? selectedOpt.textContent : '';
+          optionBtns.forEach(btn => {
+            const active = selectedOpt && btn.getAttribute('data-value') === selectedOpt.value;
+            btn.classList.toggle('is-selected', Boolean(active));
+            btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+        };
+        syncCustomSelect();
+
+        selectEl.addEventListener('change', syncCustomSelect);
+
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const willOpen = !wrap.classList.contains('is-open');
+          closeAllCustomDropdowns(willOpen ? wrap : null);
+          wrap.classList.toggle('is-open', willOpen);
+          trigger.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+          if (willOpen) {
+            const activeBtn = menu.querySelector('.custom-select-option.is-selected');
+            if (activeBtn) activeBtn.scrollIntoView({ block: 'nearest' });
+          }
+        });
+
+        trigger.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (!wrap.classList.contains('is-open')) {
+              closeAllCustomDropdowns(wrap);
+              wrap.classList.add('is-open');
+              trigger.setAttribute('aria-expanded', 'true');
+            }
+            const firstOrSelected = menu.querySelector('.custom-select-option.is-selected') || optionBtns[0];
+            if (firstOrSelected) firstOrSelected.focus();
+          } else if (e.key === 'Escape' && wrap.classList.contains('is-open')) {
+            wrap.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        menu.addEventListener('keydown', (e) => {
+          const currentIdx = optionBtns.indexOf(document.activeElement);
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextBtn = optionBtns[(currentIdx + 1) % optionBtns.length];
+            if (nextBtn) nextBtn.focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevBtn = optionBtns[(currentIdx - 1 + optionBtns.length) % optionBtns.length];
+            if (prevBtn) prevBtn.focus();
+          } else if (e.key === 'Escape') {
+            wrap.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            trigger.focus();
+          }
+        });
+
+        wrap.appendChild(trigger);
+        wrap.appendChild(menu);
+        customDropdownWraps.push({ wrap, trigger });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.custom-select-wrap')) {
+          closeAllCustomDropdowns();
+        }
+      });
+
       const mainNav = document.getElementById('mainNav');
       const backToTop = document.getElementById('backToTop');
+      const contactSection = document.getElementById('contact');
 
       const updateScrollUI = () => {
         const y = window.scrollY;
         if (mainNav) mainNav.classList.toggle('is-scrolled', y > 24);
-        if (backToTop) backToTop.classList.toggle('is-visible', y > 360);
+        if (backToTop) {
+          if (contactSection) {
+            const rect = contactSection.getBoundingClientRect();
+            const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+            backToTop.classList.toggle('is-visible', rect.top <= vh * 0.85);
+          } else {
+            backToTop.classList.toggle('is-visible', y > 360);
+          }
+        }
       };
       updateScrollUI();
       window.addEventListener('scroll', updateScrollUI, { passive: true });
+      window.addEventListener('resize', updateScrollUI, { passive: true });
 
       if (backToTop) {
         backToTop.addEventListener('click', () => {
@@ -3291,7 +4041,6 @@
         });
       }
 
-      const contactSection = document.getElementById('contact');
       const contactService = document.getElementById('contactService');
       const contactBudget = document.getElementById('contactBudget');
       const contactMessage = document.getElementById('contactMessage');
@@ -3302,9 +4051,11 @@
       function prefillContact(serviceVal, budgetVal, noteText) {
         if (contactService && serviceVal) {
           contactService.value = serviceVal;
+          contactService.dispatchEvent(new Event('change', { bubbles: true }));
         }
         if (contactBudget && budgetVal) {
           contactBudget.value = budgetVal;
+          contactBudget.dispatchEvent(new Event('change', { bubbles: true }));
         }
         if (contactMessage && noteText && !contactMessage.value.trim()) {
           contactMessage.value = noteText;
